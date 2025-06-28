@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font Face - Uncomment when you have Recia Serif Display font files
+@font-face {
+  font-family: 'Recia Serif Display';
+  src: url('/fonts/recia-serif-display-bold.woff2') format('woff2'),
+       url('/fonts/recia-serif-display-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+@layer base {
+  :root {
+    /* Design System Colors */
+    --color-bg: #D9DDCD;
+    --color-primary: #8C3112;
+    --color-primary-dark: #70270E;
+    --color-accent: #FEA88A;
+    --color-purple: #C7ACBE;
+    --color-purple-light: #D4B8C9;
+    --color-shadow: #101C26;
+    
+    /* Font Variables */
+    --font-pacifico: 'Pacifico', cursive;
+    --font-display: 'Playfair Display', serif; /* Use 'Recia Serif Display' when available */
+  }
+  
+  /* Global styles */
+  body {
+    background-color: var(--color-bg);
+  }
+}
