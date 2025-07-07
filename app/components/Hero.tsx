@@ -7,26 +7,32 @@ export default function Hero() {
     <>
       <Navigation />
 
-      <section className='bg-surface relative flex min-h-screen w-full flex-col items-center justify-start'>
+      <section
+        className='bg-surface relative flex w-full flex-col items-center justify-start'
+        style={{ height: 'calc(95vw * 580 / 1380)' }}
+      >
         {/* Hero Arc positioned at bottom */}
-        <div className='absolute right-0 bottom-0 left-0 z-20'>
+        <div className='absolute right-0 bottom-0 left-0 z-20 w-full'>
           {/* Constrained container for proper scaling */}
-          <div className='relative mx-auto w-full'>
+          <div className='relative mx-auto w-[95%]'>
             {/* Aspect ratio wrapper to maintain proportions based on squiggle dimensions */}
             <div className='relative mx-auto w-full'>
               {/* Squiggle Arc Container with proper layering */}
-              <div className='relative'>
-                {/* Invisible sizing element to maintain container dimensions */}
+              <div
+                className='relative'
+                style={{ filter: 'drop-shadow(8px -1px 0px rgba(0, 0, 0, 1))' }}
+              >
+                {/* Invisible sizing element to maintain container dimensions
                 <svg
                   viewBox='0 0 1380 611'
                   className='invisible h-full w-full'
                   preserveAspectRatio='xMidYMid meet'
                 >
                   <path d='M690.001 0C734.073 0 772.004 54.6614 813.547 62.1005C856.535 69.8629 914.696 32.3446 954.433 46.8988C994.892 61.777 1006.09 125.171 1041.85 146.842C1077.98 168.512 1147.7 153.958 1178.41 181.127C1209.11 208.619 1192.5 271.042 1216.7 303.386C1240.54 335.406 1311.34 345.757 1328.32 381.658C1344.58 417.237 1303.04 468.987 1311.34 507.8C1319.13 542.947 1380 568.776 1380 611H0C6.802 574.652 60.8728 542.645 68.6566 507.8C77.3266 469.311 35.4219 417.237 51.678 381.658C68.2956 345.434 139.1 335.406 163.304 303.386C187.506 271.042 171.251 208.619 201.595 181.127C232.301 153.634 302.022 168.512 338.146 146.842C373.91 125.495 385.47 62.1005 425.568 46.8988C465.305 32.3444 523.104 69.5393 566.454 62.1005C608.358 54.6614 645.929 8.04544e-05 690.001 0Z' />
-                </svg>
+                </svg> */}
 
                 {/* Squiggle Shadow (bottom layer) */}
-                <div className='absolute inset-0 z-0 translate-x-[1.3%]'>
+                {/* <div className='absolute inset-0 z-0 translate-x-[1.3%]'>
                   <Image
                     src='/images/figma-assets/squiggle-shadow.svg'
                     alt=''
@@ -35,7 +41,7 @@ export default function Hero() {
                     className='h-full w-full object-contain'
                     priority
                   />
-                </div>
+                </div> */}
 
                 {/* Main Squiggle - maroon colored arc */}
                 <div className='absolute inset-0 z-[1]'>
@@ -160,20 +166,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Dark section below hero */}
-      <section className='relative min-h-[400px] w-full bg-[#8C3112] pt-60'>
-        {/* Grunge texture overlay */}
-        <div
-          className='absolute inset-0 opacity-20 mix-blend-multiply'
-          style={{
-            backgroundImage: 'url(/images/figma-assets/grunge.png)',
-            backgroundSize: '342px 342px',
-            backgroundRepeat: 'repeat',
-          }}
-        />
-        {/* Content for this section will go here */}
       </section>
     </>
   )
