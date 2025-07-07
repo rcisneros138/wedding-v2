@@ -7,12 +7,9 @@ export default function Hero() {
     <>
       <Navigation />
 
-      <section
-        className='bg-surface relative flex w-full flex-col items-center justify-start'
-        style={{ height: 'calc(95vw * 580 / 1380)' }}
-      >
+      <section className='bg-surface relative flex w-full flex-col items-center justify-start'>
         {/* Hero Arc positioned at bottom */}
-        <div className='absolute top-1/2 left-1/2 z-20 w-full -translate-x-1/2 -translate-y-1/2'>
+        <div className='relative z-20 w-full'>
           {/* Constrained container for proper scaling */}
           <div className='relative mx-auto w-[95%]'>
             {/* Aspect ratio wrapper to maintain proportions based on squiggle dimensions */}
@@ -20,7 +17,9 @@ export default function Hero() {
               {/* Squiggle Arc Container with proper layering */}
               <div
                 className='relative mx-auto max-w-[1600px]'
-                style={{ filter: 'drop-shadow(8px -1px 0px rgba(0, 0, 0, 1))' }}
+                style={{
+                  filter: 'drop-shadow(8px -1px 0px rgba(0, 0, 0, 1))',
+                }}
               >
                 {/* Invisible sizing element to maintain container dimensions
                 <svg
@@ -38,17 +37,17 @@ export default function Hero() {
                     alt=''
                     width={1}
                     height={1}
-                    className='h-full w-full object-contain'
+                    className='block h-full w-full object-contain'
                     priority
                   />
                 </div>
 
                 {/* All content positioned within the squiggle */}
-                <div className='absolute top-[30%] left-1/2 z-[2] flex h-[50%] w-full max-w-[1600px] -translate-x-1/2 flex-col items-center justify-center px-[5%] py-[3%]'>
+                <div className='absolute top-[25%] left-1/2 z-[2] flex h-[50%] w-full max-w-[1600px] -translate-x-1/2 flex-col items-center justify-center px-[4%] py-[10%] sm:px-[5%]'>
                   {/* Hero Title Container with Portrait */}
-                  <div className='relative mb-4 w-[80%]'>
+                  <div className='relative mb-4 w-[60%] sm:w-[50%] md:w-[80%]'>
                     {/* Portrait positioned at bottom center of parent */}
-                    <div className='absolute bottom-0 left-1/2 w-[25%] -translate-x-1/2 translate-y-1/2'>
+                    <div className='absolute bottom-0 left-1/2 w-[25%] -translate-x-1/2 translate-y-[65%] sm:w-[20%] sm:translate-y-[55%] md:w-[25%] md:translate-y-1/2 lg:w-[30%]'>
                       {/* Portrait layers */}
                       <div className='relative'>
                         <Image
@@ -107,12 +106,14 @@ export default function Hero() {
                   </div>
 
                   {/* RSVP Button */}
-                  <div className='mb-3'>
-                    <ShadowButton
-                      text='RSVP'
-                      className='scale-75 sm:scale-90 md:scale-100'
-                      ariaLabel='RSVP for the wedding'
-                    />
+                  <div className='mb-6 flex w-full justify-center'>
+                    <div className='flex w-[35%] justify-center sm:w-[30%] md:w-[35%] lg:w-[40%]'>
+                      <ShadowButton
+                        text='RSVP'
+                        ariaLabel='RSVP for the wedding'
+                        useRelativeSize={true}
+                      />
+                    </div>
                   </div>
 
                   {/* Date and location text inside the squiggle */}
@@ -155,6 +156,23 @@ export default function Hero() {
           </div>
         </div>
       </section>
+
+      {/* Info section - flows naturally after hero */}
+      <div
+        className='relative -mt-[1px] w-full'
+        style={{
+          height: 'calc(95vw * 400 / 1380)',
+        }}
+      >
+        <div className='relative mx-auto h-full w-[95%]'>
+          <div
+            className='relative mx-auto flex h-full max-w-[1600px] items-center justify-center bg-[#8C3112]'
+            style={{ boxShadow: '8px 0px 0px rgba(0, 0, 0, 1)' }}
+          >
+            {/* Content goes here */}
+          </div>
+        </div>
+      </div>
     </>
   )
 }
