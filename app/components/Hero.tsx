@@ -9,9 +9,9 @@ export default function Hero() {
 
       <section className='bg-surface relative flex min-h-screen w-full flex-col items-center justify-start'>
         {/* Hero Arc positioned at bottom */}
-        <div className='absolute right-0 bottom-0 left-0 z-20 mb-8 md:mb-12 lg:mb-16'>
+        <div className='absolute right-0 bottom-0 left-0 z-20'>
           {/* Constrained container for proper scaling */}
-          <div className='relative mx-auto w-full max-w-5xl px-4'>
+          <div className='relative mx-auto w-full'>
             {/* Aspect ratio wrapper to maintain proportions based on squiggle dimensions */}
             <div className='relative mx-auto w-full'>
               {/* Squiggle Arc Container with proper layering */}
@@ -163,7 +163,7 @@ export default function Hero() {
       </section>
 
       {/* Dark section below hero */}
-      <section className='relative min-h-[400px] w-full bg-[#70270E] pt-60'>
+      <section className='relative min-h-[400px] w-full bg-[#8C3112] pt-60'>
         {/* Grunge texture overlay */}
         <div
           className='absolute inset-0 opacity-20 mix-blend-multiply'
