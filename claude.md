@@ -38,9 +38,12 @@ The project is set up to easily switch to Recia Serif Display once licensed:
 ## Component Structure
 
 ### Navigation
-- Sticky navigation with shadow effect
+- Pill-shaped navigation with offset shadow effect
+- Mobile-first responsive design
 - Diagonal line texture overlay
-- Mobile-responsive hamburger menu
+- Hamburger menu with logo for mobile
+- Desktop horizontal menu with centered links
+- Smooth hover effects and transitions
 - Links: Home, Our Story, Details, RSVP, Registry
 
 ### Hero Section
@@ -49,6 +52,14 @@ The project is set up to easily switch to Recia Serif Display once licensed:
 - Date and location text with wavy underlines
 - RSVP button with hover effect
 - Textured section below with grunge overlay
+- **Container-based scaling**: All elements scale relative to a constrained container
+  - Container: max-width of 1600px with aspect ratio preservation
+  - Content positioned within arc: Uses `top-[5%] h-[55%]` to constrain content to the visible arc area
+  - Hero Title: 80% of container width for optimal fit within arc
+  - Portrait: 25% of container width positioned at bottom of title
+  - RSVP button: Centered with responsive scaling
+  - Wavy lines and text: Positioned at bottom of arc with 10% horizontal padding
+  - This approach ensures all content sits within the squiggle arc and scales proportionally
 
 ## Figma Assets
 All design assets have been extracted from Figma and stored in `/public/images/figma-assets/`:
@@ -96,3 +107,9 @@ All design assets have been extracted from Figma and stored in `/public/images/f
 ## Development Principles
 - Always use React components when possible within best practices
 - Always use Tailwind for styling when possible within best practices
+
+## Development Best Practices
+- When implementing changes, ensure the final design matches any Figma design provided before marking complete. For styling changes, use a browser to confirm changes.
+
+## Development Workflow Tips
+- Always check to see if a development server is already running on port 3000 before attempting to run another one.
