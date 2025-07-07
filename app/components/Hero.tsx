@@ -9,9 +9,9 @@ export default function Hero() {
 
       <section className='bg-surface relative flex min-h-screen w-full flex-col items-center justify-start'>
         {/* Hero Arc positioned at bottom */}
-        <div className='absolute right-0 bottom-0 left-0 z-20 mx-auto mb-8 w-full md:mb-12 lg:mb-16'>
+        <div className='absolute right-0 bottom-0 left-0 z-20 mb-8 md:mb-12 lg:mb-16'>
           {/* Constrained container for proper scaling */}
-          <div className='relative mx-auto w-full'>
+          <div className='relative mx-auto w-full max-w-5xl px-4'>
             {/* Aspect ratio wrapper to maintain proportions based on squiggle dimensions */}
             <div className='relative mx-auto w-full'>
               {/* Squiggle Arc Container with proper layering */}
