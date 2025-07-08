@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacifico Font Test - Static HTML</title>
+    
+    <!-- Method 1: Google Fonts CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            padding: 40px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .pacifico-cdn {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            color: #8C3112;
+        }
+        
+        .debug-info {
+            background: #f0f0f0;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Static HTML Pacifico Font Test</h1>
+    <p>This page loads Pacifico directly from Google Fonts CDN without Next.js</p>
+    
+    <div class="test-section">
+        <h2>Google Fonts CDN Test</h2>
+        <p class="pacifico-cdn">See You In Mexico!</p>
+        <p class="pacifico-cdn">January 24, 2026</p>
+        <p class="pacifico-cdn">Ashlyn & Royal</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Different sizes</h2>
+        <p class="pacifico-cdn" style="font-size: 48px;">See You In Mexico!</p>
+        <p class="pacifico-cdn" style="font-size: 24px;">See You In Mexico!</p>
+        <p class="pacifico-cdn" style="font-size: 16px;">See You In Mexico!</p>
+    </div>
+    
+    <div class="debug-info" id="debug">
+        Loading debug info...
+    </div>
+    
+    <script>
+        window.addEventListener('load', () => {
+            const debugEl = document.getElementById('debug');
+            
+            // Check if font is loaded
+            document.fonts.ready.then(() => {
+                const fontLoaded = document.fonts.check('32px Pacifico');
+                const testEl = document.querySelector('.pacifico-cdn');
+                const computed = window.getComputedStyle(testEl);
+                
+                debugEl.innerHTML = `
+                    <div>Font loaded: ${fontLoaded}</div>
+                    <div>Computed font-family: ${computed.fontFamily}</div>
+                    <div>Font size: ${computed.fontSize}</div>
+                    <div>Font weight: ${computed.fontWeight}</div>
+                `;
+                
+                // List all loaded fonts
+                const fonts = Array.from(document.fonts.values());
+                debugEl.innerHTML += `<div>Total fonts loaded: ${fonts.length}</div>`;
+                fonts.forEach(font => {
+                    debugEl.innerHTML += `<div>- ${font.family} (${font.weight}, ${font.style}, ${font.status})</div>`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

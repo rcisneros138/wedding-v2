@@ -3,6 +3,15 @@
 ## Overview
 This is a wedding website for Ashlyn & Royal's wedding on January 24, 2026 in Mexico. The design is based on a Figma file with a vintage, textured aesthetic using warm colors and decorative elements.
 
+## Development Principles
+- Always use React components when possible within best practices
+- Always use Tailwind for styling when possible within best practices
+- Always use sequential thinking and context when possible
+- Use Serena as an agent at all times
+- Use serena along with sequential thinking and context7 to solve issues and implement changes
+- Additionally, use playwright to confirm changes or test changes
+- Try and apply best practices when possible
+
 ## Design System
 
 ### Color Palette
@@ -46,26 +55,44 @@ The project is set up to easily switch to Recia Serif Display once licensed:
 - Smooth hover effects and transitions
 - Links: Home, Our Story, Details, RSVP, Registry
 
-### Hero Section
-- Large squiggle arc with hero title SVG
-- Portrait illustration with multiple layers
-- Date and location text with wavy underlines
-- RSVP button with hover effect
-- Textured section below with grunge overlay
+### Hero Component
+- Includes both hero section and info section as one unified component
+- **Hero Section**:
+  - Large squiggle arc with hero title SVG
+  - Portrait illustration with multiple layers
+  - Date and location text with wavy underlines
+  - RSVP button with hover effect
+- **Info Section**:
+  - Maroon background section that flows naturally after arc
+  - No gaps or transition issues
 - **Container-based scaling**: All elements scale relative to a constrained container
   - Container: max-width of 1600px with aspect ratio preservation
-  - Content positioned within arc: Uses `top-[5%] h-[55%]` to constrain content to the visible arc area
-  - Hero Title: 80% of container width for optimal fit within arc
-  - Portrait: 25% of container width positioned at bottom of title
-  - RSVP button: Centered with responsive scaling
+  - Content positioned within arc: Uses `top-[25%] h-[50%]` to constrain content to the visible arc area
+  - Hero Title: Responsive widths - 60% (mobile), 70% (sm), 80% (md+) for optimal containment
+  - Portrait: Responsive widths - 15% (mobile), 20% (sm), 25% (md), 30% (lg) for noticeable size progression
+    - Responsive vertical spacing using translate-y: 65% (mobile), 55% (sm), 50% (md+)
+    - More space from title on small screens, less on larger screens
+  - Content padding: 3% (mobile), 5% (sm+) for better edge spacing on small screens
+  - RSVP button: Container-based scaling - 35% (mobile), 30% (sm), 35% (md), 40% (lg)
+    - Uses relative sizing mode in ShadowButton component
+    - Maintains 4.5:1 aspect ratio for wider pill shape with 12% vertical padding
+    - Responsive font sizes: 0.8em (mobile), 0.9em (sm), 1em (md), 1.1em (lg)
+    - Reduced shadow size (4px normal, 3px hover) for smaller button
   - Wavy lines and text: Positioned at bottom of arc with 10% horizontal padding
-  - This approach ensures all content sits within the squiggle arc and scales proportionally
+  - This responsive approach prevents hero title overflow on small screens while maintaining proportions
 
 ## Figma Assets
 All design assets have been extracted from Figma and stored in `/public/images/figma-assets/`:
 - SVG illustrations (squiggle, title, portrait layers)
 - PNG textures (dots pattern, grunge texture, diagonal lines)
 - Decorative elements (wavy lines)
+
+## Section Transitions
+- Hero and Info sections are now part of a unified component structure
+- Info section flows naturally after the hero arc with no gaps
+- No negative margins or complex positioning needed
+- Seamless transition guaranteed at all viewport widths
+- Both sections maintain viewport-based scaling with `calc(95vw * X / 1380)`
 
 ## Development Notes
 
@@ -103,10 +130,6 @@ All design assets have been extracted from Figma and stored in `/public/images/f
     /figma-assets
       - [All extracted Figma assets]
 ```
-
-## Development Principles
-- Always use React components when possible within best practices
-- Always use Tailwind for styling when possible within best practices
 
 ## Development Best Practices
 - When implementing changes, ensure the final design matches any Figma design provided before marking complete. For styling changes, use a browser to confirm changes.

@@ -24,6 +24,8 @@ const config: Config = {
           'purple-light': 'var(--color-purple-light)',
         },
         shadow: 'var(--color-shadow)',
+        peach: 'var(--color-accent)', // #FEA88A
+        dark: 'var(--color-shadow)', // #101C26
       },
       boxShadow: {
         'offset-primary': '5px 5px 0px 0px var(--color-primary)',
@@ -32,6 +34,12 @@ const config: Config = {
         'offset-shadow-sm': '3px 3px 0px 0px var(--color-shadow)',
         'offset-black': '8px 8px 0px 0px rgba(0,0,0,1)',
         'offset-black-sm': '6px 6px 0px 0px rgba(0,0,0,1)',
+      },
+      dropShadow: {
+        'offset': '5px 5px 0px var(--color-shadow)',
+        'offset-sm': '3px 3px 0px var(--color-shadow)',
+        'offset-black': '5px 5px 0px rgba(0,0,0,1)',
+        'offset-black-sm': '3px 3px 0px rgba(0,0,0,1)',
       },
     },
   },

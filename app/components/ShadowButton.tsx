@@ -11,6 +11,7 @@ interface ShadowButtonProps {
   onClick?: () => void
   className?: string
   ariaLabel?: string
+  useRelativeSize?: boolean
 }
 
 export default function ShadowButton({
@@ -22,44 +23,49 @@ export default function ShadowButton({
   onClick,
   className = '',
   ariaLabel,
+  useRelativeSize = false,
 }: ShadowButtonProps) {
+  // Debug: Log the classes being applied
+  const divClasses = useRelativeSize
+    ? 'relative flex h-[36px] w-[100%] items-center justify-center overflow-hidden rounded-full border-2 transition-all duration-200 sm:h-[40px] sm:w-[35%] md:h-[50px] md:w-[55%] lg:h-[60px] lg:w-[100%]'
+    : 'relative flex h-[50px] w-[200px] items-center justify-center overflow-hidden rounded-full border-2 transition-all duration-200 md:h-[60px] md:w-[240px] lg:h-[70px] lg:w-[280px]'
+
   return (
     <button
-      className={`group focus:ring-primary border-none bg-transparent transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:outline-none active:scale-95 ${className}`}
+      className={`group focus:ring-primary mx-auto flex-shrink-0 border-none bg-transparent transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:outline-none active:scale-95 ${className}`}
       onClick={onClick}
       aria-label={ariaLabel || text}
     >
-      {/* 
-        TEACHING MOMENT: Main Button Layer with Interactive States
-        - Maintains exact styling from Hero.tsx implementation
-        - Uses CSS custom properties for dynamic shadow colors
-        - Preserves all responsive sizing and transitions
-      */}
       <div
-        className='relative flex h-[50px] w-[200px] items-center justify-center overflow-hidden rounded-full border-2 transition-all duration-200 md:h-[60px] md:w-[240px] lg:h-[70px] lg:w-[280px]'
+        className={divClasses}
         style={
           {
             backgroundColor,
-            boxShadow: `8px 8px 0px 0px ${shadowColor}`,
-            '--shadow-hover': `6px 6px 0px 0px ${shadowColor}`,
+            boxShadow: useRelativeSize
+              ? `4px 4px 0px 0px ${shadowColor}`
+              : `8px 8px 0px 0px ${shadowColor}`,
+            '--shadow-hover': useRelativeSize
+              ? `3px 3px 0px 0px ${shadowColor}`
+              : `6px 6px 0px 0px ${shadowColor}`,
           } as React.CSSProperties
         }
         onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = `6px 6px 0px 0px ${shadowColor}`
+          e.currentTarget.style.boxShadow = useRelativeSize
+            ? `3px 3px 0px 0px ${shadowColor}`
+            : `6px 6px 0px 0px ${shadowColor}`
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = `8px 8px 0px 0px ${shadowColor}`
+          e.currentTarget.style.boxShadow = useRelativeSize
+            ? `4px 4px 0px 0px ${shadowColor}`
+            : `8px 8px 0px 0px ${shadowColor}`
         }}
       >
-        {/* 
-          TEACHING MOMENT: Button Text with Pacifico Font
-          - Maintains exact typography from original implementation
-          - font-pacifico: Uses Pacifico font as requested
-          - Preserves all responsive sizing and letter spacing
-          - Dynamic text colors via props
-        */}
         <span
-          className={`font-pacifico ${textColor} ${textColorHover} relative text-[20px] font-bold tracking-[0.15em] drop-shadow-sm transition-colors duration-300 md:text-[24px] md:tracking-[0.2em] lg:text-[28px]`}
+          className={
+            useRelativeSize
+              ? `font-pacifico ${textColor} ${textColorHover} relative text-[0.8em] font-bold tracking-[0.1em] drop-shadow-sm transition-colors duration-300 sm:text-[0.9em] sm:tracking-[0.15em] md:text-[1em] lg:text-[1.1em]`
+              : `font-pacifico ${textColor} ${textColorHover} relative text-[20px] font-bold tracking-[0.15em] drop-shadow-sm transition-colors duration-300 md:text-[24px] md:tracking-[0.2em] lg:text-[28px]`
+          }
         >
           {text}
         </span>

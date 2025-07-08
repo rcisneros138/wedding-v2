@@ -1,20 +1,22 @@
 import type { Metadata } from 'next'
-import { Inter, Pacifico, Playfair_Display } from 'next/font/google'
+import { Inter, Playfair_Display, Pacifico } from 'next/font/google'
 import localfont from 'next/font/local'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
-const pacifico = Pacifico({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-pacifico',
-  display: 'swap',
-})
 const playfairDisplay = Playfair_Display({
   weight: '700',
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
+})
+const pacifico = Pacifico({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-pacifico',
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: false, // Disable Next.js font fallback adjustments
 })
 const reciaSerifDisplay = localfont({
   src: [
@@ -39,8 +41,9 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${pacifico.variable} ${playfairDisplay.variable}`}
+      className={`${playfairDisplay.variable} ${pacifico.variable}`}
     >
+
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   )

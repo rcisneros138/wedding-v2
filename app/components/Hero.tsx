@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Navigation from './Navigation'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
+import config from '@/tailwind.config'
 
 export default function Hero() {
   return (
@@ -48,7 +49,7 @@ export default function Hero() {
                   {/* Hero Title Container with Portrait */}
                   <div className='relative mb-4 w-[60%] sm:w-[50%] md:w-[80%]'>
                     {/* Portrait positioned at bottom center of parent */}
-                    <div className='absolute bottom-0 left-1/2 w-[25%] -translate-x-1/2 translate-y-[65%] sm:w-[20%] sm:translate-y-[55%] md:w-[25%] md:translate-y-1/2 lg:w-[30%]'>
+                    <div className='absolute left-1/2 w-[25%] -translate-x-1/2 translate-y-[65%] sm:w-[20%] sm:translate-y-[55%] md:w-[25%] md:translate-y-1/2 lg:w-[30%]'>
                       {/* Portrait layers */}
                       <div className='relative'>
                         <Image
@@ -106,28 +107,17 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* RSVP Button */}
-                  <div className='mb-6 flex w-full justify-center'>
-                    <div className='flex w-[35%] justify-center sm:w-[30%] md:w-[35%] lg:w-[40%]'>
-                      <ShadowButton
-                        text='RSVP'
-                        ariaLabel='RSVP for the wedding'
-                        useRelativeSize={true}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Date and location text inside the squiggle */}
-                  <div className='flex w-full justify-evenly px-[10%]'>
+                  {/* Combined RSVP button and date/location text */}
+                  <div className='relative flex w-full items-center'>
                     {/* Left side text with wavy line */}
-                    <div className='relative text-center'>
-                      <div className='relative mx-auto w-[60%] sm:w-[65%] md:w-[70%] lg:w-[75%]'>
+                    <div className='relative flex-1 text-center'>
+                      <div className='relative mx-auto w-[40%] sm:w-[50%] md:w-[60%] lg:w-[65%]'>
                         <WavyLine color='#FEA88A' className='h-auto w-full' />
                       </div>
                       <p
-                        className='font-pacifico mt-1 whitespace-nowrap text-[#FEA88A]'
+                        className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A]'
                         style={{
-                          fontSize: 'clamp(10px, calc(95vw * 14 / 1380), 18px)',
+                          fontSize: 'clamp(12px, calc(95vw * 14 / 1380), 18px)',
                           textShadow: '1px 1px 0px rgba(112, 39, 14, 0.3)',
                         }}
                       >
@@ -135,15 +125,24 @@ export default function Hero() {
                       </p>
                     </div>
 
+                    {/* RSVP Button - Absolutely centered */}
+                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                      <ShadowButton
+                        text='RSVP'
+                        ariaLabel='RSVP for the wedding'
+                        useRelativeSize={true}
+                      />
+                    </div>
+
                     {/* Right side text with wavy line */}
-                    <div className='relative text-center'>
-                      <div className='relative mx-auto w-[60%] sm:w-[65%] md:w-[70%] lg:w-[75%]'>
+                    <div className='relative flex-1 text-center'>
+                      <div className='rrelative mx-auto w-[40%] sm:w-[50%] md:w-[60%] lg:w-[65%]'>
                         <WavyLine color='#FEA88A' className='h-auto w-full' />
                       </div>
                       <p
-                        className='font-pacifico mt-1 whitespace-nowrap text-[#FEA88A]'
+                        className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A]'
                         style={{
-                          fontSize: 'clamp(10px, calc(95vw * 14 / 1380), 18px)',
+                          fontSize: 'clamp(12px, calc(95vw * 14 / 1380), 18px)',
                           textShadow: '1px 1px 0px rgba(112, 39, 14, 0.3)',
                         }}
                       >
