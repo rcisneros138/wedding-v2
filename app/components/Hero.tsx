@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Navigation from './Navigation'
 import ShadowButton from './ShadowButton'
+import WavyLine from './WavyLine'
 
 export default function Hero() {
   return (
@@ -15,12 +16,7 @@ export default function Hero() {
             {/* Aspect ratio wrapper to maintain proportions based on squiggle dimensions */}
             <div className='relative mx-auto w-full'>
               {/* Squiggle Arc Container with proper layering */}
-              <div
-                className='relative mx-auto max-w-[1600px]'
-                style={{
-                  filter: 'drop-shadow(8px -1px 0px rgba(0, 0, 0, 1))',
-                }}
-              >
+              <div className='relative mx-auto max-w-[1600px]'>
                 {/* Invisible sizing element to maintain container dimensions
                 <svg
                   viewBox='0 0 1380 611'
@@ -31,7 +27,12 @@ export default function Hero() {
                 </svg> */}
 
                 {/* Main Squiggle - maroon colored arc */}
-                <div className='relative z-[1]'>
+                <div
+                  className='relative z-[1]'
+                  style={{
+                    filter: 'drop-shadow(8px 0px 0px rgba(16, 28, 38, 1))',
+                  }}
+                >
                   <Image
                     src='/images/figma-assets/squiggle-maroon.svg'
                     alt=''
@@ -117,35 +118,35 @@ export default function Hero() {
                   </div>
 
                   {/* Date and location text inside the squiggle */}
-                  <div className='flex w-full justify-between px-[10%]'>
+                  <div className='flex w-full justify-evenly px-[10%]'>
                     {/* Left side text with wavy line */}
-                    <div className='relative'>
-                      <div className='relative w-[55px] sm:w-[65px]'>
-                        <Image
-                          src='/images/figma-assets/wavy-line-red.svg'
-                          alt=''
-                          width={65}
-                          height={5}
-                          className='h-auto w-full object-contain'
-                        />
+                    <div className='relative text-center'>
+                      <div className='relative mx-auto w-[60%] sm:w-[65%] md:w-[70%] lg:w-[75%]'>
+                        <WavyLine color='#FEA88A' className='h-auto w-full' />
                       </div>
-                      <p className='font-pacifico mt-1 text-[10px] whitespace-nowrap text-white sm:text-[12px] md:text-[14px]'>
+                      <p
+                        className='font-pacifico mt-1 whitespace-nowrap text-[#FEA88A]'
+                        style={{
+                          fontSize: 'clamp(10px, calc(95vw * 14 / 1380), 18px)',
+                          textShadow: '1px 1px 0px rgba(112, 39, 14, 0.3)',
+                        }}
+                      >
                         See You In Mexico!
                       </p>
                     </div>
 
                     {/* Right side text with wavy line */}
                     <div className='relative text-center'>
-                      <div className='relative w-[55px] sm:w-[65px]'>
-                        <Image
-                          src='/images/figma-assets/wavy-line-red.svg'
-                          alt=''
-                          width={65}
-                          height={5}
-                          className='h-auto w-full object-contain'
-                        />
+                      <div className='relative mx-auto w-[60%] sm:w-[65%] md:w-[70%] lg:w-[75%]'>
+                        <WavyLine color='#FEA88A' className='h-auto w-full' />
                       </div>
-                      <p className='font-pacifico mt-1 text-[10px] whitespace-nowrap text-white sm:text-[12px] md:text-[14px]'>
+                      <p
+                        className='font-pacifico mt-1 whitespace-nowrap text-[#FEA88A]'
+                        style={{
+                          fontSize: 'clamp(10px, calc(95vw * 14 / 1380), 18px)',
+                          textShadow: '1px 1px 0px rgba(112, 39, 14, 0.3)',
+                        }}
+                      >
                         jan 24, 2026
                       </p>
                     </div>
@@ -167,7 +168,7 @@ export default function Hero() {
         <div className='relative mx-auto h-full w-[95%]'>
           <div
             className='relative mx-auto flex h-full max-w-[1600px] items-center justify-center bg-[#8C3112]'
-            style={{ boxShadow: '8px 0px 0px rgba(0, 0, 0, 1)' }}
+            style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
           >
             {/* Content goes here */}
           </div>
