@@ -1,13 +1,10 @@
 import Image from 'next/image'
-import Navigation from './Navigation'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
-import config from '@/tailwind.config'
 
 export default function Hero() {
   return (
     <>
-      <Navigation />
 
       <section className='bg-surface relative flex w-full flex-col items-center justify-start'>
         {/* Hero Arc positioned at bottom */}
@@ -125,8 +122,8 @@ export default function Hero() {
                       </p>
                     </div>
 
-                    {/* RSVP Button - Absolutely centered */}
-                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                    {/* RSVP Button - Centered */}
+                    <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
                       <ShadowButton
                         text='RSVP'
                         ariaLabel='RSVP for the wedding'

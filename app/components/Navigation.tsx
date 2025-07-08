@@ -16,40 +16,39 @@ export default function Navigation() {
           {/* Main nav container */}
           <div className="relative bg-white rounded-[50px] px-16 py-5 border-2 border-primary">
             {/* Diagonal line texture overlay */}
-            <div className="absolute inset-0 rounded-[50px] overflow-hidden opacity-30 pointer-events-none">
-              <div 
-                className="absolute inset-0 bg-repeat"
-                style={{
-                  backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
-                  backgroundSize: '7px 7px',
-                }}
-              />
-            </div>
+            <div 
+              className="absolute inset-0 rounded-[50px] overflow-hidden opacity-30 pointer-events-none"
+              style={{
+                backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                backgroundSize: '7px 7px',
+                backgroundRepeat: 'repeat'
+              }}
+            />
             
             {/* Navigation links */}
-            <ul className="relative flex items-center gap-12 text-primary font-semibold text-lg">
+            <ul className="relative flex items-center gap-12 text-primary font-display font-semibold text-lg list-none m-0 p-0">
               <li>
-                <a href="#home" className="hover:text-primary-dark transition-colors">
+                <a href="#home" className="text-primary no-underline hover:text-primary-dark transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#our-story" className="hover:text-primary-dark transition-colors">
+                <a href="#our-story" className="text-primary no-underline hover:text-primary-dark transition-colors">
                   Our Story
                 </a>
               </li>
               <li>
-                <a href="#details" className="hover:text-primary-dark transition-colors">
+                <a href="#details" className="text-primary no-underline hover:text-primary-dark transition-colors">
                   Details
                 </a>
               </li>
               <li>
-                <a href="#rsvp" className="hover:text-primary-dark transition-colors">
+                <a href="#rsvp" className="text-primary no-underline hover:text-primary-dark transition-colors">
                   RSVP
                 </a>
               </li>
               <li>
-                <a href="#registry" className="hover:text-primary-dark transition-colors">
+                <a href="#registry" className="text-primary no-underline hover:text-primary-dark transition-colors">
                   Registry
                 </a>
               </li>
@@ -68,20 +67,19 @@ export default function Navigation() {
           {/* Main nav container */}
           <div className="relative bg-white rounded-[50px] px-6 py-4 border-2 border-primary">
             {/* Diagonal line texture overlay */}
-            <div className="absolute inset-0 rounded-[50px] overflow-hidden opacity-30 pointer-events-none">
-              <div 
-                className="absolute inset-0 bg-repeat"
-                style={{
-                  backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
-                  backgroundSize: '7px 7px',
-                }}
-              />
-            </div>
+            <div 
+              className="absolute inset-0 rounded-[50px] overflow-hidden opacity-30 pointer-events-none"
+              style={{
+                backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                backgroundSize: '7px 7px',
+                backgroundRepeat: 'repeat'
+              }}
+            />
             
             {/* Nav content */}
             <div className="relative flex items-center justify-between">
               {/* Logo/Title */}
-              <h1 className="text-2xl font-display text-primary">A & R</h1>
+              <h1 className="text-2xl font-display text-primary m-0">A & R</h1>
               
               {/* Hamburger Menu Button */}
               <button
@@ -111,7 +109,7 @@ export default function Navigation() {
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
-          <div className="fixed inset-0 bg-background z-40 flex flex-col pt-24">
+          <div className="fixed inset-0 bg-surface z-40 flex flex-col pt-24">
             {/* Menu container with shadow effect */}
             <div className="mx-6">
               <div className="relative">
@@ -120,12 +118,12 @@ export default function Navigation() {
                 
                 {/* Menu background */}
                 <div className="relative bg-white rounded-[30px] px-8 py-10 border-2 border-primary">
-                  <ul className="space-y-6 text-primary text-xl font-medium">
+                  <ul className="space-y-6 text-primary text-xl font-medium font-display list-none m-0 p-0">
                     <li>
                       <a
                         href="#home"
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 hover:text-primary-dark transition-colors"
+                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
                       >
                         Home
                       </a>
@@ -134,7 +132,7 @@ export default function Navigation() {
                       <a
                         href="#our-story"
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 hover:text-primary-dark transition-colors"
+                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
                       >
                         Our Story
                       </a>
@@ -143,7 +141,7 @@ export default function Navigation() {
                       <a
                         href="#details"
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 hover:text-primary-dark transition-colors"
+                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
                       >
                         Details
                       </a>
@@ -152,7 +150,7 @@ export default function Navigation() {
                       <a
                         href="#rsvp"
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 hover:text-primary-dark transition-colors"
+                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
                       >
                         RSVP
                       </a>
@@ -161,7 +159,7 @@ export default function Navigation() {
                       <a
                         href="#registry"
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 hover:text-primary-dark transition-colors"
+                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
                       >
                         Registry
                       </a>

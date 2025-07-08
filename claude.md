@@ -11,6 +11,10 @@ This is a wedding website for Ashlyn & Royal's wedding on January 24, 2026 in Me
 - Use serena along with sequential thinking and context7 to solve issues and implement changes
 - Additionally, use playwright to confirm changes or test changes
 - Try and apply best practices when possible
+- Always prefer to use tailwind utility classes if possible. Use best practice to tailwind.
+
+## Memory Notes
+- Do not change or remove the import 'tailwindcss' on line 1 in global.css. If it is necessary, prompt me first
 
 ## Design System
 

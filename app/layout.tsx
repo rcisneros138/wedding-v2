@@ -31,6 +31,7 @@ const reciaSerifDisplay = localfont({
 export const metadata: Metadata = {
   title: 'Ray and Amanda - Wedding',
   description: 'Join us in Mexico on January 24, 2026 to celebrate',
+  viewport: 'width=device-width, initial-scale=1',
 }
 
 export default function RootLayout({

@@ -1,5 +1,56 @@
 @import 'tailwindcss';
 
+/* Tailwind CSS v4 Theme Configuration */
+@theme {
+  /* Breakpoints - Must be defined for responsive utilities to work */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Font Family */
+  --font-family-pacifico: var(--font-pacifico), cursive;
+  --font-family-display: var(--font-playfair), serif;
+
+  /* Colors - Wedding Theme */
+  --color-surface: #d9ddcd;
+  --color-primary: #8c3112;
+  --color-primary-dark: #70270e;
+  --color-accent: #fea88a;
+  --color-purple: #c7acbe;
+  --color-purple-light: #d4b8c9;
+  --color-shadow: #101c26;
+  --color-peach: #fea88a;
+  --color-dark: #101c26;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Box Shadows */
+  --shadow-offset-primary: 5px 5px 0px 0px var(--color-primary);
+  --shadow-offset-primary-sm: 3px 3px 0px 0px var(--color-primary);
+  --shadow-offset-shadow: 5px 5px 0px 0px var(--color-shadow);
+  --shadow-offset-shadow-sm: 3px 3px 0px 0px var(--color-shadow);
+  --shadow-offset-black: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-offset-black-sm: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+
+  /* Drop Shadows */
+  --drop-shadow-offset: 5px 5px 0px var(--color-shadow);
+  --drop-shadow-offset-sm: 3px 3px 0px var(--color-shadow);
+  --drop-shadow-offset-black: 5px 5px 0px rgba(0, 0, 0, 1);
+  --drop-shadow-offset-black-sm: 3px 3px 0px rgba(0, 0, 0, 1);
+
+  /* Responsive Padding Values */
+  --padding-button-y: 0.75rem;
+  --padding-button-x: 2rem;
+
+  /* Button Shadow Sizes */
+  --shadow-button: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-button-hover: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-button-sm: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-button-sm-hover: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+}
+
 /* Custom Font Face - Uncomment when you have Recia Serif Display font files
 @font-face {
   font-family: 'Recia Serif Display';
@@ -32,6 +83,19 @@
     background-color: var(--color-bg);
   }
 
+  /* Reset link styles */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Remove default list styles */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   /* Ensure Pacifico font class works */
   .font-pacifico {
     font-family: var(--font-pacifico), cursive !important;
@@ -42,5 +106,25 @@
     .font-pacifico {
       font-family: var(--font-pacifico), 'Pacifico', cursive !important;
     }
+  }
+
+  /* Force navigation styles */
+  nav ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  nav a {
+    color: var(--color-primary) !important;
+    text-decoration: none !important;
+  }
+
+  nav a:hover {
+    color: var(--color-primary-dark) !important;
+  }
+
+  .font-display {
+    font-family: var(--font-display) !important;
   }
 }
