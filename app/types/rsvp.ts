@@ -1,5 +1,21 @@
 import { z } from 'zod'
-import type { TurnstileServerValidationResponse } from '@marsidev/react-turnstile'
+
+// Extend the global CloudflareEnv interface from @cloudflare/next-on-pages
+declare global {
+  interface CloudflareEnv {
+    DB: D1Database
+    TURNSTILE_SECRET_KEY: string
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: string
+  }
+  
+  // D1Database type for Cloudflare Workers
+  interface D1Database {
+    prepare(query: string): any
+    dump(): Promise<ArrayBuffer>
+    batch(statements: any[]): Promise<any[]>
+    exec(query: string): Promise<any>
+  }
+}
 
 // Zod schema for form validation
 export const rsvpFormSchema = z.object({
@@ -41,7 +57,7 @@ export interface RSVPResponse {
 }
 
 // Turnstile verification response
-export interface TurnstileVerifyResponse extends TurnstileServerValidationResponse {
+export interface TurnstileVerifyResponse {
   success: boolean
   challenge_ts?: string
   hostname?: string
@@ -50,9 +66,3 @@ export interface TurnstileVerifyResponse extends TurnstileServerValidationRespon
   cdata?: string
 }
 
-// Environment types for Cloudflare
-export interface CloudflareEnv {
-  DB: D1Database
-  TURNSTILE_SECRET_KEY: string
-  NEXT_PUBLIC_TURNSTILE_SITE_KEY: string
-}

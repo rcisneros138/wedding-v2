@@ -27,6 +27,8 @@ const reciaSerifDisplay = localfont({
       style: 'normal',
     },
   ],
+  variable: '--font-recia',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -43,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${playfairDisplay.variable} ${pacifico.variable}`}
+      className={`${playfairDisplay.variable} ${pacifico.variable} ${reciaSerifDisplay.variable}`}
     >
 
       <body className={`${inter.className} antialiased`}>

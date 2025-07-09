@@ -1,12 +1,12 @@
 import { getRequestContext } from '@cloudflare/next-on-pages'
-import type { TurnstileVerifyResponse, CloudflareEnv } from '@/app/types/rsvp'
+import type { TurnstileVerifyResponse } from '@/app/types/rsvp'
 
 export const runtime = 'edge'
 
 export async function POST(request: Request) {
   try {
     // Get request context for Cloudflare bindings
-    const { env } = getRequestContext() as { env: CloudflareEnv }
+    const { env } = getRequestContext()
     
     // Parse request body
     const { token } = await request.json() as { token: string }

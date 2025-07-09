@@ -1,15 +1,15 @@
 import { getRequestContext } from '@cloudflare/next-on-pages'
-import { rsvpFormSchema, type RSVPResponse, type TurnstileVerifyResponse, type CloudflareEnv } from '@/app/types/rsvp'
+import { rsvpFormSchema, type RSVPResponse, type TurnstileVerifyResponse, type RSVPRecord } from '@/app/types/rsvp'
 
 export const runtime = 'edge'
 
 export async function POST(request: Request) {
   try {
     // Get request context for Cloudflare bindings
-    const { env } = getRequestContext() as { env: CloudflareEnv }
+    const { env } = getRequestContext()
     
     // Parse request body
-    const body = await request.json()
+    const body = await request.json() as { turnstileToken: string } & Record<string, any>
     const { turnstileToken, ...formData } = body
 
     // Validate form data
@@ -17,9 +17,10 @@ export async function POST(request: Request) {
     if (!validationResult.success) {
       return Response.json({
         success: false,
+        message: 'Invalid form data',
         error: 'Invalid form data',
         details: validationResult.error.errors
-      } as RSVPResponse, { status: 400 })
+      }, { status: 400 })
     }
 
     // Verify Turnstile token
@@ -37,7 +38,8 @@ export async function POST(request: Request) {
     if (!turnstileData.success) {
       return Response.json({
         success: false,
-        error: 'Security verification failed. Please try again.'
+        message: 'Security verification failed. Please try again.',
+        error: 'Security verification failed'
       } as RSVPResponse, { status: 400 })
     }
 
@@ -110,7 +112,8 @@ export async function POST(request: Request) {
       if (dbError instanceof Error && dbError.message.includes('UNIQUE')) {
         return Response.json({
           success: false,
-          error: 'An RSVP with this email already exists. Your response has been updated.'
+          message: 'An RSVP with this email already exists. Your response has been updated.',
+          error: 'Duplicate email'
         } as RSVPResponse, { status: 400 })
       }
 
@@ -122,7 +125,8 @@ export async function POST(request: Request) {
     
     return Response.json({
       success: false,
-      error: 'An unexpected error occurred. Please try again later.'
+      message: 'An unexpected error occurred. Please try again later.',
+      error: error instanceof Error ? error.message : 'Unknown error'
     } as RSVPResponse, { status: 500 })
   }
 }
@@ -130,14 +134,15 @@ export async function POST(request: Request) {
 // GET endpoint to check if email has already RSVP'd
 export async function GET(request: Request) {
   try {
-    const { env } = getRequestContext() as { env: CloudflareEnv }
+    const { env } = getRequestContext()
     const { searchParams } = new URL(request.url)
     const email = searchParams.get('email')
 
     if (!email) {
       return Response.json({
         success: false,
-        error: 'Email parameter is required'
+        message: 'Email parameter is required',
+        error: 'Missing email parameter'
       }, { status: 400 })
     }
 
@@ -147,8 +152,9 @@ export async function GET(request: Request) {
 
     return Response.json({
       success: true,
-      exists: !!result,
-      data: result
+      message: result ? 'RSVP found' : 'No RSVP found for this email',
+      data: result as RSVPRecord | null,
+      exists: !!result
     })
 
   } catch (error) {
@@ -156,7 +162,8 @@ export async function GET(request: Request) {
     
     return Response.json({
       success: false,
-      error: 'Failed to check RSVP status'
+      message: 'Failed to check RSVP status',
+      error: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 })
   }
 }

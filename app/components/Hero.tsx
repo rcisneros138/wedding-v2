@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
+import TimelineSchedule from './TimelineSchedule'
 
 export default function Hero() {
   return (
@@ -25,7 +26,7 @@ export default function Hero() {
 
                 {/* Main Squiggle - maroon colored arc */}
                 <div
-                  className='relative z-[1]'
+                  className='relative z-[1] grunge-overlay-mask'
                   style={{
                     filter: 'drop-shadow(8px 0px 0px rgba(16, 28, 38, 1))',
                   }}
@@ -141,16 +142,13 @@ export default function Hero() {
       {/* Info section - flows naturally after hero */}
       <div
         className='relative -mt-[1px] w-full'
-        style={{
-          height: 'calc(95vw * 400 / 1380)',
-        }}
       >
         <div className='relative mx-auto h-full w-[95%]'>
           <div
-            className='relative mx-auto flex h-full max-w-[1600px] items-center justify-center bg-[#8C3112]'
+            className='relative mx-auto flex h-full max-w-[1600px] items-center justify-center bg-primary-textured'
             style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
           >
-            {/* Content goes here */}
+            <TimelineSchedule />
           </div>
         </div>
       </div>

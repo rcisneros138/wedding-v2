@@ -49,7 +49,7 @@ export default function RSVPSection() {
       </div>
 
       {/* Wedding Details Section - separate maroon section */}
-      <div className='bg-primary relative w-full py-16 text-white'>
+      <div className='bg-primary-textured relative w-full py-16 text-white'>
         <div className='container mx-auto max-w-4xl px-4 text-center'>
           <h3 className='font-display mb-6 text-3xl'>Wedding Details</h3>
 

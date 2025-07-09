@@ -8,15 +8,15 @@ html {
 /* Tailwind CSS v4 Theme Configuration */
 @theme {
   /* Breakpoints - Must be defined for responsive utilities to work */
-  --breakpoint-sm: 40rem;   /* 640px */
-  --breakpoint-md: 48rem;   /* 768px */
-  --breakpoint-lg: 64rem;   /* 1024px */
-  --breakpoint-xl: 80rem;   /* 1280px */
-  --breakpoint-2xl: 96rem;  /* 1536px */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 96rem; /* 1536px */
 
   /* Font Family */
   --font-family-pacifico: var(--font-pacifico), cursive;
-  --font-family-display: var(--font-playfair), serif;
+  --font-family-display: var(--font-recia), serif;
 
   /* Colors - Wedding Theme */
   --color-surface: #d9ddcd;
@@ -44,7 +44,12 @@ html {
   --drop-shadow-offset-sm: 3px 3px 0px var(--color-shadow);
   --drop-shadow-offset-black: 5px 5px 0px rgba(0, 0, 0, 1);
   --drop-shadow-offset-black-sm: 3px 3px 0px rgba(0, 0, 0, 1);
-  
+
+  /* Text Shadows */
+  --text-shadow-offset: 3px 3px 0px var(--color-shadow);
+  --text-shadow-offset-sm: 2px 2px 0px var(--color-shadow);
+  --text-shadow-offset-xs: 1px 1px 0px var(--color-shadow);
+
   /* Inset Shadows */
   --inset-shadow-black: inset 4px 4px 0px 0px rgba(0, 0, 0, 1);
 
@@ -57,7 +62,6 @@ html {
   --shadow-button-hover: 6px 6px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm-hover: 3px 3px 0px 0px rgba(0, 0, 0, 1);
-
 }
 
 /* Custom Font Face - Uncomment when you have Recia Serif Display font files
@@ -84,7 +88,7 @@ html {
 
     /* Font Variables */
     --font-display:
-      'Playfair Display', serif; /* Use 'Recia Serif Display' when available */
+      'Recia Serif Display', serif; /* Now using the actual Recia font */
   }
 
   /* Global styles */
@@ -137,5 +141,66 @@ html {
     font-family: var(--font-display) !important;
   }
 
+  /* Text Shadow Utilities */
+  .text-shadow-offset {
+    text-shadow: var(--text-shadow-offset);
+  }
 
+  .text-shadow-offset-sm {
+    text-shadow: var(--text-shadow-offset-sm);
+  }
+
+  .text-shadow-offset-xs {
+    text-shadow: var(--text-shadow-offset-xs);
+  }
+
+  /* Grunge Texture Overlays */
+  /* Primary background with grunge texture overlay */
+  .bg-primary-textured {
+    background-color: var(--color-primary);
+    position: relative;
+  }
+
+  .bg-primary-textured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/figma-assets/grunge-texture.png');
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    opacity: 0.75;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  /* Ensure direct children stay above the texture */
+  .bg-primary-textured > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Grunge overlay for SVG elements using pseudo-element overlay */
+  .grunge-overlay-mask {
+    position: relative;
+  }
+
+  .grunge-overlay-mask::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/grunge-texture.png');
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    opacity: 0.12;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 2;
+  }
 }
