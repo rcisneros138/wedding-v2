@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Tailwind CSS v4 Theme Configuration */
 @theme {
   /* Breakpoints - Must be defined for responsive utilities to work */
@@ -39,6 +44,9 @@
   --drop-shadow-offset-sm: 3px 3px 0px var(--color-shadow);
   --drop-shadow-offset-black: 5px 5px 0px rgba(0, 0, 0, 1);
   --drop-shadow-offset-black-sm: 3px 3px 0px rgba(0, 0, 0, 1);
+  
+  /* Inset Shadows */
+  --inset-shadow-black: inset 4px 4px 0px 0px rgba(0, 0, 0, 1);
 
   /* Responsive Padding Values */
   --padding-button-y: 0.75rem;
