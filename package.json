@@ -6,13 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:migrate:local": "wrangler d1 execute wedding-rsvp --local --file=./schemas/rsvp-schema.sql",
+    "db:migrate:remote": "wrangler d1 execute wedding-rsvp --remote --file=./schemas/rsvp-schema.sql",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:preview": "npm run pages:build && wrangler pages dev",
+    "pages:deploy": "npm run pages:build && wrangler pages deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
+    "@marsidev/react-turnstile": "^1.1.0",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^24.0.4",
     "@types/react": "^19.1.8",
@@ -22,11 +29,15 @@
     "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
     "tailwindcss": "^4.1.10",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.12",
     "eslint-config-next": "^15.3.4",
+    "eslint-plugin-next-on-pages": "^1.13.12",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.13"
   }

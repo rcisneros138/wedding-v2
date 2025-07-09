@@ -1,0 +1,17 @@
+name = "weddingsite"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = ".vercel/output/static"
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "wedding-rsvp"
+database_id = "YOUR_DATABASE_ID_HERE" # Replace with actual ID after running: npx wrangler d1 create wedding-rsvp
+
+# Environment variables
+[vars]
+# Add your Turnstile site key here (public)
+NEXT_PUBLIC_TURNSTILE_SITE_KEY = "0x4AAAAAABkhj8HUAoNJX6MP"
+
+# Secrets (add these with wrangler secret put)
+# TURNSTILE_SECRET_KEY - Your Turnstile secret key for server-side validation

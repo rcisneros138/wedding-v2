@@ -15,6 +15,7 @@ This is a wedding website for Ashlyn & Royal's wedding on January 24, 2026 in Me
 
 ## Memory Notes
 - Do not change or remove the import 'tailwindcss' on line 1 in global.css. If it is necessary, prompt me first
+- Remember to use context7 when referencing anything related to tailwind. The version of tailwind in this application is v4 and does not use the tailwind.config* anylonger.
 
 ## Design System
 
@@ -50,6 +51,12 @@ The project is set up to easily switch to Recia Serif Display once licensed:
 
 ## Component Structure
 
+### Single-Page Architecture
+- Website is now a single-page application with smooth scrolling between sections
+- Navigation uses anchor links (#home, #our-story, #details, #rsvp, #registry)
+- Sections flow: Navigation → Hero → [Our Story] → [Details] → RSVP → [Registry]
+- RSVP form integrated directly into main page, no separate route needed
+
 ### Navigation
 - Pill-shaped navigation with offset shadow effect
 - Mobile-first responsive design
@@ -82,8 +89,21 @@ The project is set up to easily switch to Recia Serif Display once licensed:
     - Maintains 4.5:1 aspect ratio for wider pill shape with 12% vertical padding
     - Responsive font sizes: 0.8em (mobile), 0.9em (sm), 1em (md), 1.1em (lg)
     - Reduced shadow size (4px normal, 3px hover) for smaller button
+    - **Updated positioning**: Changed from absolute centered positioning to relative positioning with auto margins for improved layout stability
   - Wavy lines and text: Positioned at bottom of arc with 10% horizontal padding
   - This responsive approach prevents hero title overflow on small screens while maintaining proportions
+
+### RSVP Section
+- Integrated directly into main page for single-page flow
+- Seamlessly continues maroon background from Hero's info section
+- Uses same container structure and drop shadow as info section
+- Includes:
+  - Section header with white text and decorative wavy line
+  - RSVP deadline reminder in white/translucent white
+  - RSVPForm component (white background card) with Turnstile spam protection
+  - Wedding details reminder (date, time, location) as separate maroon section
+- Uses dots pattern overlay at low opacity for texture
+- Creates continuous maroon flow from info section through RSVP
 
 ## Figma Assets
 All design assets have been extracted from Figma and stored in `/public/images/figma-assets/`:
@@ -102,9 +122,9 @@ All design assets have been extracted from Figma and stored in `/public/images/f
 
 ### Next Steps
 1. Add Recia Serif Display font for buttons
-2. Implement remaining sections (Our Story, Details, RSVP form, Registry)
-3. Add smooth scroll navigation
-4. Implement RSVP functionality
+2. Implement remaining sections (Our Story, Details, Registry)
+3. ~~Add smooth scroll navigation~~ ✓ Completed
+4. ~~Implement RSVP functionality~~ ✓ Completed
 5. Add animations and hover effects
 6. Ensure full mobile responsiveness
 
@@ -112,6 +132,10 @@ All design assets have been extracted from Figma and stored in `/public/images/f
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run lint` - Run linting
+- `npm run db:migrate:local` - Run database migrations locally
+- `npm run db:migrate:remote` - Run database migrations on production
+- `npm run pages:preview` - Preview on Cloudflare Pages locally
+- `npm run pages:deploy` - Deploy to Cloudflare Pages
 
 ### Tech Stack
 - Next.js 15.3.4
@@ -119,13 +143,27 @@ All design assets have been extracted from Figma and stored in `/public/images/f
 - TypeScript
 - Tailwind CSS 4
 - next/font for typography
+- Cloudflare D1 Database (SQLite)
+- Cloudflare Turnstile for spam protection
+- React Hook Form + Zod for form validation
 
 ## File Structure
 ```
 /app
+  /api
+    /rsvp
+      - route.ts         # RSVP submission endpoint
+    /verify-turnstile
+      - route.ts         # Turnstile verification endpoint
   /components
     - Navigation.tsx
     - Hero.tsx
+    - RSVPSection.tsx    # RSVP section for main page
+    - RSVPForm.tsx       # RSVP form with Turnstile
+    - ShadowButton.tsx
+    - WavyLine.tsx
+  /types
+    - rsvp.ts           # RSVP type definitions
   - page.tsx
   - layout.tsx
   - globals.css
@@ -133,6 +171,9 @@ All design assets have been extracted from Figma and stored in `/public/images/f
   /images
     /figma-assets
       - [All extracted Figma assets]
+/schemas
+  - rsvp-schema.sql      # D1 database schema
+- wrangler.toml         # Cloudflare configuration
 ```
 
 ## Development Best Practices
@@ -140,3 +181,39 @@ All design assets have been extracted from Figma and stored in `/public/images/f
 
 ## Development Workflow Tips
 - Always check to see if a development server is already running on port 3000 before attempting to run another one.
+
+## RSVP System
+
+### Overview
+The RSVP system uses Cloudflare D1 (SQLite database) for storage and Cloudflare Turnstile for spam protection. All API routes use Edge Runtime for compatibility with Cloudflare Pages.
+
+### Setup Instructions
+1. **Create Cloudflare Turnstile Site**:
+   - Go to https://dash.cloudflare.com/?to=/:account/turnstile
+   - Create a new site and get your site key and secret key
+   - Add site key to `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in wrangler.toml
+   - Add secret key using: `npx wrangler secret put TURNSTILE_SECRET_KEY`
+
+2. **Create D1 Database**:
+   - Run: `npx wrangler d1 create wedding-rsvp`
+   - Copy the database ID to wrangler.toml
+   - Run migrations: `npm run db:migrate:local` (for development)
+   - Run migrations: `npm run db:migrate:remote` (for production)
+
+3. **Environment Variables**:
+   - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` - Public Turnstile site key
+   - `TURNSTILE_SECRET_KEY` - Secret key (add via wrangler secret)
+
+### Database Schema
+- Stores guest information, attendance status, dietary restrictions
+- Prevents duplicate submissions using email as unique constraint
+- Tracks IP addresses for security
+- Automatic timestamps for created/updated dates
+
+### Form Features
+- Client-side validation with React Hook Form + Zod
+- Server-side validation and sanitization
+- Spam protection with Cloudflare Turnstile
+- Responsive design matching wedding theme
+- Success/error states with user feedback
+- Handles both attending and not attending responses

@@ -6,49 +6,64 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="relative w-full px-4 py-6 md:px-12 md:py-10">
+    <nav className='relative w-full px-4 py-6 md:px-12 md:py-10'>
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center justify-center">
-        <div className="relative">
+      <div className='hidden items-center justify-center md:flex'>
+        <div className='relative'>
           {/* Shadow layer */}
-          <div className="absolute inset-0 bg-primary rounded-[50px] transform translate-x-[1.5%] translate-y-[4%]" />
-          
+          <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
+
           {/* Main nav container */}
-          <div className="relative bg-white rounded-[50px] px-16 py-5 border-2 border-primary">
+          <div className='border-primary relative rounded-[50px] border-2 bg-white px-16 py-5'>
             {/* Diagonal line texture overlay */}
-            <div 
-              className="absolute inset-0 rounded-[50px] overflow-hidden opacity-30 pointer-events-none"
+            <div
+              className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
               style={{
                 backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
                 backgroundSize: '7px 7px',
-                backgroundRepeat: 'repeat'
+                backgroundRepeat: 'repeat',
               }}
             />
-            
+
             {/* Navigation links */}
-            <ul className="relative flex items-center gap-12 text-primary font-display font-semibold text-lg list-none m-0 p-0">
+            <ul className='text-primary font-display relative m-0 flex list-none items-center gap-12 p-0 text-lg font-semibold'>
               <li>
-                <a href="#home" className="text-primary no-underline hover:text-primary-dark transition-colors">
+                <a
+                  href='#home'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="#our-story" className="text-primary no-underline hover:text-primary-dark transition-colors">
+                <a
+                  href='#our-story'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
                   Our Story
                 </a>
               </li>
               <li>
-                <a href="#details" className="text-primary no-underline hover:text-primary-dark transition-colors">
+                <a
+                  href='#details'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
                   Details
                 </a>
               </li>
               <li>
-                <a href="#rsvp" className="text-primary no-underline hover:text-primary-dark transition-colors">
+                <a
+                  href='#rsvp'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
                   RSVP
                 </a>
               </li>
               <li>
-                <a href="#registry" className="text-primary no-underline hover:text-primary-dark transition-colors">
+                <a
+                  href='#registry'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
                   Registry
                 </a>
               </li>
@@ -58,48 +73,48 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden">
+      <div className='md:hidden'>
         {/* Mobile Nav Bar */}
-        <div className="relative">
+        <div className='relative'>
           {/* Shadow layer */}
-          <div className="absolute inset-0 bg-primary rounded-[50px] transform translate-x-[1.5%] translate-y-[4%]" />
-          
+          <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
+
           {/* Main nav container */}
-          <div className="relative bg-white rounded-[50px] px-6 py-4 border-2 border-primary">
+          <div className='border-primary bg-surface relative rounded-[50px] border-2 px-6 py-4'>
             {/* Diagonal line texture overlay */}
-            <div 
-              className="absolute inset-0 rounded-[50px] overflow-hidden opacity-30 pointer-events-none"
+            <div
+              className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
               style={{
                 backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
                 backgroundSize: '7px 7px',
-                backgroundRepeat: 'repeat'
+                backgroundRepeat: 'repeat',
               }}
             />
-            
+
             {/* Nav content */}
-            <div className="relative flex items-center justify-between">
+            <div className='relative flex items-center justify-between'>
               {/* Logo/Title */}
-              <h1 className="text-2xl font-display text-primary m-0">A & R</h1>
-              
+              <h1 className='font-display text-primary m-0 text-2xl'>A & R</h1>
+
               {/* Hamburger Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="relative z-50 flex flex-col items-center justify-center w-8 h-8"
-                aria-label="Toggle menu"
+                className='relative z-50 flex h-8 w-8 flex-col items-center justify-center'
+                aria-label='Toggle menu'
               >
                 <span
-                  className={`block w-6 h-0.5 bg-primary transition-all duration-300 ${
-                    isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                  className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
+                    isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
                   }`}
                 />
                 <span
-                  className={`block w-6 h-0.5 bg-primary my-1 transition-all duration-300 ${
+                  className={`bg-primary my-1 block h-0.5 w-6 transition-all duration-300 ${
                     isMenuOpen ? 'opacity-0' : ''
                   }`}
                 />
                 <span
-                  className={`block w-6 h-0.5 bg-primary transition-all duration-300 ${
-                    isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                  className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
+                    isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
                   }`}
                 />
               </button>
@@ -109,57 +124,57 @@ export default function Navigation() {
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
-          <div className="fixed inset-0 bg-surface z-40 flex flex-col pt-24">
+          <div className='bg-surface fixed inset-0 z-40 flex flex-col pt-24'>
             {/* Menu container with shadow effect */}
-            <div className="mx-6">
-              <div className="relative">
+            <div className='mx-6'>
+              <div className='relative'>
                 {/* Shadow layer */}
-                <div className="absolute inset-0 bg-primary-dark rounded-[30px] transform translate-x-[2%] translate-y-[2%]" />
-                
+                <div className='bg-primary-dark absolute inset-0 translate-x-[2%] translate-y-[2%] transform rounded-[30px]' />
+
                 {/* Menu background */}
-                <div className="relative bg-white rounded-[30px] px-8 py-10 border-2 border-primary">
-                  <ul className="space-y-6 text-primary text-xl font-medium font-display list-none m-0 p-0">
+                <div className='border-primary relative rounded-[30px] border-2 bg-white px-8 py-10'>
+                  <ul className='text-primary font-display m-0 list-none space-y-6 p-0 text-xl font-medium'>
                     <li>
                       <a
-                        href="#home"
+                        href='#home'
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         Home
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#our-story"
+                        href='#our-story'
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         Our Story
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#details"
+                        href='#details'
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         Details
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#rsvp"
+                        href='#rsvp'
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         RSVP
                       </a>
                     </li>
                     <li>
                       <a
-                        href="#registry"
+                        href='#registry'
                         onClick={() => setIsMenuOpen(false)}
-                        className="block py-2 text-primary no-underline hover:text-primary-dark transition-colors"
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         Registry
                       </a>

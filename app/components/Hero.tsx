@@ -103,7 +103,7 @@ export default function Hero() {
                           shadowOffsetY={4}
                         />
                       </div>
-                      <p className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A] text-sm sm:text-base md:text-lg text-shadow-2xs text-shadow-primary-dark/30'>
+                      <p className='font-pacifico text-shadow-primary-dark/30 m-0 mt-1 text-sm whitespace-nowrap text-[#FEA88A] text-shadow-2xs sm:text-base md:text-lg'>
                         See You In Mexico!
                       </p>
                     </div>
@@ -126,8 +126,8 @@ export default function Hero() {
                           shadowOffsetY={4}
                         />
                       </div>
-                      <p className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A] text-sm sm:text-base md:text-lg text-shadow-2xs text-shadow-primary-dark/30'>
-                        jan 24, 2026
+                      <p className='font-pacifico text-shadow-primary-dark/30 m-0 mt-1 text-sm whitespace-nowrap text-[#FEA88A] text-shadow-2xs sm:text-base md:text-lg'>
+                        Jan 24, 2026
                       </p>
                     </div>
                   </div>
