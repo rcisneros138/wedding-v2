@@ -94,23 +94,22 @@ export default function Hero() {
                   {/* Combined RSVP button and date/location text */}
                   <div className='relative flex w-full items-center'>
                     {/* Left side text with wavy line */}
-                    <div className='relative flex-1 text-center'>
+                    <div className='relative flex-1 pr-5 text-center'>
                       <div className='relative mx-auto w-[40%] sm:w-[50%] md:w-[60%] lg:w-[65%]'>
-                        <WavyLine color='#FEA88A' className='h-auto w-full' />
+                        <WavyLine
+                          color='#FEA88A'
+                          className='h-auto w-full'
+                          shadowOffsetX={4}
+                          shadowOffsetY={4}
+                        />
                       </div>
-                      <p
-                        className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A]'
-                        style={{
-                          fontSize: 'clamp(12px, calc(95vw * 14 / 1380), 18px)',
-                          textShadow: '1px 1px 0px rgba(112, 39, 14, 0.3)',
-                        }}
-                      >
+                      <p className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A] text-sm sm:text-base md:text-lg text-shadow-2xs text-shadow-primary-dark/30'>
                         See You In Mexico!
                       </p>
                     </div>
 
                     {/* RSVP Button - Centered */}
-                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                    <div className='relative mx-auto'>
                       <ShadowButton
                         text='RSVP'
                         ariaLabel='RSVP for the wedding'
@@ -118,17 +117,16 @@ export default function Hero() {
                     </div>
 
                     {/* Right side text with wavy line */}
-                    <div className='relative flex-1 text-center'>
+                    <div className='relative flex-1 pl-5 text-center'>
                       <div className='rrelative mx-auto w-[40%] sm:w-[50%] md:w-[60%] lg:w-[65%]'>
-                        <WavyLine color='#FEA88A' className='h-auto w-full' />
+                        <WavyLine
+                          color='#FEA88A'
+                          className='h-auto w-full'
+                          shadowOffsetX={4}
+                          shadowOffsetY={4}
+                        />
                       </div>
-                      <p
-                        className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A]'
-                        style={{
-                          fontSize: 'clamp(12px, calc(95vw * 14 / 1380), 18px)',
-                          textShadow: '1px 1px 0px rgba(112, 39, 14, 0.3)',
-                        }}
-                      >
+                      <p className='font-pacifico m-0 mt-1 whitespace-nowrap text-[#FEA88A] text-sm sm:text-base md:text-lg text-shadow-2xs text-shadow-primary-dark/30'>
                         jan 24, 2026
                       </p>
                     </div>
