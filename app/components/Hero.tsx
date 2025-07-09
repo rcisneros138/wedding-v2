@@ -5,7 +5,6 @@ import WavyLine from './WavyLine'
 export default function Hero() {
   return (
     <>
-
       <section className='bg-surface relative flex w-full flex-col items-center justify-start'>
         {/* Hero Arc positioned at bottom */}
         <div className='relative z-20 w-full'>
@@ -42,11 +41,11 @@ export default function Hero() {
                 </div>
 
                 {/* All content positioned within the squiggle */}
-                <div className='absolute top-[25%] left-1/2 z-[2] flex h-[50%] w-full max-w-[1600px] -translate-x-1/2 flex-col items-center justify-center px-[4%] py-[10%] sm:px-[5%]'>
+                <div className='absolute top-1/4 left-1/2 z-[2] flex w-full max-w-[1600px] -translate-x-1/2 flex-col items-center justify-center'>
                   {/* Hero Title Container with Portrait */}
-                  <div className='relative mb-4 w-[60%] sm:w-[50%] md:w-[80%]'>
+                  <div className='relative mb-4 flex w-[80%] items-center justify-center'>
                     {/* Portrait positioned at bottom center of parent */}
-                    <div className='absolute left-1/2 w-[25%] -translate-x-1/2 translate-y-[65%] sm:w-[20%] sm:translate-y-[55%] md:w-[25%] md:translate-y-1/2 lg:w-[30%]'>
+                    <div className='absolute w-[30%] max-w-[30%] translate-y-[25%]'>
                       {/* Portrait layers */}
                       <div className='relative'>
                         <Image
@@ -79,18 +78,6 @@ export default function Hero() {
                         </div>
                       </div>
                     </div>
-                    {/* Title Shadow */}
-                    {/* <div className='absolute inset-0 translate-x-[2%] translate-y-[2%]'>
-                      <Image
-                        src='/images/figma-assets/title-shadow.svg'
-                        alt=''
-                        width={300}
-                        height={129}
-                        className='h-full w-full object-contain'
-                        priority
-                      />
-                    </div> */}
-
                     {/* Main Title */}
                     <div className='relative'>
                       <Image
@@ -123,11 +110,10 @@ export default function Hero() {
                     </div>
 
                     {/* RSVP Button - Centered */}
-                    <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
                       <ShadowButton
                         text='RSVP'
                         ariaLabel='RSVP for the wedding'
-                        useRelativeSize={true}
                       />
                     </div>
 

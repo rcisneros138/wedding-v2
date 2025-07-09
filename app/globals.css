@@ -3,11 +3,11 @@
 /* Tailwind CSS v4 Theme Configuration */
 @theme {
   /* Breakpoints - Must be defined for responsive utilities to work */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+  --breakpoint-sm: 40rem;   /* 640px */
+  --breakpoint-md: 48rem;   /* 768px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
+  --breakpoint-2xl: 96rem;  /* 1536px */
 
   /* Font Family */
   --font-family-pacifico: var(--font-pacifico), cursive;
@@ -49,6 +49,7 @@
   --shadow-button-hover: 6px 6px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm-hover: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+
 }
 
 /* Custom Font Face - Uncomment when you have Recia Serif Display font files
@@ -127,4 +128,6 @@
   .font-display {
     font-family: var(--font-display) !important;
   }
+
+
 }

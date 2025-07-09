@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Pacifico } from 'next/font/google'
 import localfont from 'next/font/local'
 import './globals.css'
+import BreakpointIndicator from './components/BreakpointIndicator'
 
 const inter = Inter({ subsets: ['latin'] })
 const playfairDisplay = Playfair_Display({
@@ -45,7 +46,10 @@ export default function RootLayout({
       className={`${playfairDisplay.variable} ${pacifico.variable}`}
     >
 
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+        <BreakpointIndicator />
+      </body>
     </html>
   )
 }
