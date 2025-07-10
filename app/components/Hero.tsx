@@ -26,19 +26,12 @@ export default function Hero() {
 
                 {/* Main Squiggle - maroon colored arc */}
                 <div
-                  className='relative z-[1] grunge-overlay-mask'
+                  className='relative z-[1]'
                   style={{
                     filter: 'drop-shadow(8px 0px 0px rgba(16, 28, 38, 1))',
                   }}
                 >
-                  <Image
-                    src='/images/figma-assets/squiggle-maroon.svg'
-                    alt=''
-                    width={1}
-                    height={1}
-                    className='block h-full w-full object-contain'
-                    priority
-                  />
+                  <div className='squiggle-mask' />
                 </div>
 
                 {/* All content positioned within the squiggle */}
@@ -140,12 +133,10 @@ export default function Hero() {
       </section>
 
       {/* Info section - flows naturally after hero */}
-      <div
-        className='relative -mt-[1px] w-full'
-      >
+      <div className='relative -mt-[1px] w-full'>
         <div className='relative mx-auto h-full w-[95%]'>
           <div
-            className='relative mx-auto flex h-full max-w-[1600px] items-center justify-center bg-primary-textured'
+            className='bg-primary-textured relative mx-auto flex h-full max-w-[1600px] items-center justify-center'
             style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
           >
             <TimelineSchedule />
