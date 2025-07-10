@@ -6,10 +6,10 @@ export default function RSVPSection() {
   return (
     <>
       {/* Main RSVP Section - flows from info section with maroon background */}
-      <div id='rsvp' className='relative -mt-[1px] w-full'>
+      <div id='rsvp' className='relative -mt-[0px] w-full'>
         <div className='relative mx-auto w-[95%]'>
           <div
-            className='relative mx-auto max-w-[1600px] bg-[#8C3112] py-16'
+            className='bg-primary-textured relative mx-auto max-w-[1600px] bg-[#8C3112] py-16'
             style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
           >
             {/* Decorative Dots Pattern */}

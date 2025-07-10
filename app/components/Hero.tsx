@@ -97,7 +97,7 @@ export default function Hero() {
                           shadowOffsetY={4}
                         />
                       </div>
-                      <p className='font-pacifico text-shadow-primary-dark/30 m-0 mt-1 text-sm whitespace-nowrap text-[#FEA88A] text-shadow-2xs sm:text-base md:text-lg'>
+                      <p className='font-pacifico text-shadow-primary-dark/30 m-0 mt-1 text-[10px] whitespace-nowrap text-[#FEA88A] text-shadow-2xs sm:text-base md:text-lg'>
                         See You In Mexico!
                       </p>
                     </div>
@@ -133,7 +133,7 @@ export default function Hero() {
       </section>
 
       {/* Info section - flows naturally after hero */}
-      <div className='relative -mt-[1px] w-full'>
+      <div className='relative -mt-[0px] w-full'>
         <div className='relative mx-auto h-full w-[95%]'>
           <div
             className='bg-primary-textured relative mx-auto flex h-full max-w-[1600px] items-center justify-center'

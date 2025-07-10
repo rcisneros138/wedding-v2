@@ -12,34 +12,34 @@ const timelineEvents: TimelineEvent[] = [
     time: '4:30 pm',
     title: 'Wedding Ceremony',
     position: 15,
-    alignment: 'right'
+    alignment: 'right',
   },
   {
     time: '5:30 pm',
     title: 'Cocktail Hour',
     position: 35,
-    alignment: 'left'
+    alignment: 'left',
   },
   {
     time: '6:30 pm',
     title: 'Dinner',
     position: 60,
-    alignment: 'right'
+    alignment: 'right',
   },
   {
     time: '8:30 pm',
     title: 'Dancing',
     position: 85,
-    alignment: 'left'
-  }
+    alignment: 'left',
+  },
 ]
 
 export default function TimelineSchedule() {
   return (
     <div className='relative mx-auto max-w-2xl px-4 py-16'>
       {/* Title */}
-      <div className='mb-12 text-center'>
-        <h2 className='font-display text-shadow-offset text-4xl text-accent md:text-5xl'>
+      <div className='mt-15 mb-1 text-center'>
+        <h2 className='font-display text-shadow-offset text-accent text-4xl md:text-5xl'>
           Saturday, January 24th
         </h2>
       </div>
@@ -48,7 +48,7 @@ export default function TimelineSchedule() {
       <div className='relative mx-auto h-[450px] w-full max-w-lg md:h-[500px]'>
         {/* Vertical Wavy Timeline */}
         <svg
-          className='absolute left-1/2 top-0 h-full w-32 -translate-x-1/2'
+          className='absolute top-0 left-1/2 h-full w-32 -translate-x-1/2'
           viewBox='0 0 120 500'
           fill='none'
           preserveAspectRatio='none'
@@ -86,22 +86,24 @@ export default function TimelineSchedule() {
               {/* Text Container */}
               <div
                 className={`w-5/12 ${
-                  event.alignment === 'left' ? 'text-right pr-8' : 'text-left pl-8'
+                  event.alignment === 'left'
+                    ? 'pr-8 text-right'
+                    : 'pl-8 text-left'
                 }`}
               >
                 {/* Time */}
-                <p className='font-pacifico text-shadow-offset-xs mb-1 text-base text-purple'>
+                <p className='font-pacifico text-shadow-offset-xs text-purple mb-1 text-base'>
                   {event.time}
                 </p>
                 {/* Event Title */}
-                <p className='font-pacifico text-shadow-offset-sm text-xl text-accent md:text-2xl'>
+                <p className='font-pacifico text-shadow-offset-sm text-accent text-xl md:text-2xl'>
                   {event.title}
                 </p>
               </div>
 
               {/* Center Dot */}
               <div className='relative flex w-2/12 items-center justify-center'>
-                <div className='h-7 w-7 rounded-full bg-primary border-2 border-shadow' />
+                <div className='bg-primary border-shadow h-7 w-7 rounded-full border-2' />
               </div>
 
               {/* Empty space for opposite side */}
