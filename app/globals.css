@@ -82,6 +82,12 @@ html {
 .drop-shadow-squiggle {
   filter: drop-shadow(var(--drop-shadow-squiggle));
 }
+.shadow-offset-primary {
+  box-shadow: var(--shadow-offset-primary);
+}
+.shadow-offset-primary-sm {
+  box-shadow: var(--shadow-offset-primary-sm);
+}
 
 /* Custom Font Face - Uncomment when you have Recia Serif Display font files
 @font-face {

@@ -15,12 +15,12 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-surface shadow-offset-black relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-2xl"
+        className="bg-surface shadow-offset-primary border-primary border-2 relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="bg-surface shadow-offset-black-sm hover:shadow-offset-black absolute right-4 top-4 z-10 rounded-full p-2 transition-shadow"
+          className="bg-surface shadow-offset-primary-sm hover:shadow-offset-primary border-primary border-2 absolute right-4 top-4 z-10 rounded-full p-2 transition-shadow"
           aria-label="Close modal"
         >
           <X className="text-primary h-6 w-6" />

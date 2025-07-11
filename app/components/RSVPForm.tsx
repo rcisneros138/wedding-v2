@@ -80,7 +80,7 @@ export default function RSVPForm() {
   }
 
   return (
-    <div className='relative bg-surface rounded-2xl shadow-offset-black p-8 max-w-2xl mx-auto'>
+    <div className='relative bg-surface rounded-2xl shadow-offset-primary border-primary border-2 p-8 max-w-2xl mx-auto'>
       {/* Diagonal line texture overlay */}
       <div
         className='pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-30'

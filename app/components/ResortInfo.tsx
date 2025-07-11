@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Modal from './Modal'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
+import { generateResortPDF } from '@/app/utils/generateResortPDF'
 
 // Types
 interface ResortHighlight {
@@ -646,17 +647,30 @@ const ResortHighlights = () => {
           <div
             key={card.id}
             onClick={() => setSelectedCard(card)}
-            className='bg-surface shadow-offset-black hover:shadow-offset-black-sm cursor-pointer rounded-2xl p-6 transition-shadow'
+            className='relative bg-white border-primary shadow-offset-primary hover:shadow-offset-primary-sm cursor-pointer rounded-2xl border-2 p-6 transition-shadow'
           >
-            <div className='mb-3 text-4xl'>{card.emoji}</div>
-            <h3 className='font-display text-primary mb-1 text-xl'>
-              {card.title}
-            </h3>
-            <p className='text-accent mb-2 font-semibold'>{card.stats}</p>
-            <p className='text-primary/70 text-sm'>{card.preview}</p>
-            <button className='text-accent hover:text-accent/80 mt-3 text-sm font-medium transition-colors'>
-              Learn more →
-            </button>
+            {/* Diagonal line texture overlay */}
+            <div
+              className='pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-30'
+              style={{
+                backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                backgroundSize: '7px 7px',
+                backgroundRepeat: 'repeat',
+              }}
+            />
+            
+            {/* Content container with relative positioning to stay above pattern */}
+            <div className='relative z-10'>
+              <div className='mb-3 text-4xl'>{card.emoji}</div>
+              <h3 className='font-display text-primary mb-1 text-xl'>
+                {card.title}
+              </h3>
+              <p className='text-accent mb-2 font-semibold'>{card.stats}</p>
+              <p className='text-primary/70 text-sm'>{card.preview}</p>
+              <button className='text-accent hover:text-accent/80 mt-3 text-sm font-medium transition-colors'>
+                Learn more →
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -688,7 +702,7 @@ const ResortQuickFacts = () => {
   ]
 
   return (
-    <div className='bg-primary-textured shadow-offset-black rounded-2xl p-6'>
+    <div className='bg-primary-textured border-shadow shadow-offset-black rounded-2xl border-2 p-6'>
       <h3 className='font-display text-accent mb-4 text-2xl'>
         Excellence Riviera Cancun Quick Facts
       </h3>
@@ -704,6 +718,7 @@ const ResortQuickFacts = () => {
         <ShadowButton
           text='Download Resort Guide (PDF)'
           backgroundColor='var(--color-purple)'
+          onClick={generateResortPDF}
         />
         <a
           href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
@@ -753,7 +768,7 @@ export default function ResortInfo() {
           </div>
 
           {/* What's Extra Section */}
-          <div className='bg-surface shadow-offset-black rounded-2xl p-6'>
+          <div className='bg-surface border-primary shadow-offset-primary rounded-2xl border-2 p-6'>
             <h2 className='font-display text-primary mb-4 text-2xl'>
               What Costs Extra?
             </h2>

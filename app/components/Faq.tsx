@@ -13,7 +13,7 @@ const Faq = () => {
       id: 1,
       question: 'When should I book my room?',
       answer:
-        "<strong>Book NOW</strong> - seriously, like right this minute!<br><br>January is peak season in Cancun (everyone's escaping winter!), and Excellence Riviera Cancun can't guarantee room availability once their inventory fills up. Plus, booking early often means better rates.<br><br>We'd hate for you to miss out on celebrating with us because all the rooms are gone! The resort has 440 suites, but they book up FAST during high season.",
+        "<strong>Book NOW</strong> - seriously, like right this minute if you are certain you want to come!<br><br>January is peak season in Cancun (everyone's escaping winter!), and Excellence Riviera Cancun can't guarantee room availability once their inventory fills up. Plus, booking early often means better rates.<br><br>We'd hate for you to miss out on celebrating with us because all the rooms are gone! The resort has 440 suites, but they book up FAST during high season.",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -176,7 +176,7 @@ const Faq = () => {
           {faqs.map((faq) => (
             <div
               key={faq.id}
-              className={`border-shadow bg-surface relative cursor-pointer rounded-2xl border-2 p-8 transition-all duration-300 ease-out ${
+              className={`border-primary relative cursor-pointer rounded-2xl border-2 bg-white p-8 transition-all duration-300 ease-out ${
                 selectedCard === faq.id ? 'scale-105' : 'hover:scale-[1.02]'
               } `}
               onClick={() =>
@@ -185,54 +185,67 @@ const Faq = () => {
               style={{
                 boxShadow:
                   selectedCard === faq.id
-                    ? '6px 6px 0px rgba(16, 28, 38, 1)'
-                    : '8px 8px 0px rgba(16, 28, 38, 1)',
+                    ? '6px 6px 0px var(--color-primary)'
+                    : '8px 8px 0px var(--color-primary)',
               }}
             >
-              {/* Simple Icon/Illustration Area */}
-              <div className='mb-6 flex justify-center'>
-                <div className='relative'>
-                  {/* Background circle with dots */}
-                  <div className='absolute -inset-4'>
-                    <svg width='120' height='120' viewBox='0 0 120 120'>
-                      <circle cx='20' cy='20' r='2' fill='#FEA88A' />
-                      <circle cx='100' cy='20' r='2' fill='#FEA88A' />
-                      <circle cx='20' cy='100' r='2' fill='#FEA88A' />
-                      <circle cx='100' cy='100' r='2' fill='#FEA88A' />
-                      <path
-                        d='M30,60 Q60,40 90,60'
-                        stroke='#FEA88A'
-                        strokeWidth='2'
-                        fill='none'
-                        strokeDasharray='3,3'
-                      />
-                    </svg>
-                  </div>
-                  {/* Main icon */}
-                  <div className='relative z-10'>{faq.svgIcon}</div>
-                </div>
-              </div>
-
-              {/* Question */}
-              <h3 className='font-display text-primary mb-4 text-center text-xl font-bold'>
-                {faq.question}
-              </h3>
-
-              {/* Answer (shown when selected) */}
+              {/* Diagonal line texture overlay */}
               <div
-                className={`overflow-hidden transition-all duration-300 ${selectedCard === faq.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} `}
-              >
-                <div 
-                  className='text-primary/70 text-center leading-relaxed faq-content'
-                  dangerouslySetInnerHTML={{ __html: faq.answer }}
-                />
-              </div>
+                className='pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-30'
+                style={{
+                  backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                  backgroundSize: '7px 7px',
+                  backgroundRepeat: 'repeat',
+                }}
+              />
 
-              {/* Click indicator */}
-              <div className='absolute right-4 bottom-4'>
-                <ChevronRight
-                  className={`text-primary/40 h-5 w-5 transition-transform duration-300 ${selectedCard === faq.id ? 'rotate-90' : ''} `}
-                />
+              {/* Content container with relative positioning to stay above pattern */}
+              <div className='relative z-10'>
+                {/* Simple Icon/Illustration Area */}
+                <div className='mb-6 flex justify-center'>
+                  <div className='relative'>
+                    {/* Background circle with dots */}
+                    <div className='absolute -inset-4'>
+                      <svg width='120' height='120' viewBox='0 0 120 120'>
+                        <circle cx='20' cy='20' r='2' fill='#FEA88A' />
+                        <circle cx='100' cy='20' r='2' fill='#FEA88A' />
+                        <circle cx='20' cy='100' r='2' fill='#FEA88A' />
+                        <circle cx='100' cy='100' r='2' fill='#FEA88A' />
+                        <path
+                          d='M30,60 Q60,40 90,60'
+                          stroke='#FEA88A'
+                          strokeWidth='2'
+                          fill='none'
+                          strokeDasharray='3,3'
+                        />
+                      </svg>
+                    </div>
+                    {/* Main icon */}
+                    <div className='relative z-10'>{faq.svgIcon}</div>
+                  </div>
+                </div>
+
+                {/* Question */}
+                <h3 className='font-display text-primary mb-4 text-center text-xl font-bold'>
+                  {faq.question}
+                </h3>
+
+                {/* Answer (shown when selected) */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${selectedCard === faq.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} `}
+                >
+                  <div
+                    className='text-primary/70 faq-content text-center leading-relaxed'
+                    dangerouslySetInnerHTML={{ __html: faq.answer }}
+                  />
+                </div>
+
+                {/* Click indicator */}
+                <div className='absolute right-4 bottom-4'>
+                  <ChevronRight
+                    className={`text-primary/40 h-5 w-5 transition-transform duration-300 ${selectedCard === faq.id ? 'rotate-90' : ''} `}
+                  />
+                </div>
               </div>
             </div>
           ))}
