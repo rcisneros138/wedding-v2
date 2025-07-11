@@ -6,7 +6,7 @@ import TimelineSchedule from './TimelineSchedule'
 export default function Hero() {
   return (
     <>
-      <section className='bg-surface relative flex w-full flex-col items-center justify-start'>
+      <section className='bg-surface relative flex w-full flex-col items-center justify-start pt-3'>
         {/* Hero Arc positioned at bottom */}
         <div className='relative z-20 w-full'>
           {/* Constrained container for proper scaling */}

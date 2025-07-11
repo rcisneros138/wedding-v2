@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import ShadowButton from './ShadowButton'
+import CompactButton from './CompactButton'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -24,17 +24,24 @@ export default function Navigation() {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-      isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'
-    } px-4 md:px-12`}>
+    <nav
+      className={`fixed top-0 right-0 left-0 z-50 w-full transition-all duration-300 ${
+        isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'
+      } px-4 md:px-12`}
+    >
       {/* Desktop Navigation */}
       <div className='hidden items-center justify-between md:flex'>
-        <div className='relative flex-1 flex justify-center'>
-          {/* Shadow layer */}
-          <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
+        <div className='flex flex-1 justify-center'>
+          <div className='relative w-fit'>
+            {/* Shadow layer */}
+            <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
 
           {/* Main nav container */}
-          <div className='border-primary relative rounded-[50px] border-2 bg-white px-12 py-4'>
+          <div
+            className={`border-primary relative rounded-[50px] border-2 bg-white transition-all duration-300 ${
+              isScrolled ? 'px-8 py-3' : 'px-12 py-4'
+            }`}
+          >
             {/* Diagonal line texture overlay */}
             <div
               className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
@@ -46,7 +53,11 @@ export default function Navigation() {
             />
 
             {/* Navigation links */}
-            <ul className='text-primary font-display relative m-0 flex list-none items-center gap-12 p-0 text-lg font-semibold'>
+            <ul
+              className={`text-primary font-display relative m-0 flex list-none items-center p-0 font-semibold transition-all duration-300 ${
+                isScrolled ? 'gap-8 text-base' : 'gap-12 text-lg'
+              }`}
+            >
               <li>
                 <a
                   href='#home'
@@ -105,26 +116,27 @@ export default function Navigation() {
               </li>
             </ul>
           </div>
+          </div>
         </div>
 
         {/* CTA Buttons */}
-        <div className='flex gap-3 ml-8'>
-          <a
+        <div className='ml-8 flex gap-3'>
+          <CompactButton
+            text='Book Now'
+            backgroundColor='var(--color-accent)'
             href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
             target='_blank'
             rel='noopener noreferrer'
-            className='inline-block'
-          >
-            <ShadowButton 
-              text='Book Now' 
-              backgroundColor='var(--color-accent)'
-              className='!text-sm !px-6 !py-1.5'
-            />
-          </a>
-          <ShadowButton 
-            text='RSVP' 
+            className={
+              isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'
+            }
+          />
+          <CompactButton
+            text='RSVP'
             onClick={handleRSVPClick}
-            className='!text-sm !px-6 !py-1.5'
+            className={
+              isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'
+            }
           />
         </div>
       </div>
@@ -132,73 +144,85 @@ export default function Navigation() {
       {/* Mobile Navigation */}
       <div className='md:hidden'>
         {/* Mobile Nav Bar */}
-        <div className='relative flex items-center gap-3'>
+        <div className='flex items-center gap-3'>
           {/* Nav Container */}
-          <div className='relative flex-1'>
-            {/* Shadow layer */}
-            <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
+          <div className='flex-1'>
+            <div className='relative w-fit'>
+              {/* Shadow layer */}
+              <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
 
             {/* Main nav container */}
-            <div className='border-primary bg-surface relative rounded-[50px] border-2 px-4 py-3'>
-            {/* Diagonal line texture overlay */}
             <div
-              className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
-              style={{
-                backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
-                backgroundSize: '7px 7px',
-                backgroundRepeat: 'repeat',
-              }}
-            />
+              className={`border-primary bg-surface relative rounded-[50px] border-2 transition-all duration-300 ${
+                isScrolled ? 'px-3 py-2' : 'px-4 py-3'
+              }`}
+            >
+              {/* Diagonal line texture overlay */}
+              <div
+                className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
+                style={{
+                  backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                  backgroundSize: '7px 7px',
+                  backgroundRepeat: 'repeat',
+                }}
+              />
 
-            {/* Nav content */}
-            <div className='relative flex items-center justify-between'>
-              {/* Logo/Title */}
-              <h1 className='font-display text-primary m-0 text-2xl'>A & R</h1>
+              {/* Nav content */}
+              <div className='relative flex items-center justify-between'>
+                {/* Logo/Title - Hidden on mobile, visible on md and up */}
+                <h1 className='font-display text-primary m-0 hidden text-2xl md:block'>
+                  A & R
+                </h1>
 
-              {/* Hamburger Menu Button */}
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className='relative z-50 flex h-8 w-8 flex-col items-center justify-center'
-                aria-label='Toggle menu'
-              >
-                <span
-                  className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
-                    isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
-                  }`}
-                />
-                <span
-                  className={`bg-primary my-1 block h-0.5 w-6 transition-all duration-300 ${
-                    isMenuOpen ? 'opacity-0' : ''
-                  }`}
-                />
-                <span
-                  className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
-                    isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
-                  }`}
-                />
-              </button>
+                {/* Hamburger Menu Button */}
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className='relative z-50 flex h-8 w-8 flex-col items-center justify-center'
+                  aria-label='Toggle menu'
+                >
+                  <span
+                    className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
+                      isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
+                    }`}
+                  />
+                  <span
+                    className={`bg-primary my-1 block h-0.5 w-6 transition-all duration-300 ${
+                      isMenuOpen ? 'opacity-0' : ''
+                    }`}
+                  />
+                  <span
+                    className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
+                      isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
+                    }`}
+                  />
+                </button>
+              </div>
             </div>
-          </div>
+            </div>
           </div>
 
           {/* Mobile CTA Buttons */}
           <div className='flex gap-2'>
-            <a
+            <CompactButton
+              text='Book'
+              backgroundColor='var(--color-accent)'
               href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-block'
-            >
-              <ShadowButton 
-                text='Book' 
-                backgroundColor='var(--color-accent)'
-                className='!text-xs !px-4 !py-1.5'
-              />
-            </a>
-            <ShadowButton 
-              text='RSVP' 
+              className={
+                isScrolled
+                  ? 'px-3 py-1 text-[10px]'
+                  : 'px-4 py-1.5 text-xs'
+              }
+            />
+            <CompactButton
+              text='RSVP'
               onClick={handleRSVPClick}
-              className='!text-xs !px-4 !py-1.5'
+              className={
+                isScrolled
+                  ? 'px-3 py-1 text-[10px]'
+                  : 'px-4 py-1.5 text-xs'
+              }
             />
           </div>
         </div>
