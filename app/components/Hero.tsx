@@ -81,7 +81,7 @@ export default function Hero() {
                   </div>
 
                   {/* Combined RSVP button and date/location text */}
-                  <div className='relative flex w-full items-center'>
+                  <div className='relative flex w-full items-center xl:pt-5 2xl:pt-10'>
                     {/* Left side text with wavy line */}
                     <div className='relative flex-1 pr-5 text-center'>
                       <div className='relative mx-auto w-[40%] sm:w-[50%] md:w-[60%] lg:w-[65%]'>

@@ -64,6 +64,32 @@ html {
   --shadow-button-hover: 6px 6px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm-hover: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+  
+  /* Button Shadow Variables - Responsive */
+  --shadow-button-responsive: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-button-responsive-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* Responsive Shadow Media Queries */
+@media (min-width: 640px) {
+  :root {
+    --shadow-button-responsive: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    --shadow-button-responsive-hover: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --shadow-button-responsive: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    --shadow-button-responsive-hover: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --shadow-button-responsive: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+    --shadow-button-responsive-hover: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
 }
 
 /* Shadow Utility Classes */
@@ -87,6 +113,12 @@ html {
 }
 .shadow-offset-primary-sm {
   box-shadow: var(--shadow-offset-primary-sm);
+}
+.shadow-button-responsive {
+  box-shadow: var(--shadow-button-responsive);
+}
+.hover\:shadow-button-responsive-hover:hover {
+  box-shadow: var(--shadow-button-responsive-hover);
 }
 
 /* Custom Font Face - Uncomment when you have Recia Serif Display font files

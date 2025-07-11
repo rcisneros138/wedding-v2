@@ -1,20 +1,40 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import ShadowButton from './ShadowButton'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleRSVPClick = () => {
+    const rsvpElement = document.getElementById('rsvp')
+    if (rsvpElement) {
+      rsvpElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
-    <nav className='relative w-full px-4 py-6 md:px-12 md:py-10'>
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'
+    } px-4 md:px-12`}>
       {/* Desktop Navigation */}
-      <div className='hidden items-center justify-center md:flex'>
-        <div className='relative'>
+      <div className='hidden items-center justify-between md:flex'>
+        <div className='relative flex-1 flex justify-center'>
           {/* Shadow layer */}
           <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
 
           {/* Main nav container */}
-          <div className='border-primary relative rounded-[50px] border-2 bg-white px-16 py-5'>
+          <div className='border-primary relative rounded-[50px] border-2 bg-white px-12 py-4'>
             {/* Diagonal line texture overlay */}
             <div
               className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
@@ -86,17 +106,40 @@ export default function Navigation() {
             </ul>
           </div>
         </div>
+
+        {/* CTA Buttons */}
+        <div className='flex gap-3 ml-8'>
+          <a
+            href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline-block'
+          >
+            <ShadowButton 
+              text='Book Now' 
+              backgroundColor='var(--color-accent)'
+              className='!text-sm !px-6 !py-1.5'
+            />
+          </a>
+          <ShadowButton 
+            text='RSVP' 
+            onClick={handleRSVPClick}
+            className='!text-sm !px-6 !py-1.5'
+          />
+        </div>
       </div>
 
       {/* Mobile Navigation */}
       <div className='md:hidden'>
         {/* Mobile Nav Bar */}
-        <div className='relative'>
-          {/* Shadow layer */}
-          <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
+        <div className='relative flex items-center gap-3'>
+          {/* Nav Container */}
+          <div className='relative flex-1'>
+            {/* Shadow layer */}
+            <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
 
-          {/* Main nav container */}
-          <div className='border-primary bg-surface relative rounded-[50px] border-2 px-6 py-4'>
+            {/* Main nav container */}
+            <div className='border-primary bg-surface relative rounded-[50px] border-2 px-4 py-3'>
             {/* Diagonal line texture overlay */}
             <div
               className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
@@ -135,6 +178,28 @@ export default function Navigation() {
                 />
               </button>
             </div>
+          </div>
+          </div>
+
+          {/* Mobile CTA Buttons */}
+          <div className='flex gap-2'>
+            <a
+              href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block'
+            >
+              <ShadowButton 
+                text='Book' 
+                backgroundColor='var(--color-accent)'
+                className='!text-xs !px-4 !py-1.5'
+              />
+            </a>
+            <ShadowButton 
+              text='RSVP' 
+              onClick={handleRSVPClick}
+              className='!text-xs !px-4 !py-1.5'
+            />
           </div>
         </div>
 

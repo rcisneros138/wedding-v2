@@ -6,14 +6,16 @@ import ResortInfo from './components/ResortInfo'
 
 export default function Home() {
   return (
-    <main className='bg-surface min-h-screen overflow-x-hidden'>
+    <>
       <Navigation />
-      <Hero />
-      {/* TODO: Add Our Story section */}
-      <ResortInfo />
-      <Faq />
-      <RSVPSection />
-      {/* TODO: Add Registry section */}
-    </main>
+      <main className='bg-surface min-h-screen overflow-x-hidden pt-[84px] md:pt-[104px]'>
+        <Hero />
+        {/* TODO: Add Our Story section */}
+        <ResortInfo />
+        <Faq />
+        <RSVPSection />
+        {/* TODO: Add Registry section */}
+      </main>
+    </>
   )
 }

@@ -64,9 +64,9 @@ export default function ShadowButton({
 }: ShadowButtonProps) {
   // Unified responsive classes that always scale with breakpoints
   const divClasses =
-    'relative flex rounded-full border-2 px-10 py-1.5 sm:px-12 sm:py-2 md:px-15 md:py-3 lg:px-20 lg:px-25 xl:px-30, 2xl:px-40 max-px-2xl shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] lg:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] lg:hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
+    'relative flex rounded-full border-2 px-10 py-1.5 sm:px-12 sm:py-2 md:px-15 md:py-3 lg:px-20 lg:py-4 xl:px-25 xl:py-5 2xl:py-6 2xl:px-30 shadow-button-responsive hover:shadow-button-responsive-hover'
 
-  const textClasses = `font-display ${textColor} ${textColorHover} relative font-bold tracking-wider drop-shadow-xs transition-colors duration-300 text-base sm:text-lg md:text-xl lg:text-2xl`
+  const textClasses = `font-display ${textColor} ${textColorHover} relative font-bold tracking-wider drop-shadow-xs transition-colors duration-300 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-3xl`
 
   // Determine what to display - children takes precedence over text prop
   const displayText = children || text

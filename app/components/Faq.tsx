@@ -13,7 +13,7 @@ const Faq = () => {
       id: 1,
       question: 'When should I book my room?',
       answer:
-        "<strong>Book NOW</strong> - seriously, like right this minute if you are certain you want to come!<br><br>January is peak season in Cancun (everyone's escaping winter!), and Excellence Riviera Cancun can't guarantee room availability once their inventory fills up. Plus, booking early often means better rates.<br><br>We'd hate for you to miss out on celebrating with us because all the rooms are gone! The resort has 440 suites, but they book up FAST during high season.",
+        "If you are certain that you would like to come, <strong>please book as soon as possible!</strong><br><br>There is a <strong>significant discount</strong> for booking rooms with our promo code!<br><br>January is peak season in Cancun and the resort cannot guarantee room availability when their inventory fills up. The resort has 440 suites but they book up fast during high season!",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -31,7 +31,7 @@ const Faq = () => {
       id: 2,
       question: 'What days should I book for?',
       answer:
-        "We'll be there January 22-26, 2026, and we'd love for you to join us for the whole long weekend! Here's why:<br><br><ul><li><strong>Thursday, Jan 22:</strong> Arrival day - settle in, explore the resort, welcome drinks by the pool</li><li><strong>Friday, Jan 23:</strong> Beach day, rehearsal dinner festivities</li><li><strong>Saturday, Jan 24:</strong> THE BIG DAY! 💍</li><li><strong>Sunday, Jan 25:</strong> Recovery brunch and farewell pool party</li><li><strong>Monday, Jan 26:</strong> Departure day</li></ul>Of course, if you can only make it for a shorter stay, we totally understand - just having you there for our special day means the world!",
+        "We will be there January 22-26th, 2026 and we would love for you to join us for the entire time! However, this is completely up to you. Our current schedule is:<br><br><ul><li><strong>Thursday, Jan 22:</strong> Arrival day. Settle in, explore the resort, and enjoy welcome drinks by the pool</li><li><strong>Friday, Jan 23:</strong> Beach day and rehearsal dinner</li><li><strong>Saturday, Jan 24:</strong> THE BIG DAY</li><li><strong>Sunday, Jan 25:</strong> Recovery brunch and pool party</li><li><strong>Monday, Jan 26:</strong> Departure day</li></ul>",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -49,7 +49,7 @@ const Faq = () => {
       id: 3,
       question: 'Can I bring my kids?',
       answer:
-        'Unfortunately, no little ones allowed! Excellence Resorts are <strong>adults-only (18+)</strong>, which means you get to enjoy a kid-free vacation!<br><br>Think of it as your chance to sleep in, enjoy uninterrupted conversations, and sip cocktails by the pool without worry. Time to call that babysitter and plan your grown-up getaway!',
+        'Unfortunately Excellence Resorts are <strong>adults-only (18+)</strong>. But think of it as a chance to sleep in and enjoy cocktails by the pool without worry!',
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -67,7 +67,7 @@ const Faq = () => {
       id: 4,
       question: 'What is the weather like in Cancun in January?',
       answer:
-        "<strong>Absolute PERFECTION!</strong> ☀️ January is literally the best month to visit Cancun. Expect:<br><br><ul><li><strong>Daytime temps:</strong> 70-82°F (perfect beach weather!)</li><li><strong>Evening temps:</strong> 68-72°F (ideal for outdoor dining)</li><li><strong>Ocean temp:</strong> 80°F (like a warm bath!)</li><li><strong>Humidity:</strong> Lower than summer at around 75%</li><li><strong>Rain:</strong> Practically zero - January averages only 5 rainy days</li><li><strong>Hurricane risk:</strong> NONE (season ends in November)</li></ul>Pack your sunglasses because you'll get about 8 hours of sunshine daily!",
+        "<strong>Absolutely perfect!</strong> January is literally the best time to visit Cancun.<br><br>Expect:<ul><li><strong>Daytime temps:</strong> 72-80°F (perfect beach weather)</li><li><strong>Evening temps:</strong> 68-72°F</li><li><strong>Ocean temps:</strong> 80°F (like a warm bath!)</li><li>It only rains on average 5 days in January, and very rarely for the entire day</li><li><strong>Hurricane risk:</strong> Basically zero (the season ends in November)</li></ul>",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -85,7 +85,7 @@ const Faq = () => {
       id: 5,
       question: 'What is the dress code?',
       answer:
-        '<p><strong>Wedding Day:</strong> Cocktail attire with a tropical twist! We\'re encouraging bright, vibrant colors - think coral, turquoise, sunny yellow, or tropical prints. Leave the black at home and embrace those vacation vibes! Ladies, consider wedges or block heels for the beach setting. Gentlemen, lightweight fabrics are your friend.</p><p><strong>Resort Dining:</strong> Most restaurants require "resort elegant" in the evenings:<br><ul><li><strong>Men:</strong> Long pants, collared shirts, closed-toe shoes (no shorts or sandals)</li><li><strong>Women:</strong> Sundresses, elegant resort wear</li></ul></p>',
+        '<strong>For the wedding day:</strong> Cocktail attire, and bright colors are encouraged! Consider flat shoes for the beach setting.<br><br><strong>For the resort in general:</strong> Many of the restaurants at the resort require long pants, skirts, or dresses at dinner. Shorts, flip-flops, tank-tops, and wet clothes are not allowed. However, this of course does not apply when you are at one of the pools or at the beach!',
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -103,7 +103,7 @@ const Faq = () => {
       id: 6,
       question: 'What else should I bring?',
       answer:
-        "Your packing essentials for paradise:<br><br><ul><li><strong>REEF-SAFE SUNSCREEN</strong> - lots of it! (Required for swimming in cenotes)</li><li><strong>Cash for tips</strong> - While not expected, it's appreciated. Small bills in USD work great</li><li><strong>Multiple swimsuits</strong> - You'll live in them! (The resort has 6 pools!)</li><li><strong>Light jacket or wrap</strong> - For occasional cool evenings or AC in restaurants</li><li><strong>Underwater camera</strong> - For snorkeling adventures</li><li><strong>Comfortable walking shoes</strong> - For excursions to ruins</li><li><strong>Insect repellent</strong> - For jungle excursions</li><li><strong>Medications</strong> - Including Dramamine if you're prone to seasickness</li><li><strong>Power bank</strong> - You'll take a million photos!</li></ul>",
+        "<ul><li><strong>Reef-safe sunscreen</strong></li><li><strong>Cash for tips.</strong> While not expected, it's appreciated by the staff. Small bills in USD work great</li><li><strong>Multiple swim suits!</strong> The resort has 6 pools!</li><li><strong>Light jacket or wrap.</strong> For occasional cool evenings or AC in the restaurants</li><li><strong>Comfortable walking shoes</strong>, in case you decide to go on any excursions</li></ul>",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -121,7 +121,7 @@ const Faq = () => {
       id: 7,
       question: 'How do I get from the airport to the resort?',
       answer:
-        "Cancun International Airport (CUN) is your destination - just 20-35 minutes from the resort!<br><br>You have several options:<ul><li><strong>Resort Shuttle Service</strong> - Excellence offers transfers, but they can be pricey ($150+ roundtrip)</li><li><strong>Private Shuttle Companies</strong> - More affordable at $60-105 roundtrip: Happy Shuttle Cancun, USA/Canada Transfers, Entertainment Plus</li><li><strong>Taxi</strong> - Available but more expensive than pre-booked shuttles</li></ul><strong>Pro tip:</strong> Book your transportation in advance! You'll skip the airport chaos and often save money. The resort is in Puerto Morelos, about 25km south of the airport.",
+        "Cancun International Airport (CUN) is your destination - just 25-30 minutes from the resort!<br><br>You have several options:<ul><li><strong>Resort shuttle service (recommended!):</strong> Excellence provides a <strong>FREE</strong> shuttle service through their partner Seasons Tours, and is for guests on the reservation arriving and leaving at the same time. This applies only if you are booking for a minimum of 3 nights.</li><li><strong>Private shuttle companies (not through Excellence):</strong> Happy Shuttle Cancun, USA/Canada Transfers, Entertainment Plus. These typically cost around $100 roundtrip.</li><li><strong>Taxi (not our first recommendation):</strong> Are available but are more expensive than pre-booked shuttles</li></ul>",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -139,7 +139,7 @@ const Faq = () => {
       id: 8,
       question: 'What else is there to do in the area?',
       answer:
-        '<strong>SO MUCH!</strong><br><br><p><strong>At the Resort:</strong></p><ul><li>Miilé Spa (book treatments early!)</li><li>6 meandering pools including a swim-up bar</li><li>Complimentary kayaks, paddleboards, snorkeling gear</li><li>Beach volleyball, yoga classes, fitness center</li><li>Nightly entertainment and shows</li><li>Golf at nearby Greg Norman-designed course</li></ul><p><strong>Nearby Adventures (20-90 minutes away):</strong></p><ul><li>Cenote hopping on Ruta de los Cenotes - swim in crystal-clear underground pools!</li><li>Snorkeling at Puerto Morelos Reef - the second-largest barrier reef in the world!</li><li>Mayan Ruins: Tulum, Chichen Itza, Coba</li><li>Swimming with whale sharks (January is prime season!)</li><li>Catamaran trip to Isla Mujeres</li><li>ATV jungle tours with zip-lining</li><li>Deep-sea fishing</li><li>Explore Puerto Morelos town</li></ul>',
+        '<ul><li><strong>Miilé Spa (book treatments early!):</strong> this spa is on-site, so you do not have to leave the resort</li><li><strong>Golf:</strong> There are multiple beautiful courses nearby. <a href="https://www.excellenceresorts.com/blog/what-are-the-4-best-golf-courses-in-cancun/" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: underline;">View golf course options</a></li><li><strong>Visiting cenotes</strong> (natural sinkholes that are amazing to swim in). There are so many along the Yucatan Peninsula. Highly recommend visiting at least one if you are planning on traveling out of the resort!</li></ul>',
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -232,7 +232,7 @@ const Faq = () => {
 
                 {/* Answer (shown when selected) */}
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${selectedCard === faq.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} `}
+                  className={`overflow-hidden transition-all duration-300 ${selectedCard === faq.id ? 'max-h-[1500px] overflow-y-auto opacity-100' : 'max-h-0 opacity-0'} `}
                 >
                   <div
                     className='text-primary/70 faq-content text-center leading-relaxed'
@@ -243,7 +243,7 @@ const Faq = () => {
                 {/* Click indicator */}
                 <div className='absolute right-4 bottom-4'>
                   <ChevronRight
-                    className={`text-primary/40 h-5 w-5 transition-transform duration-300 ${selectedCard === faq.id ? 'rotate-90' : ''} `}
+                    className={`text-primary/40 h-5 w-5 transition-transform duration-300 ${selectedCard === faq.id ? '-rotate-90' : ''} `}
                   />
                 </div>
               </div>
