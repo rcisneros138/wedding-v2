@@ -8,10 +8,7 @@ export default function RSVPSection() {
       {/* Main RSVP Section - flows from info section with maroon background */}
       <div id='rsvp' className='relative -mt-[0px] w-full'>
         <div className='relative mx-auto w-[95%]'>
-          <div
-            className='bg-primary-textured relative mx-auto max-w-[1600px] bg-[#8C3112] py-16'
-            style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
-          >
+          <div className='bg-primary-textured relative mx-auto max-w-[1600px] overflow-hidden rounded-t-2xl bg-[#8C3112] py-16 shadow-offset-black'>
             {/* Decorative Dots Pattern */}
             <div className='pointer-events-none absolute top-0 left-0 h-full w-full opacity-5'>
               <Image
@@ -49,10 +46,7 @@ export default function RSVPSection() {
       </div>
 
       {/* Wedding Details Section - separate maroon section */}
-      <div
-        className='bg-primary-textured relative mx-auto w-[95%] py-16 text-white'
-        style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
-      >
+      <div className='bg-primary-textured relative mx-auto w-[95%] py-16 text-white shadow-offset-black'>
         <div className='container mx-auto max-w-4xl px-4 text-center'>
           <h3 className='font-display mb-6 text-3xl'>Wedding Details</h3>
 

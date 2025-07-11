@@ -25,12 +25,7 @@ export default function Hero() {
                 </svg> */}
 
                 {/* Main Squiggle - maroon colored arc */}
-                <div
-                  className='relative z-[1]'
-                  style={{
-                    filter: 'drop-shadow(8px 0px 0px rgba(16, 28, 38, 1))',
-                  }}
-                >
+                <div className='drop-shadow-squiggle relative z-[1]'>
                   <div className='squiggle-mask' />
                 </div>
 
@@ -135,10 +130,7 @@ export default function Hero() {
       {/* Info section - flows naturally after hero */}
       <div className='relative -mt-[0px] w-full'>
         <div className='relative mx-auto h-full w-[95%]'>
-          <div
-            className='bg-primary-textured relative mx-auto flex h-full max-w-[1600px] items-center justify-center'
-            style={{ boxShadow: '8px 0px 0px rgba(16, 28, 38, 1)' }}
-          >
+          <div className='bg-primary-textured shadow-info-section relative mx-auto flex h-full max-w-[1600px] items-center justify-center overflow-hidden rounded-b-2xl'>
             <TimelineSchedule />
           </div>
         </div>

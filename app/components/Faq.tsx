@@ -281,7 +281,7 @@ const Faq = () => {
 
       {/* Cards Grid */}
       <div className='mx-auto w-[95%] max-w-[1600px]'>
-        <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 items-start'>
           {faqs.map((faq) => (
             <div
               key={faq.id}
