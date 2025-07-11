@@ -11,9 +11,9 @@ const Faq = () => {
   const faqs = [
     {
       id: 1,
-      question: 'What time should we arrive?',
+      question: 'When should I book my room?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        "<strong>Book NOW</strong> - seriously, like right this minute!<br><br>January is peak season in Cancun (everyone's escaping winter!), and Excellence Riviera Cancun can't guarantee room availability once their inventory fills up. Plus, booking early often means better rates.<br><br>We'd hate for you to miss out on celebrating with us because all the rooms are gone! The resort has 440 suites, but they book up FAST during high season.",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
           <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
@@ -29,246 +29,137 @@ const Faq = () => {
     },
     {
       id: 2,
-      question: 'Is there parking available?',
+      question: 'What days should I book for?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas sed tempus urna et pharetra pharetra massa. Amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Sed risus pretium quam vulputate dignissim suspendisse in est ante.',
+        "We'll be there January 22-26, 2026, and we'd love for you to join us for the whole long weekend! Here's why:<br><br><ul><li><strong>Thursday, Jan 22:</strong> Arrival day - settle in, explore the resort, welcome drinks by the pool</li><li><strong>Friday, Jan 23:</strong> Beach day, rehearsal dinner festivities</li><li><strong>Saturday, Jan 24:</strong> THE BIG DAY! 💍</li><li><strong>Sunday, Jan 25:</strong> Recovery brunch and farewell pool party</li><li><strong>Monday, Jan 26:</strong> Departure day</li></ul>Of course, if you can only make it for a shorter stay, we totally understand - just having you there for our special day means the world!",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <rect
-            x='15'
-            y='35'
-            width='50'
-            height='25'
-            rx='3'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
-          <circle
-            cx='25'
-            cy='60'
-            r='5'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
-          <circle
-            cx='55'
-            cy='60'
-            r='5'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
           <path
-            d='M15 35 L20 20 L50 20 L65 35'
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
-            fill='none'
+            strokeLinecap='round'
           />
-          <line
-            x1='30'
-            y1='20'
-            x2='30'
-            y2='35'
-            stroke='#8C3112'
-            strokeWidth='2'
-          />
-          <line
-            x1='45'
-            y1='20'
-            x2='45'
-            y2='35'
-            stroke='#8C3112'
-            strokeWidth='2'
-          />
+          <circle cx='40' cy='40' r='3' fill='black' />
         </svg>
       ),
     },
     {
       id: 3,
-      question: 'Can we bring our kids?',
+      question: 'Can I bring my kids?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec auctor, nisl eget ultricies ultrices, nunc nisl aliquam nunc, quis aliquam nisl nunc vel nisl. Sed euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, quis aliquam nisl nunc vel nisl. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+        'Unfortunately, no little ones allowed! Excellence Resorts are <strong>adults-only (18+)</strong>, which means you get to enjoy a kid-free vacation!<br><br>Think of it as your chance to sleep in, enjoy uninterrupted conversations, and sip cocktails by the pool without worry. Time to call that babysitter and plan your grown-up getaway!',
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle
-            cx='40'
-            cy='30'
-            r='8'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
           <path
-            d='M40 38 L40 55 M40 45 L30 40 M40 45 L50 40 M40 55 L30 65 M40 55 L50 65'
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
             strokeLinecap='round'
           />
-          <circle
-            cx='25'
-            cy='25'
-            r='5'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
-          <circle
-            cx='55'
-            cy='25'
-            r='5'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
+          <circle cx='40' cy='40' r='3' fill='black' />
         </svg>
       ),
     },
     {
       id: 4,
-      question: "What's the dress code?",
+      question: 'What is the weather like in Cancun in January?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ornare lectus sit amet est placerat in egestas erat. Elementum pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec.',
+        "<strong>Absolute PERFECTION!</strong> ☀️ January is literally the best month to visit Cancun. Expect:<br><br><ul><li><strong>Daytime temps:</strong> 70-82°F (perfect beach weather!)</li><li><strong>Evening temps:</strong> 68-72°F (ideal for outdoor dining)</li><li><strong>Ocean temp:</strong> 80°F (like a warm bath!)</li><li><strong>Humidity:</strong> Lower than summer at around 75%</li><li><strong>Rain:</strong> Practically zero - January averages only 5 rainy days</li><li><strong>Hurricane risk:</strong> NONE (season ends in November)</li></ul>Pack your sunglasses because you'll get about 8 hours of sunshine daily!",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
           <path
-            d='M30 20 L50 20 L55 35 L50 50 L30 50 L25 35 Z'
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
-            fill='none'
+            strokeLinecap='round'
           />
-          <path
-            d='M25 35 Q15 40 15 55 L25 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
-          <path
-            d='M55 35 Q65 40 65 55 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
-          <circle
-            cx='40'
-            cy='15'
-            r='5'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
+          <circle cx='40' cy='40' r='3' fill='black' />
         </svg>
       ),
     },
     {
       id: 5,
-      question: 'Will there be vegetarian options?',
+      question: 'What is the dress code?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Ornare arcu dui vivamus arcu felis bibendum ut tristique et. At varius vel pharetra vel turpis nunc eget lorem dolor. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum.',
+        '<p><strong>Wedding Day:</strong> Cocktail attire with a tropical twist! We\'re encouraging bright, vibrant colors - think coral, turquoise, sunny yellow, or tropical prints. Leave the black at home and embrace those vacation vibes! Ladies, consider wedges or block heels for the beach setting. Gentlemen, lightweight fabrics are your friend.</p><p><strong>Resort Dining:</strong> Most restaurants require "resort elegant" in the evenings:<br><ul><li><strong>Men:</strong> Long pants, collared shirts, closed-toe shoes (no shorts or sandals)</li><li><strong>Women:</strong> Sundresses, elegant resort wear</li></ul></p>',
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
           <path
-            d='M20 40 Q40 20 60 40 L60 55 Q40 65 20 55 Z'
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
-            fill='none'
+            strokeLinecap='round'
           />
-          <line
-            x1='30'
-            y1='40'
-            x2='30'
-            y2='50'
-            stroke='#8C3112'
-            strokeWidth='2'
-          />
-          <line
-            x1='40'
-            y1='35'
-            x2='40'
-            y2='52'
-            stroke='#8C3112'
-            strokeWidth='2'
-          />
-          <line
-            x1='50'
-            y1='40'
-            x2='50'
-            y2='50'
-            stroke='#8C3112'
-            strokeWidth='2'
-          />
-          <circle
-            cx='25'
-            cy='25'
-            r='3'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
-          <circle
-            cx='55'
-            cy='25'
-            r='3'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
+          <circle cx='40' cy='40' r='3' fill='black' />
         </svg>
       ),
     },
     {
       id: 6,
-      question: 'Can we take photos?',
+      question: 'What else should I bring?',
       answer:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id venenatis a condimentum vitae sapien pellentesque habitant morbi. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Consectetur lorem donec massa sapien faucibus et molestie ac feugiat.',
+        "Your packing essentials for paradise:<br><br><ul><li><strong>REEF-SAFE SUNSCREEN</strong> - lots of it! (Required for swimming in cenotes)</li><li><strong>Cash for tips</strong> - While not expected, it's appreciated. Small bills in USD work great</li><li><strong>Multiple swimsuits</strong> - You'll live in them! (The resort has 6 pools!)</li><li><strong>Light jacket or wrap</strong> - For occasional cool evenings or AC in restaurants</li><li><strong>Underwater camera</strong> - For snorkeling adventures</li><li><strong>Comfortable walking shoes</strong> - For excursions to ruins</li><li><strong>Insect repellent</strong> - For jungle excursions</li><li><strong>Medications</strong> - Including Dramamine if you're prone to seasickness</li><li><strong>Power bank</strong> - You'll take a million photos!</li></ul>",
       svgIcon: (
         <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <rect
-            x='20'
-            y='25'
-            width='40'
-            height='30'
-            rx='5'
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
+          <path
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
-            fill='none'
+            strokeLinecap='round'
           />
-          <circle
-            cx='40'
-            cy='40'
-            r='8'
+          <circle cx='40' cy='40' r='3' fill='black' />
+        </svg>
+      ),
+    },
+    {
+      id: 7,
+      question: 'How do I get from the airport to the resort?',
+      answer:
+        "Cancun International Airport (CUN) is your destination - just 20-35 minutes from the resort!<br><br>You have several options:<ul><li><strong>Resort Shuttle Service</strong> - Excellence offers transfers, but they can be pricey ($150+ roundtrip)</li><li><strong>Private Shuttle Companies</strong> - More affordable at $60-105 roundtrip: Happy Shuttle Cancun, USA/Canada Transfers, Entertainment Plus</li><li><strong>Taxi</strong> - Available but more expensive than pre-booked shuttles</li></ul><strong>Pro tip:</strong> Book your transportation in advance! You'll skip the airport chaos and often save money. The resort is in Puerto Morelos, about 25km south of the airport.",
+      svgIcon: (
+        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
+          <path
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
-            fill='none'
+            strokeLinecap='round'
           />
-          <circle
-            cx='40'
-            cy='40'
-            r='4'
+          <circle cx='40' cy='40' r='3' fill='black' />
+        </svg>
+      ),
+    },
+    {
+      id: 8,
+      question: 'What else is there to do in the area?',
+      answer:
+        '<strong>SO MUCH!</strong><br><br><p><strong>At the Resort:</strong></p><ul><li>Miilé Spa (book treatments early!)</li><li>6 meandering pools including a swim-up bar</li><li>Complimentary kayaks, paddleboards, snorkeling gear</li><li>Beach volleyball, yoga classes, fitness center</li><li>Nightly entertainment and shows</li><li>Golf at nearby Greg Norman-designed course</li></ul><p><strong>Nearby Adventures (20-90 minutes away):</strong></p><ul><li>Cenote hopping on Ruta de los Cenotes - swim in crystal-clear underground pools!</li><li>Snorkeling at Puerto Morelos Reef - the second-largest barrier reef in the world!</li><li>Mayan Ruins: Tulum, Chichen Itza, Coba</li><li>Swimming with whale sharks (January is prime season!)</li><li>Catamaran trip to Isla Mujeres</li><li>ATV jungle tours with zip-lining</li><li>Deep-sea fishing</li><li>Explore Puerto Morelos town</li></ul>',
+      svgIcon: (
+        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
+          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
+          <path
+            d='M40 20 L40 40 L55 55'
             stroke='#8C3112'
             strokeWidth='2'
-            fill='none'
+            strokeLinecap='round'
           />
-          <rect
-            x='48'
-            y='20'
-            width='8'
-            height='5'
-            stroke='#8C3112'
-            strokeWidth='2'
-            fill='none'
-          />
+          <circle cx='40' cy='40' r='3' fill='black' />
         </svg>
       ),
     },
   ]
 
   return (
-    <div className='bg-surface min-h-screen p-4 sm:p-8'>
+    <div id='faq' className='bg-surface min-h-screen p-4 sm:p-8'>
       {/* Header */}
       <div className='mb-12 text-center'>
-        <h2 className='font-pacifico mb-4 text-4xl text-primary sm:text-5xl md:text-6xl'>
+        <h2 className='font-pacifico text-primary mb-4 text-4xl sm:text-5xl md:text-6xl'>
           Frequently Asked Questions
         </h2>
         <div className='mb-6 flex justify-center'>
@@ -281,22 +172,21 @@ const Faq = () => {
 
       {/* Cards Grid */}
       <div className='mx-auto w-[95%] max-w-[1600px]'>
-        <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 items-start'>
+        <div className='grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {faqs.map((faq) => (
             <div
               key={faq.id}
-              className={`relative cursor-pointer rounded-2xl border-2 border-shadow bg-surface p-8 transition-all duration-300 ease-out ${
-                selectedCard === faq.id
-                  ? 'scale-105'
-                  : 'hover:scale-[1.02]'
+              className={`border-shadow bg-surface relative cursor-pointer rounded-2xl border-2 p-8 transition-all duration-300 ease-out ${
+                selectedCard === faq.id ? 'scale-105' : 'hover:scale-[1.02]'
               } `}
               onClick={() =>
                 setSelectedCard(selectedCard === faq.id ? null : faq.id)
               }
               style={{
-                boxShadow: selectedCard === faq.id 
-                  ? '6px 6px 0px rgba(16, 28, 38, 1)' 
-                  : '8px 8px 0px rgba(16, 28, 38, 1)',
+                boxShadow:
+                  selectedCard === faq.id
+                    ? '6px 6px 0px rgba(16, 28, 38, 1)'
+                    : '8px 8px 0px rgba(16, 28, 38, 1)',
               }}
             >
               {/* Simple Icon/Illustration Area */}
@@ -324,7 +214,7 @@ const Faq = () => {
               </div>
 
               {/* Question */}
-              <h3 className='mb-4 text-center text-xl font-display font-bold text-primary'>
+              <h3 className='font-display text-primary mb-4 text-center text-xl font-bold'>
                 {faq.question}
               </h3>
 
@@ -332,15 +222,16 @@ const Faq = () => {
               <div
                 className={`overflow-hidden transition-all duration-300 ${selectedCard === faq.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} `}
               >
-                <p className='text-center leading-relaxed text-primary/70'>
-                  {faq.answer}
-                </p>
+                <div 
+                  className='text-primary/70 text-center leading-relaxed faq-content'
+                  dangerouslySetInnerHTML={{ __html: faq.answer }}
+                />
               </div>
 
               {/* Click indicator */}
               <div className='absolute right-4 bottom-4'>
                 <ChevronRight
-                  className={`h-5 w-5 text-primary/40 transition-transform duration-300 ${selectedCard === faq.id ? 'rotate-90' : ''} `}
+                  className={`text-primary/40 h-5 w-5 transition-transform duration-300 ${selectedCard === faq.id ? 'rotate-90' : ''} `}
                 />
               </div>
             </div>
@@ -350,7 +241,7 @@ const Faq = () => {
 
       {/* Footer CTA */}
       <div className='mt-16 text-center'>
-        <p className='mb-6 text-primary/80 text-lg'>Still have questions?</p>
+        <p className='text-primary/80 mb-6 text-lg'>Still have questions?</p>
         <ShadowButton text='Contact Us' />
       </div>
     </div>

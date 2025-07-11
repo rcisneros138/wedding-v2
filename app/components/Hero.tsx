@@ -128,7 +128,7 @@ export default function Hero() {
       </section>
 
       {/* Info section - flows naturally after hero */}
-      <div className='relative -mt-[0px] w-full'>
+      <div className='relative -mt-0.25 mb-3 w-full'>
         <div className='relative mx-auto h-full w-[95%]'>
           <div className='bg-primary-textured shadow-info-section relative mx-auto flex h-full max-w-[1600px] items-center justify-center overflow-hidden rounded-b-2xl'>
             <TimelineSchedule />

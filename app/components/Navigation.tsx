@@ -53,6 +53,22 @@ export default function Navigation() {
               </li>
               <li>
                 <a
+                  href='#resort'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
+                  Resort
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#faq'
+                  className='text-primary hover:text-primary-dark no-underline transition-colors'
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a
                   href='#rsvp'
                   className='text-primary hover:text-primary-dark no-underline transition-colors'
                 >
@@ -159,6 +175,24 @@ export default function Navigation() {
                         className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         Details
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href='#resort'
+                        onClick={() => setIsMenuOpen(false)}
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
+                      >
+                        Resort
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href='#faq'
+                        onClick={() => setIsMenuOpen(false)}
+                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
+                      >
+                        FAQ
                       </a>
                     </li>
                     <li>

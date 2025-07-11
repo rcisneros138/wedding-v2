@@ -38,7 +38,7 @@ html {
   --shadow-offset-shadow-sm: 3px 3px 0px 0px var(--color-shadow);
   --shadow-offset-black: 8px 8px 0px 0px rgba(0, 0, 0, 1);
   --shadow-offset-black-sm: 6px 6px 0px 0px rgba(0, 0, 0, 1);
-  --shadow-info-section: 8px 0px 0px 0px rgba(16, 28, 38, 1);
+  --shadow-info-section: 8px 8px 0px 0px rgba(16, 28, 38, 1);
 
   /* Drop Shadows */
   --drop-shadow-offset: 5px 5px 0px var(--color-shadow);
@@ -253,5 +253,39 @@ html {
     opacity: 0.75;
     mix-blend-mode: multiply;
     pointer-events: none;
+  }
+
+  /* FAQ Content Styling */
+  .faq-content {
+    line-height: 1.75;
+  }
+
+  .faq-content ul {
+    list-style: disc;
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    text-align: left;
+  }
+
+  .faq-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-content strong {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .faq-content br + br {
+    display: block;
+    height: 0.5rem;
+  }
+
+  .faq-content p {
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-content p:last-child {
+    margin-bottom: 0;
   }
 }
