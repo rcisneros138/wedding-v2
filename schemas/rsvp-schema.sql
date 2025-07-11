@@ -15,12 +15,10 @@ CREATE TABLE IF NOT EXISTS rsvps (
   
   -- RSVP Details
   attending BOOLEAN NOT NULL,
-  guest_count INTEGER NOT NULL DEFAULT 1,
   plus_one_name TEXT,
   
   -- Preferences
-  dietary_restrictions TEXT,
-  special_requests TEXT,
+  song_requests TEXT,
   
   -- Metadata
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

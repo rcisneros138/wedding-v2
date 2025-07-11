@@ -54,10 +54,8 @@ export async function POST(request: Request) {
       email: validationResult.data.email,
       phone: validationResult.data.phone || null,
       attending: validationResult.data.attending,
-      guest_count: validationResult.data.guestCount,
       plus_one_name: validationResult.data.plusOneName || null,
-      dietary_restrictions: validationResult.data.dietaryRestrictions || null,
-      special_requests: validationResult.data.specialRequests || null,
+      song_requests: validationResult.data.songRequests || null,
       ip_address: clientIP
     }
 
@@ -65,17 +63,15 @@ export async function POST(request: Request) {
     try {
       const result = await env.DB.prepare(`
         INSERT INTO rsvps (
-          guest_name, email, phone, attending, guest_count, 
-          plus_one_name, dietary_restrictions, special_requests, ip_address
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+          guest_name, email, phone, attending, 
+          plus_one_name, song_requests, ip_address
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(email) DO UPDATE SET
           guest_name = excluded.guest_name,
           phone = excluded.phone,
           attending = excluded.attending,
-          guest_count = excluded.guest_count,
           plus_one_name = excluded.plus_one_name,
-          dietary_restrictions = excluded.dietary_restrictions,
-          special_requests = excluded.special_requests,
+          song_requests = excluded.song_requests,
           updated_at = CURRENT_TIMESTAMP
         RETURNING *
       `).bind(
@@ -83,10 +79,8 @@ export async function POST(request: Request) {
         rsvpData.email,
         rsvpData.phone,
         rsvpData.attending ? 1 : 0, // SQLite uses 1/0 for boolean
-        rsvpData.guest_count,
         rsvpData.plus_one_name,
-        rsvpData.dietary_restrictions,
-        rsvpData.special_requests,
+        rsvpData.song_requests,
         rsvpData.ip_address
       ).first()
 

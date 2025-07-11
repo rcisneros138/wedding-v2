@@ -30,12 +30,10 @@ export default function RSVPForm() {
     resolver: zodResolver(rsvpFormSchema),
     defaultValues: {
       attending: true,
-      guestCount: 1,
     },
   })
 
   const isAttending = watch('attending')
-  const guestCount = watch('guestCount')
 
   const onSubmit = async (data: RSVPFormData) => {
     setIsSubmitting(true)
@@ -212,82 +210,39 @@ export default function RSVPForm() {
             {/* Additional fields for attending guests */}
             {isAttending && (
               <>
-                {/* Guest Count */}
+                {/* Plus One Name */}
                 <div>
                   <label
-                    htmlFor='guestCount'
+                    htmlFor='plusOneName'
                     className='mb-1 block text-sm font-medium text-gray-700'
                   >
-                    Number of Guests *
+                    Names of Additional Guests
                   </label>
-                  <select
-                    {...register('guestCount', { valueAsNumber: true })}
+                  <input
+                    {...register('plusOneName')}
+                    type='text'
                     className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                      <option key={num} value={num}>
-                        {num}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.guestCount && (
-                    <p className='mt-1 text-sm text-red-500'>
-                      {errors.guestCount.message}
-                    </p>
-                  )}
+                    placeholder='Jane Doe, John Smith'
+                  />
                 </div>
 
-                {/* Plus One Name */}
-                {guestCount > 1 && (
-                  <div>
-                    <label
-                      htmlFor='plusOneName'
-                      className='mb-1 block text-sm font-medium text-gray-700'
-                    >
-                      Names of Additional Guests
-                    </label>
-                    <input
-                      {...register('plusOneName')}
-                      type='text'
-                      className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
-                      placeholder='Jane Doe, John Smith'
-                    />
-                  </div>
-                )}
-
-                {/* Dietary Restrictions */}
+                {/* Song Requests */}
                 <div>
                   <label
-                    htmlFor='dietaryRestrictions'
+                    htmlFor='songRequests'
                     className='mb-1 block text-sm font-medium text-gray-700'
                   >
-                    Dietary Restrictions
+                    Song Requests
                   </label>
                   <textarea
-                    {...register('dietaryRestrictions')}
+                    {...register('songRequests')}
                     rows={3}
                     className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
-                    placeholder='Vegetarian, vegan, gluten-free, allergies, etc.'
+                    placeholder='What songs would you like to hear at the reception?'
                   />
                 </div>
               </>
             )}
-
-            {/* Special Requests */}
-            <div>
-              <label
-                htmlFor='specialRequests'
-                className='mb-1 block text-sm font-medium text-gray-700'
-              >
-                Special Requests or Notes
-              </label>
-              <textarea
-                {...register('specialRequests')}
-                rows={3}
-                className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
-                placeholder='Anything else we should know?'
-              />
-            </div>
 
             {/* Turnstile Widget */}
             <div className='my-6 flex justify-center'>

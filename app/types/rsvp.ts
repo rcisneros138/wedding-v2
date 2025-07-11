@@ -23,10 +23,8 @@ export const rsvpFormSchema = z.object({
   email: z.string().email('Please enter a valid email'),
   phone: z.string().optional(),
   attending: z.boolean(),
-  guestCount: z.number().min(1).max(10, 'Please enter between 1-10 guests'),
   plusOneName: z.string().optional(),
-  dietaryRestrictions: z.string().optional(),
-  specialRequests: z.string().optional(),
+  songRequests: z.string().optional(),
 })
 
 // Type for form data
@@ -39,10 +37,8 @@ export interface RSVPRecord {
   email: string
   phone?: string | null
   attending: boolean
-  guest_count: number
   plus_one_name?: string | null
-  dietary_restrictions?: string | null
-  special_requests?: string | null
+  song_requests?: string | null
   created_at: string
   updated_at: string
   ip_address?: string | null
