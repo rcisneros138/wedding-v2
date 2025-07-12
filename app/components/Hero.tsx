@@ -1,9 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
 import TimelineSchedule from './TimelineSchedule'
 
 export default function Hero() {
+  const handleRSVPClick = () => {
+    const rsvpElement = document.getElementById('rsvp')
+    if (rsvpElement) {
+      rsvpElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <section className='bg-surface relative flex w-full flex-col items-center justify-start pt-3'>
@@ -102,6 +111,7 @@ export default function Hero() {
                       <ShadowButton
                         text='RSVP'
                         ariaLabel='RSVP for the wedding'
+                        onClick={handleRSVPClick}
                       />
                     </div>
 
