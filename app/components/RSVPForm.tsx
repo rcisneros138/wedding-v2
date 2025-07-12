@@ -114,7 +114,11 @@ export default function RSVPForm() {
 
       if (result.success) {
         setSubmitStatus('success')
-        setStatusMessage(result.message || 'Thank you for your RSVP!')
+        let message = result.message || 'Thank you for your RSVP!'
+        if (result.emailSent === false) {
+          message += ' (Note: Confirmation email could not be sent. Please contact us if you need confirmation.)'
+        }
+        setStatusMessage(message)
         reset()
       } else {
         throw new Error(result.error || 'Failed to submit RSVP')

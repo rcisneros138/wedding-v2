@@ -1,6 +1,7 @@
 import { getRequestContext } from '@cloudflare/next-on-pages'
 import { rsvpFormSchema, type RSVPResponse, type TurnstileVerifyResponse, type RSVPRecord } from '@/app/types/rsvp'
 import { devLog, devError, devLogSQL } from '@/app/utils/logger'
+import { EmailService } from '@/app/services/email/email-service'
 
 export const runtime = 'edge'
 
@@ -142,6 +143,101 @@ export async function POST(request: Request) {
         dataMatches: verification?.email === rsvpData.email
       })
 
+      // Send confirmation email
+      let emailSent = false
+      let emailError: string | undefined
+      
+      if (env.RESEND_API_KEY) {
+        try {
+          const emailService = new EmailService(env.RESEND_API_KEY)
+          const emailResult = await emailService.sendRSVPConfirmation({
+            guestName: rsvpData.guest_name,
+            email: rsvpData.email,
+            attending: rsvpData.attending,
+            plusOneName: rsvpData.plus_one_name,
+            songRequests: rsvpData.song_requests,
+            bookedRoom: rsvpData.booked_room
+          })
+          
+          emailSent = emailResult.success
+          emailError = emailResult.error
+          
+          // Log email status
+          if (emailResult.success) {
+            devLog('Confirmation email sent', {
+              email: rsvpData.email,
+              messageId: emailResult.messageId
+            })
+            
+            // Update database with email status
+            const updateEmailStatusQuery = `
+              UPDATE rsvps 
+              SET confirmation_email_sent = 1,
+                  confirmation_email_sent_at = CURRENT_TIMESTAMP,
+                  confirmation_email_id = ?
+              WHERE email = ?
+            `
+            await env.DB.prepare(updateEmailStatusQuery)
+              .bind(emailResult.messageId, rsvpData.email)
+              .run()
+              
+            // Log email in email_logs table
+            const logEmailQuery = `
+              INSERT INTO email_logs (
+                rsvp_id, email_type, recipient_email, subject, 
+                status, message_id
+              ) VALUES (
+                (SELECT id FROM rsvps WHERE email = ?),
+                'confirmation',
+                ?,
+                ?,
+                'sent',
+                ?
+              )
+            `
+            const subject = rsvpData.attending 
+              ? "🎉 We're excited to celebrate with you!"
+              : "Thank you for letting us know"
+              
+            await env.DB.prepare(logEmailQuery)
+              .bind(rsvpData.email, rsvpData.email, subject, emailResult.messageId)
+              .run()
+          } else {
+            devError('Failed to send confirmation email', {
+              email: rsvpData.email,
+              error: emailResult.error
+            })
+            
+            // Log failed email attempt
+            const logFailedEmailQuery = `
+              INSERT INTO email_logs (
+                rsvp_id, email_type, recipient_email, subject, 
+                status, error_message
+              ) VALUES (
+                (SELECT id FROM rsvps WHERE email = ?),
+                'confirmation',
+                ?,
+                ?,
+                'failed',
+                ?
+              )
+            `
+            const subject = rsvpData.attending 
+              ? "🎉 We're excited to celebrate with you!"
+              : "Thank you for letting us know"
+              
+            await env.DB.prepare(logFailedEmailQuery)
+              .bind(rsvpData.email, rsvpData.email, subject, emailError || 'Unknown error')
+              .run()
+          }
+        } catch (emailErr) {
+          devError('Email service error', emailErr)
+          emailError = emailErr instanceof Error ? emailErr.message : 'Email service error'
+        }
+      } else {
+        devLog('RESEND_API_KEY not configured, skipping email')
+      }
+
       // Return success response
       const message = rsvpData.attending 
         ? `Thank you ${rsvpData.guest_name}! We're excited to celebrate with you.`
@@ -150,7 +246,8 @@ export async function POST(request: Request) {
       return Response.json({
         success: true,
         message,
-        data: result
+        data: result,
+        emailSent
       } as RSVPResponse)
 
     } catch (dbError) {

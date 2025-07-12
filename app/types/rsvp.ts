@@ -6,6 +6,7 @@ declare global {
     DB: D1Database
     TURNSTILE_SECRET_KEY: string
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: string
+    RESEND_API_KEY?: string
   }
   
   // D1Database type for Cloudflare Workers
@@ -52,6 +53,7 @@ export interface RSVPResponse {
   message: string
   data?: RSVPRecord
   error?: string
+  emailSent?: boolean
 }
 
 // Turnstile verification response
