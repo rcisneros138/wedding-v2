@@ -226,15 +226,6 @@ export default function Navigation() {
                     </li>
                     <li>
                       <a
-                        href='#our-story'
-                        onClick={() => setIsMenuOpen(false)}
-                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
-                      >
-                        Our Story
-                      </a>
-                    </li>
-                    <li>
-                      <a
                         href='#details'
                         onClick={() => setIsMenuOpen(false)}
                         className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
@@ -267,15 +258,6 @@ export default function Navigation() {
                         className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
                       >
                         RSVP
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href='#registry'
-                        onClick={() => setIsMenuOpen(false)}
-                        className='text-primary hover:text-primary-dark block py-2 no-underline transition-colors'
-                      >
-                        Registry
                       </a>
                     </li>
                   </ul>
