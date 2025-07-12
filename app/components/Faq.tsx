@@ -8,6 +8,10 @@ import WavyLine from './WavyLine'
 const Faq = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null)
 
+  const handleContactUs = () => {
+    window.location.href = 'mailto:amandaandray2026@gmail.com?subject=Wedding Question'
+  }
+
   const faqs = [
     {
       id: 1,
@@ -266,7 +270,7 @@ const Faq = () => {
       {/* Footer CTA */}
       <div className='mt-16 text-center'>
         <p className='text-primary/80 mb-6 text-lg'>Still have questions?</p>
-        <ShadowButton text='Contact Us' />
+        <ShadowButton text='Contact Us' onClick={handleContactUs} />
       </div>
     </div>
   )
