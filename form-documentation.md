@@ -2,7 +2,7 @@
 
 ## Overview
 
-The wedding RSVP form is a sophisticated, secure web application built to handle guest responses for Ashlyn & Royal's wedding on January 24, 2026. The form collects guest information, attendance confirmation, dietary restrictions, and special requests while preventing spam and duplicate submissions.
+The wedding RSVP form is a sophisticated, secure web application built to handle guest responses for Amanda & Ray's wedding on January 24, 2026. The form collects guest information, attendance confirmation, dietary restrictions, and special requests while preventing spam and duplicate submissions.
 
 ### Key Features
 - **Real-time validation** with helpful error messages

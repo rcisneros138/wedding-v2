@@ -105,7 +105,7 @@ export const generateResortPDF = () => {
 
   doc.setTextColor(lightGray)
   doc.setFontSize(12)
-  doc.text('Ashlyn & Royal\'s Wedding', leftMargin, yPosition)
+  doc.text('Amanda & Ray\'s Wedding', leftMargin, yPosition)
   yPosition += 6
   doc.text('January 24, 2026', leftMargin, yPosition)
   yPosition += 15

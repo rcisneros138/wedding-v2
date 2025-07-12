@@ -32,7 +32,7 @@ const reciaSerifDisplay = localfont({
 })
 
 export const metadata: Metadata = {
-  title: 'Ashlyn & Royal - January 24, 2026 | Playa del Carmen',
+  title: 'Amanda & Ray - January 24, 2026 | Playa del Carmen',
   description: 'Join us in Mexico on January 24, 2026 to celebrate our wedding',
   viewport: 'width=device-width, initial-scale=1',
   icons: {

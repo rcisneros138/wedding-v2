@@ -12,8 +12,8 @@ This directory contains assets extracted from the Figma design file.
 - **portrait-outline.svg** - Portrait illustration outline
 - **squiggle-shadow.svg** - Squiggle arc shadow element
 - **squiggle.svg** - Main squiggle arc element
-- **title-shadow.svg** - "Ashlyn & Royal" title shadow
-- **title.svg** - "Ashlyn & Royal" title
+- **title-shadow.svg** - "Amanda & Ray" title shadow
+- **title.svg** - "Amanda & Ray" title
 - **wavy-line-black.svg** - Black wavy line decoration
 - **wavy-line-red.svg** - Red wavy line decoration
 

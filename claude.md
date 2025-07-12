@@ -1,7 +1,7 @@
 # Wedding Website Project
 
 ## Overview
-This is a wedding website for Ashlyn & Royal's wedding on January 24, 2026 in Mexico. The design is based on a Figma file with a vintage, textured aesthetic using warm colors and decorative elements.
+This is a wedding website for Amanda & Ray's wedding on January 24, 2026 in Mexico. The design is based on a Figma file with a vintage, textured aesthetic using warm colors and decorative elements.
 
 ## Development Principles
 - Always use React components when possible within best practices
