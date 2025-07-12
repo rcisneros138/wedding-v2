@@ -33,4 +33,15 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts.wrangler/
+next-env.d.ts
+
+# Cloudflare/Wrangler
+.wrangler/
+.dev.vars
+wrangler-debug.log
+.mf/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+rsvps-export.json
+functions/
