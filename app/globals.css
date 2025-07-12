@@ -166,6 +166,18 @@ html {
     margin: 0;
   }
 
+  /* Remove default fieldset styles */
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Style legend like label */
+  legend {
+    padding: 0;
+  }
+
   /* Ensure Pacifico font class works */
   .font-pacifico {
     font-family: var(--font-pacifico), cursive !important;

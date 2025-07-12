@@ -10,7 +10,7 @@ import { generateResortPDF } from '@/app/utils/generateResortPDF'
 interface ResortHighlight {
   id: string
   title: string
-  emoji: string
+  icon: React.ReactNode
   stats: string
   preview: string
   details: React.ReactNode
@@ -592,7 +592,17 @@ const ResortHighlights = () => {
     {
       id: 'dining',
       title: 'World-Class Dining',
-      emoji: '🍽️',
+      icon: (
+        <img 
+          src='/images/icons/dinner.svg' 
+          alt='Dining' 
+          width='60' 
+          height='60'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ),
       stats: '10 Restaurants',
       preview:
         'French, Mexican, Italian, Asian & more - no reservations needed!',
@@ -601,7 +611,17 @@ const ResortHighlights = () => {
     {
       id: 'bars',
       title: 'Bars & Lounges',
-      emoji: '🍹',
+      icon: (
+        <img 
+          src='/images/icons/lounge.svg' 
+          alt='Bars & Lounges' 
+          width='60' 
+          height='60'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ),
       stats: '12 Bars',
       preview: 'From coffee to cocktails, swim-up to chocolate bar',
       details: <DetailedBarsInfo />,
@@ -609,7 +629,17 @@ const ResortHighlights = () => {
     {
       id: 'activities',
       title: 'Activities & Entertainment',
-      emoji: '🎭',
+      icon: (
+        <img 
+          src='/images/icons/drums.svg' 
+          alt='Activities & Entertainment' 
+          width='60' 
+          height='60'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ),
       stats: 'All Day & Night',
       preview: 'Water sports, daily activities, nightly shows',
       details: <DetailedActivitiesInfo />,
@@ -617,7 +647,17 @@ const ResortHighlights = () => {
     {
       id: 'pools',
       title: 'Pools & Beach',
-      emoji: '🏖️',
+      icon: (
+        <img 
+          src='/images/icons/pool.svg' 
+          alt='Pools & Beach' 
+          width='60' 
+          height='60'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ),
       stats: '6 Pools + Beach',
       preview: 'Including lazy river, whirlpools & pristine beach',
       details: <DetailedPoolsBeachInfo />,
@@ -625,7 +665,17 @@ const ResortHighlights = () => {
     {
       id: 'spa',
       title: 'Miilé Spa',
-      emoji: '💆',
+      icon: (
+        <img 
+          src='/images/icons/spa.svg' 
+          alt='Spa' 
+          width='60' 
+          height='60'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ),
       stats: 'World-Class',
       preview: 'Hydrotherapy circuit & premium treatments',
       details: <DetailedSpaInfo />,
@@ -633,7 +683,17 @@ const ResortHighlights = () => {
     {
       id: 'suites',
       title: 'Luxury Suites',
-      emoji: '🛏️',
+      icon: (
+        <img 
+          src='/images/icons/robe.svg' 
+          alt='Luxury Suites' 
+          width='60' 
+          height='60'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ),
       stats: 'All Suites',
       preview: 'Every room has indoor jacuzzi & premium amenities',
       details: <DetailedRoomsInfo />,
@@ -661,7 +721,7 @@ const ResortHighlights = () => {
             
             {/* Content container with relative positioning to stay above pattern */}
             <div className='relative z-10'>
-              <div className='mb-3 text-4xl'>{card.emoji}</div>
+              <div className='mb-3'>{card.icon}</div>
               <h3 className='font-display text-primary mb-1 text-xl'>
                 {card.title}
               </h3>
@@ -689,13 +749,104 @@ const ResortHighlights = () => {
 // ResortQuickFacts Component
 const ResortQuickFacts = () => {
   const quickFacts = [
-    { icon: '🍴', fact: '10 restaurants (no reservations needed!)' },
-    { icon: '🍹', fact: '12 bars - all premium drinks included' },
-    { icon: '🏊', fact: '6 pools including lazy river' },
-    { icon: '🛁', fact: 'In-room jacuzzi in every suite' },
-    { icon: '🎭', fact: 'Nightly entertainment & shows' },
-    { icon: '💆', fact: 'World-class spa with hydrotherapy' },
-    { icon: '🏖️', fact: 'Pristine beach with calm waters' },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/dinner.svg' 
+          alt='Restaurants' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: '10 restaurants (no reservations needed!)' 
+    },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/cheers.svg' 
+          alt='Bars' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: '12 bars - all premium drinks included' 
+    },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/pool.svg' 
+          alt='Pools' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: '6 pools including lazy river' 
+    },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/robe.svg' 
+          alt='In-room jacuzzi' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: 'In-room jacuzzi in every suite' 
+    },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/drums.svg' 
+          alt='Entertainment' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: 'Nightly entertainment & shows' 
+    },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/spawoman.svg' 
+          alt='Spa' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: 'World-class spa with hydrotherapy' 
+    },
+    { 
+      icon: (
+        <img 
+          src='/images/icons/beach.svg' 
+          alt='Beach' 
+          width='40' 
+          height='40'
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+          }}
+        />
+      ), 
+      fact: 'Pristine beach with calm waters' 
+    },
     { icon: '🚣', fact: 'Free kayaks, paddleboards & snorkeling' },
     { icon: '🎾', fact: 'Tennis, pickleball, volleyball & more' },
     { icon: '🍾', fact: '24-hour room service included' },

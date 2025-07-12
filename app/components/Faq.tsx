@@ -13,36 +13,38 @@ const Faq = () => {
       id: 1,
       question: 'When should I book my room?',
       answer:
-        "If you are certain that you would like to come, <strong>please book as soon as possible!</strong><br><br>There is a <strong>significant discount</strong> for booking rooms with our promo code!<br><br>January is peak season in Cancun and the resort cannot guarantee room availability when their inventory fills up. The resort has 440 suites but they book up fast during high season!",
+        'If you are certain that you would like to come, <strong>please book as soon as possible!</strong><br><br>There is a <strong>significant discount</strong> for booking rooms with our promo code!<br><br>January is peak season in Cancun and the resort cannot guarantee room availability when their inventory fills up. The resort has 440 suites but they book up fast during high season!',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/clock.svg'
+            alt='Clock icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
       id: 2,
       question: 'What days should I book for?',
       answer:
-        "We will be there January 22-26th, 2026 and we would love for you to join us for the entire time! However, this is completely up to you. Our current schedule is:<br><br><ul><li><strong>Thursday, Jan 22:</strong> Arrival day. Settle in, explore the resort, and enjoy welcome drinks by the pool</li><li><strong>Friday, Jan 23:</strong> Beach day and rehearsal dinner</li><li><strong>Saturday, Jan 24:</strong> THE BIG DAY</li><li><strong>Sunday, Jan 25:</strong> Recovery brunch and pool party</li><li><strong>Monday, Jan 26:</strong> Departure day</li></ul>",
+        'We will be there January 22-26th, 2026 and we would love for you to join us for the entire time! However, this is completely up to you. Our current schedule is:<br><br><ul><li><strong>Thursday, Jan 22:</strong> Arrival day. Settle in, explore the resort, and enjoy welcome drinks by the pool</li><li><strong>Friday, Jan 23:</strong> Beach day and rehearsal dinner</li><li><strong>Saturday, Jan 24:</strong> THE BIG DAY</li><li><strong>Sunday, Jan 25:</strong> Recovery brunch and pool party</li><li><strong>Monday, Jan 26:</strong> Departure day</li></ul>',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/calender.svg'
+            alt='Calendar icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
@@ -51,34 +53,36 @@ const Faq = () => {
       answer:
         'Unfortunately Excellence Resorts are <strong>adults-only (18+)</strong>. But think of it as a chance to sleep in and enjoy cocktails by the pool without worry!',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/sleep.svg'
+            alt='Sleep icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
       id: 4,
       question: 'What is the weather like in Cancun in January?',
       answer:
-        "<strong>Absolutely perfect!</strong> January is literally the best time to visit Cancun.<br><br>Expect:<ul><li><strong>Daytime temps:</strong> 72-80°F (perfect beach weather)</li><li><strong>Evening temps:</strong> 68-72°F</li><li><strong>Ocean temps:</strong> 80°F (like a warm bath!)</li><li>It only rains on average 5 days in January, and very rarely for the entire day</li><li><strong>Hurricane risk:</strong> Basically zero (the season ends in November)</li></ul>",
+        '<strong>Absolutely perfect!</strong> January is literally the best time to visit Cancun.<br><br>Expect:<ul><li><strong>Daytime temps:</strong> 72-80°F (perfect beach weather)</li><li><strong>Evening temps:</strong> 68-72°F</li><li><strong>Ocean temps:</strong> 80°F (like a warm bath!)</li><li>It only rains on average 5 days in January, and very rarely for the entire day</li><li><strong>Hurricane risk:</strong> Basically zero (the season ends in November)</li></ul>',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/beach.svg'
+            alt='Beach icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
@@ -87,16 +91,17 @@ const Faq = () => {
       answer:
         '<strong>For the wedding day:</strong> Cocktail attire, and bright colors are encouraged! Consider flat shoes for the beach setting.<br><br><strong>For the resort in general:</strong> Many of the restaurants at the resort require long pants, skirts, or dresses at dinner. Shorts, flip-flops, tank-tops, and wet clothes are not allowed. However, this of course does not apply when you are at one of the pools or at the beach!',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/dress.svg'
+            alt='Dress icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
@@ -105,34 +110,36 @@ const Faq = () => {
       answer:
         "<ul><li><strong>Reef-safe sunscreen</strong></li><li><strong>Cash for tips.</strong> While not expected, it's appreciated by the staff. Small bills in USD work great</li><li><strong>Multiple swim suits!</strong> The resort has 6 pools!</li><li><strong>Light jacket or wrap.</strong> For occasional cool evenings or AC in the restaurants</li><li><strong>Comfortable walking shoes</strong>, in case you decide to go on any excursions</li></ul>",
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/camera.svg'
+            alt='Camera icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
       id: 7,
       question: 'How do I get from the airport to the resort?',
       answer:
-        "Cancun International Airport (CUN) is your destination - just 25-30 minutes from the resort!<br><br>You have several options:<ul><li><strong>Resort shuttle service (recommended!):</strong> Excellence provides a <strong>FREE</strong> shuttle service through their partner Seasons Tours, and is for guests on the reservation arriving and leaving at the same time. This applies only if you are booking for a minimum of 3 nights.</li><li><strong>Private shuttle companies (not through Excellence):</strong> Happy Shuttle Cancun, USA/Canada Transfers, Entertainment Plus. These typically cost around $100 roundtrip.</li><li><strong>Taxi (not our first recommendation):</strong> Are available but are more expensive than pre-booked shuttles</li></ul>",
+        'Cancun International Airport (CUN) is your destination - just 25-30 minutes from the resort!<br><br>You have several options:<ul><li><strong>Resort shuttle service (recommended!):</strong> Excellence provides a <strong>FREE</strong> shuttle service through their partner Seasons Tours, and is for guests on the reservation arriving and leaving at the same time. This applies only if you are booking for a minimum of 3 nights.</li><li><strong>Private shuttle companies (not through Excellence):</strong> Happy Shuttle Cancun, USA/Canada Transfers, Entertainment Plus. These typically cost around $100 roundtrip.</li><li><strong>Taxi (not our first recommendation):</strong> Are available but are more expensive than pre-booked shuttles</li></ul>',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/taxi.svg'
+            alt='Taxi icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
       ),
     },
     {
@@ -141,16 +148,36 @@ const Faq = () => {
       answer:
         '<ul><li><strong>Miilé Spa (book treatments early!):</strong> this spa is on-site, so you do not have to leave the resort</li><li><strong>Golf:</strong> There are multiple beautiful courses nearby. <a href="https://www.excellenceresorts.com/blog/what-are-the-4-best-golf-courses-in-cancun/" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: underline;">View golf course options</a></li><li><strong>Visiting cenotes</strong> (natural sinkholes that are amazing to swim in). There are so many along the Yucatan Peninsula. Highly recommend visiting at least one if you are planning on traveling out of the resort!</li></ul>',
       svgIcon: (
-        <svg width='80' height='80' viewBox='0 0 80 80' fill='none'>
-          <circle cx='40' cy='40' r='30' stroke='#8C3112' strokeWidth='2' />
-          <path
-            d='M40 20 L40 40 L55 55'
-            stroke='#8C3112'
-            strokeWidth='2'
-            strokeLinecap='round'
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/spa.svg'
+            alt='Spa icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
           />
-          <circle cx='40' cy='40' r='3' fill='black' />
-        </svg>
+        </div>
+      ),
+    },
+    {
+      id: 9,
+      question: 'Do we need to bring a gift?',
+      answer:
+        "Absolutely not! Your presence is present enough! We know it's not cheap to join us in Mexico, and that's gift enough.",
+      svgIcon: (
+        <div className='flex h-[120px] w-[120px] items-center justify-center'>
+          <img
+            src='/images/icons/cheers.svg'
+            alt='Gift icon'
+            className='h-full w-full object-contain'
+            style={{
+              filter:
+                'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
+            }}
+          />
+        </div>
       ),
     },
   ]
@@ -204,29 +231,13 @@ const Faq = () => {
                 {/* Simple Icon/Illustration Area */}
                 <div className='mb-6 flex justify-center'>
                   <div className='relative'>
-                    {/* Background circle with dots */}
-                    <div className='absolute -inset-4'>
-                      <svg width='120' height='120' viewBox='0 0 120 120'>
-                        <circle cx='20' cy='20' r='2' fill='#FEA88A' />
-                        <circle cx='100' cy='20' r='2' fill='#FEA88A' />
-                        <circle cx='20' cy='100' r='2' fill='#FEA88A' />
-                        <circle cx='100' cy='100' r='2' fill='#FEA88A' />
-                        <path
-                          d='M30,60 Q60,40 90,60'
-                          stroke='#FEA88A'
-                          strokeWidth='2'
-                          fill='none'
-                          strokeDasharray='3,3'
-                        />
-                      </svg>
-                    </div>
                     {/* Main icon */}
                     <div className='relative z-10'>{faq.svgIcon}</div>
                   </div>
                 </div>
 
                 {/* Question */}
-                <h3 className='font-display text-primary mb-4 text-center text-xl font-bold'>
+                <h3 className='font-display text-primary mb-4 flex min-h-[3.5rem] items-center justify-center text-center text-xl font-bold'>
                   {faq.question}
                 </h3>
 

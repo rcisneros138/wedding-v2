@@ -36,86 +36,70 @@ export default function Navigation() {
             {/* Shadow layer */}
             <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
 
-          {/* Main nav container */}
-          <div
-            className={`border-primary relative rounded-[50px] border-2 bg-white transition-all duration-300 ${
-              isScrolled ? 'px-8 py-3' : 'px-12 py-4'
-            }`}
-          >
-            {/* Diagonal line texture overlay */}
+            {/* Main nav container */}
             <div
-              className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
-              style={{
-                backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
-                backgroundSize: '7px 7px',
-                backgroundRepeat: 'repeat',
-              }}
-            />
-
-            {/* Navigation links */}
-            <ul
-              className={`text-primary font-display relative m-0 flex list-none items-center p-0 font-semibold transition-all duration-300 ${
-                isScrolled ? 'gap-8 text-base' : 'gap-12 text-lg'
+              className={`border-primary relative rounded-[50px] border-2 bg-white transition-all duration-300 ${
+                isScrolled ? 'px-8 py-3' : 'px-12 py-4'
               }`}
             >
-              <li>
-                <a
-                  href='#home'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#our-story'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  Our Story
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#details'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  Details
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#resort'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  Resort
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#faq'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#rsvp'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  RSVP
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#registry'
-                  className='text-primary hover:text-primary-dark no-underline transition-colors'
-                >
-                  Registry
-                </a>
-              </li>
-            </ul>
-          </div>
+              {/* Diagonal line texture overlay */}
+              <div
+                className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
+                style={{
+                  backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                  backgroundSize: '7px 7px',
+                  backgroundRepeat: 'repeat',
+                }}
+              />
+
+              {/* Navigation links */}
+              <ul
+                className={`text-primary font-display relative m-0 flex list-none items-center p-0 font-semibold transition-all duration-300 ${
+                  isScrolled ? 'gap-8 text-base' : 'gap-12 text-lg'
+                }`}
+              >
+                <li>
+                  <a
+                    href='#home'
+                    className='text-primary hover:text-primary-dark no-underline transition-colors'
+                  >
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='#details'
+                    className='text-primary hover:text-primary-dark no-underline transition-colors'
+                  >
+                    Details
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='#resort'
+                    className='text-primary hover:text-primary-dark no-underline transition-colors'
+                  >
+                    Resort
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='#faq'
+                    className='text-primary hover:text-primary-dark no-underline transition-colors'
+                  >
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='#rsvp'
+                    className='text-primary hover:text-primary-dark no-underline transition-colors'
+                  >
+                    RSVP
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -127,16 +111,12 @@ export default function Navigation() {
             href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
             target='_blank'
             rel='noopener noreferrer'
-            className={
-              isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'
-            }
+            className={isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'}
           />
           <CompactButton
             text='RSVP'
             onClick={handleRSVPClick}
-            className={
-              isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'
-            }
+            className={isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'}
           />
         </div>
       </div>
@@ -151,53 +131,53 @@ export default function Navigation() {
               {/* Shadow layer */}
               <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-[50px]' />
 
-            {/* Main nav container */}
-            <div
-              className={`border-primary bg-surface relative rounded-[50px] border-2 transition-all duration-300 ${
-                isScrolled ? 'px-3 py-2' : 'px-4 py-3'
-              }`}
-            >
-              {/* Diagonal line texture overlay */}
+              {/* Main nav container */}
               <div
-                className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
-                style={{
-                  backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
-                  backgroundSize: '7px 7px',
-                  backgroundRepeat: 'repeat',
-                }}
-              />
+                className={`border-primary bg-surface relative rounded-[50px] border-2 transition-all duration-300 ${
+                  isScrolled ? 'px-3 py-2' : 'px-4 py-3'
+                }`}
+              >
+                {/* Diagonal line texture overlay */}
+                <div
+                  className='pointer-events-none absolute inset-0 overflow-hidden rounded-[50px] opacity-30'
+                  style={{
+                    backgroundImage: `url('/images/figma-assets/diagonal-lines.png')`,
+                    backgroundSize: '7px 7px',
+                    backgroundRepeat: 'repeat',
+                  }}
+                />
 
-              {/* Nav content */}
-              <div className='relative flex items-center justify-between'>
-                {/* Logo/Title - Hidden on mobile, visible on md and up */}
-                <h1 className='font-display text-primary m-0 hidden text-2xl md:block'>
-                  A & R
-                </h1>
+                {/* Nav content */}
+                <div className='relative flex items-center justify-between'>
+                  {/* Logo/Title - Hidden on mobile, visible on md and up */}
+                  <h1 className='font-display text-primary m-0 hidden text-2xl md:block'>
+                    A & R
+                  </h1>
 
-                {/* Hamburger Menu Button */}
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className='relative z-50 flex h-8 w-8 flex-col items-center justify-center'
-                  aria-label='Toggle menu'
-                >
-                  <span
-                    className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
-                      isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
-                    }`}
-                  />
-                  <span
-                    className={`bg-primary my-1 block h-0.5 w-6 transition-all duration-300 ${
-                      isMenuOpen ? 'opacity-0' : ''
-                    }`}
-                  />
-                  <span
-                    className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
-                      isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
-                    }`}
-                  />
-                </button>
+                  {/* Hamburger Menu Button */}
+                  <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className='relative z-50 flex h-8 w-8 flex-col items-center justify-center'
+                    aria-label='Toggle menu'
+                  >
+                    <span
+                      className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
+                        isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
+                      }`}
+                    />
+                    <span
+                      className={`bg-primary my-1 block h-0.5 w-6 transition-all duration-300 ${
+                        isMenuOpen ? 'opacity-0' : ''
+                      }`}
+                    />
+                    <span
+                      className={`bg-primary block h-0.5 w-6 transition-all duration-300 ${
+                        isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
+                      }`}
+                    />
+                  </button>
+                </div>
               </div>
-            </div>
             </div>
           </div>
 
@@ -210,18 +190,14 @@ export default function Navigation() {
               target='_blank'
               rel='noopener noreferrer'
               className={
-                isScrolled
-                  ? 'px-3 py-1 text-[10px]'
-                  : 'px-4 py-1.5 text-xs'
+                isScrolled ? 'px-3 py-1 text-[10px]' : 'px-4 py-1.5 text-xs'
               }
             />
             <CompactButton
               text='RSVP'
               onClick={handleRSVPClick}
               className={
-                isScrolled
-                  ? 'px-3 py-1 text-[10px]'
-                  : 'px-4 py-1.5 text-xs'
+                isScrolled ? 'px-3 py-1 text-[10px]' : 'px-4 py-1.5 text-xs'
               }
             />
           </div>

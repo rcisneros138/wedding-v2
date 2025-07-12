@@ -18,23 +18,26 @@ export default function RSVPForm() {
   >('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const formRef = useRef<HTMLFormElement>(null)
-  
+
   // Development warning for wrong server
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+    if (
+      process.env.NODE_ENV === 'development' &&
+      typeof window !== 'undefined'
+    ) {
       // Check if running on Wrangler Pages (port 8788) instead of Next.js dev (port 3000)
       const isWranglerServer = window.location.port === '8788'
       if (!isWranglerServer && window.location.hostname === 'localhost') {
         console.warn(
           '⚠️ [RSVP Form Warning]\n' +
-          'The RSVP form requires Cloudflare D1 database access.\n\n' +
-          '❌ Current server: npm run dev (Next.js)\n' +
-          '✅ Required server: npm run pages:preview (Wrangler)\n\n' +
-          'To test the RSVP form:\n' +
-          '1. Stop the current server (Ctrl+C)\n' +
-          '2. Run: npm run pages:preview\n' +
-          '3. Open: http://localhost:8788\n\n' +
-          'The form will not work without Cloudflare bindings!'
+            'The RSVP form requires Cloudflare D1 database access.\n\n' +
+            '❌ Current server: npm run dev (Next.js)\n' +
+            '✅ Required server: npm run pages:preview (Wrangler)\n\n' +
+            'To test the RSVP form:\n' +
+            '1. Stop the current server (Ctrl+C)\n' +
+            '2. Run: npm run pages:preview\n' +
+            '3. Open: http://localhost:8788\n\n' +
+            'The form will not work without Cloudflare bindings!',
         )
       }
     }
@@ -60,7 +63,7 @@ export default function RSVPForm() {
   const onSubmit = async (data: RSVPFormData) => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
-    
+
     // Development logging
     if (process.env.NODE_ENV === 'development') {
       console.log('[DEV] Submitting RSVP form:', data)
@@ -80,11 +83,11 @@ export default function RSVPForm() {
         ...data,
         turnstileToken,
       }
-      
+
       if (process.env.NODE_ENV === 'development') {
         console.log('[DEV] API Request Body:', requestBody)
       }
-      
+
       const response = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
@@ -93,17 +96,19 @@ export default function RSVPForm() {
         body: JSON.stringify(requestBody),
       }).catch((error) => {
         console.error('[DEV] Network error:', error)
-        throw new Error('Network error: Unable to reach the server. Are you running with wrangler pages dev?')
+        throw new Error(
+          'Network error: Unable to reach the server. Are you running with wrangler pages dev?',
+        )
       })
 
       const result: RSVPResponse = await response.json()
-      
+
       if (process.env.NODE_ENV === 'development') {
         console.log('[DEV] API Response:', {
           status: response.status,
           success: result.success,
           message: result.message,
-          data: result.data
+          data: result.data,
         })
       }
 
@@ -119,7 +124,7 @@ export default function RSVPForm() {
       setStatusMessage(
         error instanceof Error ? error.message : 'Something went wrong',
       )
-      
+
       if (process.env.NODE_ENV === 'development') {
         console.error('[DEV] Form submission error:', error)
       }
@@ -129,7 +134,7 @@ export default function RSVPForm() {
   }
 
   return (
-    <div className='relative bg-surface rounded-2xl shadow-offset-primary border-primary border-2 p-8 max-w-2xl mx-auto'>
+    <div className='bg-surface shadow-offset-primary border-primary relative mx-auto max-w-2xl rounded-2xl border-2 p-8'>
       {/* Diagonal line texture overlay */}
       <div
         className='pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-30'
@@ -179,12 +184,15 @@ export default function RSVPForm() {
               </label>
               <input
                 {...register('guestName')}
+                id='guestName'
                 type='text'
+                aria-invalid={errors.guestName ? 'true' : 'false'}
+                aria-describedby={errors.guestName ? 'guestName-error' : undefined}
                 className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
                 placeholder='John Doe'
               />
               {errors.guestName && (
-                <p className='mt-1 text-sm text-red-500'>
+                <p id='guestName-error' role='alert' className='mt-1 text-sm text-red-500'>
                   {errors.guestName.message}
                 </p>
               )}
@@ -200,12 +208,15 @@ export default function RSVPForm() {
               </label>
               <input
                 {...register('email')}
+                id='email'
                 type='email'
+                aria-invalid={errors.email ? 'true' : 'false'}
+                aria-describedby={errors.email ? 'email-error' : undefined}
                 className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
                 placeholder='john@example.com'
               />
               {errors.email && (
-                <p className='mt-1 text-sm text-red-500'>
+                <p id='email-error' role='alert' className='mt-1 text-sm text-red-500'>
                   {errors.email.message}
                 </p>
               )}
@@ -221,6 +232,7 @@ export default function RSVPForm() {
               </label>
               <input
                 {...register('phone')}
+                id='phone'
                 type='tel'
                 className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
                 placeholder='(555) 123-4567'
@@ -228,33 +240,37 @@ export default function RSVPForm() {
             </div>
 
             {/* Attending */}
-            <div>
-              <label className='mb-2 block text-sm font-medium text-gray-700'>
+            <fieldset>
+              <legend className='mb-2 block text-sm font-medium text-gray-700'>
                 Will you be attending? *
-              </label>
-              <div className='flex gap-4'>
+              </legend>
+              <div className='flex gap-4' role='radiogroup' aria-required='true'>
                 <label className='flex items-center'>
                   <input
-                    {...register('attending')}
+                    id='attending-yes'
+                    name='attending'
                     type='radio'
-                    value='true'
+                    checked={watch('attending') === true}
                     onChange={() => setValue('attending', true)}
-                    className='relative mr-2 bg-white'
+                    className='relative mr-2'
+                    style={{ accentColor: 'var(--color-primary)' }}
                   />
                   <span>Yes, I'll be there!</span>
                 </label>
                 <label className='flex items-center'>
                   <input
-                    {...register('attending')}
+                    id='attending-no'
+                    name='attending'
                     type='radio'
-                    value='false'
+                    checked={watch('attending') === false}
                     onChange={() => setValue('attending', false)}
-                    className='relative mr-2 bg-white'
+                    className='relative mr-2'
+                    style={{ accentColor: 'var(--color-primary)' }}
                   />
                   <span>Sorry, can't make it</span>
                 </label>
               </div>
-            </div>
+            </fieldset>
 
             {/* Additional fields for attending guests */}
             {isAttending && (
@@ -269,6 +285,7 @@ export default function RSVPForm() {
                   </label>
                   <input
                     {...register('plusOneName')}
+                    id='plusOneName'
                     type='text'
                     className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
                     placeholder='Jane Doe, John Smith'
@@ -285,6 +302,7 @@ export default function RSVPForm() {
                   </label>
                   <textarea
                     {...register('songRequests')}
+                    id='songRequests'
                     rows={3}
                     className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
                     placeholder='What songs would you like to hear at the reception?'
@@ -292,33 +310,37 @@ export default function RSVPForm() {
                 </div>
 
                 {/* Room Booking Status */}
-                <div>
-                  <label className='mb-2 block text-sm font-medium text-gray-700'>
+                <fieldset>
+                  <legend className='mb-2 block text-sm font-medium text-gray-700'>
                     Have you booked your room? *
-                  </label>
-                  <div className='flex gap-4'>
+                  </legend>
+                  <div className='flex gap-4' role='radiogroup' aria-required='true'>
                     <label className='flex items-center'>
                       <input
-                        {...register('bookedRoom')}
+                        id='bookedRoom-yes'
+                        name='bookedRoom'
                         type='radio'
-                        value='true'
+                        checked={watch('bookedRoom') === true}
                         onChange={() => setValue('bookedRoom', true)}
-                        className='relative mr-2 bg-white'
+                        className='relative mr-2'
+                        style={{ accentColor: 'var(--color-primary)' }}
                       />
                       <span>Yes, I've booked</span>
                     </label>
                     <label className='flex items-center'>
                       <input
-                        {...register('bookedRoom')}
+                        id='bookedRoom-no'
+                        name='bookedRoom'
                         type='radio'
-                        value='false'
+                        checked={watch('bookedRoom') === false}
                         onChange={() => setValue('bookedRoom', false)}
-                        className='relative mr-2 bg-white'
+                        className='relative mr-2'
+                        style={{ accentColor: 'var(--color-primary)' }}
                       />
                       <span>Not yet</span>
                     </label>
                   </div>
-                </div>
+                </fieldset>
               </>
             )}
 
@@ -335,12 +357,17 @@ export default function RSVPForm() {
                 }}
                 onSuccess={(token) => {
                   if (process.env.NODE_ENV === 'development') {
-                    console.log('[DEV] Turnstile token generated:', token.substring(0, 20) + '...')
+                    console.log(
+                      '[DEV] Turnstile token generated:',
+                      token.substring(0, 20) + '...',
+                    )
                   }
                 }}
                 onError={(error) => {
                   console.error('[DEV] Turnstile error:', error)
-                  setStatusMessage('Security verification failed. Please refresh and try again.')
+                  setStatusMessage(
+                    'Security verification failed. Please refresh and try again.',
+                  )
                   setSubmitStatus('error')
                 }}
                 onExpire={() => {
