@@ -64,7 +64,7 @@ export default function ShadowButton({
 }: ShadowButtonProps) {
   // Unified responsive classes that always scale with breakpoints
   const divClasses =
-    'relative flex rounded-full border-2 px-10 py-1.5 sm:px-12 sm:py-2 md:px-15 md:py-3 lg:px-20 lg:py-4 xl:px-25 xl:py-5 2xl:py-6 2xl:px-30 shadow-button-responsive hover:shadow-button-responsive-hover'
+    'relative flex items-center justify-center rounded-full border-2 px-10 py-1.5 sm:px-12 sm:py-2 md:px-15 md:py-3 lg:px-20 lg:py-4 xl:px-25 xl:py-5 2xl:py-6 2xl:px-30 shadow-button-responsive hover:shadow-button-responsive-hover'
 
   const textClasses = `font-display ${textColor} ${textColorHover} relative font-bold tracking-wider drop-shadow-xs transition-colors duration-300 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-3xl`
 

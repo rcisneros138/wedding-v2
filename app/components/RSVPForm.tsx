@@ -134,7 +134,7 @@ export default function RSVPForm() {
   }
 
   return (
-    <div className='bg-surface shadow-offset-primary border-primary relative mx-auto max-w-2xl rounded-2xl border-2 p-8'>
+    <div className='bg-surface shadow-offset-black relative mx-auto max-w-2xl rounded-2xl border-2 border-black p-8'>
       {/* Diagonal line texture overlay */}
       <div
         className='pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-30'
@@ -187,12 +187,18 @@ export default function RSVPForm() {
                 id='guestName'
                 type='text'
                 aria-invalid={errors.guestName ? 'true' : 'false'}
-                aria-describedby={errors.guestName ? 'guestName-error' : undefined}
+                aria-describedby={
+                  errors.guestName ? 'guestName-error' : undefined
+                }
                 className='focus:ring-primary relative w-full rounded-lg border border-gray-300 bg-white px-4 py-2 focus:border-transparent focus:ring-2'
                 placeholder='John Doe'
               />
               {errors.guestName && (
-                <p id='guestName-error' role='alert' className='mt-1 text-sm text-red-500'>
+                <p
+                  id='guestName-error'
+                  role='alert'
+                  className='mt-1 text-sm text-red-500'
+                >
                   {errors.guestName.message}
                 </p>
               )}
@@ -216,7 +222,11 @@ export default function RSVPForm() {
                 placeholder='john@example.com'
               />
               {errors.email && (
-                <p id='email-error' role='alert' className='mt-1 text-sm text-red-500'>
+                <p
+                  id='email-error'
+                  role='alert'
+                  className='mt-1 text-sm text-red-500'
+                >
                   {errors.email.message}
                 </p>
               )}
@@ -244,7 +254,11 @@ export default function RSVPForm() {
               <legend className='mb-2 block text-sm font-medium text-gray-700'>
                 Will you be attending? *
               </legend>
-              <div className='flex gap-4' role='radiogroup' aria-required='true'>
+              <div
+                className='flex gap-4'
+                role='radiogroup'
+                aria-required='true'
+              >
                 <label className='flex items-center'>
                   <input
                     id='attending-yes'
@@ -314,7 +328,11 @@ export default function RSVPForm() {
                   <legend className='mb-2 block text-sm font-medium text-gray-700'>
                     Have you booked your room? *
                   </legend>
-                  <div className='flex gap-4' role='radiogroup' aria-required='true'>
+                  <div
+                    className='flex gap-4'
+                    role='radiogroup'
+                    aria-required='true'
+                  >
                     <label className='flex items-center'>
                       <input
                         id='bookedRoom-yes'
@@ -349,7 +367,7 @@ export default function RSVPForm() {
               <Turnstile
                 siteKey={
                   process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
-                  '1x00000000000000000000AA'
+                  '0x4AAAAAABkhj8HUAoNJX6MP' // Fallback for Wrangler dev
                 }
                 options={{
                   theme: 'light',

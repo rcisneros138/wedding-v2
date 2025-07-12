@@ -36,6 +36,15 @@ export async function POST(request: Request) {
     devLog('Form Data Validated', validationResult.data)
 
     // Verify Turnstile token
+    if (!env.TURNSTILE_SECRET_KEY) {
+      devError('Missing TURNSTILE_SECRET_KEY', 'Environment variable not set')
+      return Response.json({
+        success: false,
+        message: 'Server configuration error. Please contact support.',
+        error: 'Missing TURNSTILE_SECRET_KEY'
+      }, { status: 500 })
+    }
+    
     const turnstileVerifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
     const turnstileResponse = await fetch(turnstileVerifyEndpoint, {
       method: 'POST',
@@ -46,12 +55,18 @@ export async function POST(request: Request) {
     })
 
     const turnstileData = await turnstileResponse.json() as TurnstileVerifyResponse
+    
+    devLog('Turnstile Verification Response', {
+      success: turnstileData.success,
+      errorCodes: turnstileData['error-codes']
+    })
 
     if (!turnstileData.success) {
       return Response.json({
         success: false,
         message: 'Security verification failed. Please try again.',
-        error: 'Security verification failed'
+        error: 'Security verification failed',
+        details: turnstileData['error-codes']
       } as RSVPResponse, { status: 400 })
     }
 
