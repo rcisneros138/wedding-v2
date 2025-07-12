@@ -593,13 +593,14 @@ const ResortHighlights = () => {
       id: 'dining',
       title: 'World-Class Dining',
       icon: (
-        <img 
-          src='/images/icons/dinner.svg' 
-          alt='Dining' 
-          width='60' 
+        <img
+          src='/images/icons/dinner.svg'
+          alt='Dining'
+          width='60'
           height='60'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            filter:
+              'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
           }}
         />
       ),
@@ -612,13 +613,14 @@ const ResortHighlights = () => {
       id: 'bars',
       title: 'Bars & Lounges',
       icon: (
-        <img 
-          src='/images/icons/lounge.svg' 
-          alt='Bars & Lounges' 
-          width='60' 
+        <img
+          src='/images/icons/lounge.svg'
+          alt='Bars & Lounges'
+          width='60'
           height='60'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            filter:
+              'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
           }}
         />
       ),
@@ -630,13 +632,14 @@ const ResortHighlights = () => {
       id: 'activities',
       title: 'Activities & Entertainment',
       icon: (
-        <img 
-          src='/images/icons/drums.svg' 
-          alt='Activities & Entertainment' 
-          width='60' 
+        <img
+          src='/images/icons/drums.svg'
+          alt='Activities & Entertainment'
+          width='60'
           height='60'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            filter:
+              'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
           }}
         />
       ),
@@ -648,13 +651,14 @@ const ResortHighlights = () => {
       id: 'pools',
       title: 'Pools & Beach',
       icon: (
-        <img 
-          src='/images/icons/pool.svg' 
-          alt='Pools & Beach' 
-          width='60' 
+        <img
+          src='/images/icons/pool.svg'
+          alt='Pools & Beach'
+          width='60'
           height='60'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            filter:
+              'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
           }}
         />
       ),
@@ -666,13 +670,14 @@ const ResortHighlights = () => {
       id: 'spa',
       title: 'Miilé Spa',
       icon: (
-        <img 
-          src='/images/icons/spa.svg' 
-          alt='Spa' 
-          width='60' 
+        <img
+          src='/images/icons/spa.svg'
+          alt='Spa'
+          width='60'
           height='60'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            filter:
+              'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
           }}
         />
       ),
@@ -684,13 +689,14 @@ const ResortHighlights = () => {
       id: 'suites',
       title: 'Luxury Suites',
       icon: (
-        <img 
-          src='/images/icons/robe.svg' 
-          alt='Luxury Suites' 
-          width='60' 
+        <img
+          src='/images/icons/robe.svg'
+          alt='Luxury Suites'
+          width='60'
           height='60'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            filter:
+              'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)',
           }}
         />
       ),
@@ -707,7 +713,7 @@ const ResortHighlights = () => {
           <div
             key={card.id}
             onClick={() => setSelectedCard(card)}
-            className='relative bg-white border-primary shadow-offset-primary hover:shadow-offset-primary-sm cursor-pointer rounded-2xl border-2 p-6 transition-shadow'
+            className='border-primary shadow-offset-primary hover:shadow-offset-primary-sm relative cursor-pointer rounded-2xl border-2 bg-white p-6 transition-shadow'
           >
             {/* Diagonal line texture overlay */}
             <div
@@ -718,7 +724,7 @@ const ResortHighlights = () => {
                 backgroundRepeat: 'repeat',
               }}
             />
-            
+
             {/* Content container with relative positioning to stay above pattern */}
             <div className='relative z-10'>
               <div className='mb-3'>{card.icon}</div>
@@ -749,107 +755,156 @@ const ResortHighlights = () => {
 // ResortQuickFacts Component
 const ResortQuickFacts = () => {
   const quickFacts = [
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/dinner.svg' 
-          alt='Restaurants' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/dinner.svg')",
+            WebkitMaskImage: "url('/images/icons/dinner.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='Restaurants'
         />
-      ), 
-      fact: '10 restaurants (no reservations needed!)' 
+      ),
+      fact: '10 restaurants (no reservations needed!)',
     },
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/cheers.svg' 
-          alt='Bars' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/cheers.svg')",
+            WebkitMaskImage: "url('/images/icons/cheers.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='Bars'
         />
-      ), 
-      fact: '12 bars - all premium drinks included' 
+      ),
+      fact: '12 bars - all premium drinks included',
     },
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/pool.svg' 
-          alt='Pools' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/pool.svg')",
+            WebkitMaskImage: "url('/images/icons/pool.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='Pools'
         />
-      ), 
-      fact: '6 pools including lazy river' 
+      ),
+      fact: '6 pools including lazy river',
     },
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/robe.svg' 
-          alt='In-room jacuzzi' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/robe.svg')",
+            WebkitMaskImage: "url('/images/icons/robe.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='In-room jacuzzi'
         />
-      ), 
-      fact: 'In-room jacuzzi in every suite' 
+      ),
+      fact: 'In-room jacuzzi in every suite',
     },
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/drums.svg' 
-          alt='Entertainment' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/drums.svg')",
+            WebkitMaskImage: "url('/images/icons/drums.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='Entertainment'
         />
-      ), 
-      fact: 'Nightly entertainment & shows' 
+      ),
+      fact: 'Nightly entertainment & shows',
     },
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/spawoman.svg' 
-          alt='Spa' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/spawoman.svg')",
+            WebkitMaskImage: "url('/images/icons/spawoman.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='Spa'
         />
-      ), 
-      fact: 'World-class spa with hydrotherapy' 
+      ),
+      fact: 'World-class spa with hydrotherapy',
     },
-    { 
+    {
       icon: (
-        <img 
-          src='/images/icons/beach.svg' 
-          alt='Beach' 
-          width='40' 
-          height='40'
+        <div
+          className='icon-mask-purple'
           style={{
-            filter: 'brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(4044%) hue-rotate(348deg) brightness(93%) contrast(91%)'
+            maskImage: "url('/images/icons/beach.svg')",
+            WebkitMaskImage: "url('/images/icons/beach.svg')",
+            width: '40px',
+            height: '40px',
           }}
+          aria-label='Beach'
         />
-      ), 
-      fact: 'Pristine beach with calm waters' 
+      ),
+      fact: 'Pristine beach with calm waters',
     },
-    { icon: '🚣', fact: 'Free kayaks, paddleboards & snorkeling' },
-    { icon: '🎾', fact: 'Tennis, pickleball, volleyball & more' },
-    { icon: '🍾', fact: '24-hour room service included' },
+    {
+      icon: (
+        <div
+          className='icon-mask-purple'
+          style={{
+            maskImage: "url('/images/icons/kayak.svg')",
+            WebkitMaskImage: "url('/images/icons/kayak.svg')",
+            width: '40px',
+            height: '40px',
+          }}
+          aria-label='Water sports'
+        />
+      ),
+      fact: 'Free kayaks, paddleboards & snorkeling',
+    },
+    {
+      icon: (
+        <div
+          className='icon-mask-purple'
+          style={{
+            maskImage: "url('/images/icons/tennis.svg')",
+            WebkitMaskImage: "url('/images/icons/tennis.svg')",
+            width: '40px',
+            height: '40px',
+          }}
+          aria-label='Sports'
+        />
+      ),
+      fact: 'Tennis, pickleball, volleyball & more',
+    },
+    {
+      icon: (
+        <div
+          className='icon-mask-purple'
+          style={{
+            maskImage: "url('/images/icons/bell.svg')",
+            WebkitMaskImage: "url('/images/icons/bell.svg')",
+            width: '40px',
+            height: '40px',
+          }}
+          aria-label='Room service'
+        />
+      ),
+      fact: '24-hour room service included',
+    },
   ]
 
   return (
