@@ -8,7 +8,7 @@ export default function RSVPSection() {
       {/* Main RSVP Section - flows from info section with maroon background */}
       <div id='rsvp' className='relative -mt-[0px] w-full'>
         <div className='relative mx-auto w-[95%]'>
-          <div className='bg-primary-textured relative mx-auto max-w-[1600px] overflow-hidden rounded-t-2xl bg-[#8C3112] py-16 shadow-offset-black'>
+          <div className='bg-primary-textured shadow-offset-black relative mx-auto max-w-[1600px] overflow-hidden rounded-t-2xl bg-[#8C3112] py-16'>
             {/* Decorative Dots Pattern */}
             <div className='pointer-events-none absolute top-0 left-0 h-full w-full opacity-5'>
               <Image
@@ -29,9 +29,6 @@ export default function RSVPSection() {
                 <WavyLine color='var(--color-accent)' className='w-48' />
               </div>
 
-              <p className='text-accent/90 mb-2 text-xl'>
-                Please respond by December 1st, 2025
-              </p>
               <p className='text-accent/80 text-lg'>
                 We can't wait to celebrate with you!
               </p>
@@ -46,7 +43,7 @@ export default function RSVPSection() {
       </div>
 
       {/* Wedding Details Section - separate maroon section */}
-      <div className='bg-primary-textured relative mx-auto w-[95%] py-16 text-white shadow-offset-black'>
+      <div className='bg-primary-textured shadow-offset-black relative mx-auto w-[95%] py-16 text-white'>
         <div className='container mx-auto max-w-4xl px-4 text-center'>
           <h3 className='font-display mb-6 text-3xl'>Wedding Details</h3>
 

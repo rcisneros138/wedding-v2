@@ -25,6 +25,7 @@ export const rsvpFormSchema = z.object({
   attending: z.boolean(),
   plusOneName: z.string().optional(),
   songRequests: z.string().optional(),
+  bookedRoom: z.boolean(),
 })
 
 // Type for form data
@@ -39,6 +40,7 @@ export interface RSVPRecord {
   attending: boolean
   plus_one_name?: string | null
   song_requests?: string | null
+  booked_room?: boolean | null
   created_at: string
   updated_at: string
   ip_address?: string | null

@@ -1,5 +1,6 @@
 import { getRequestContext } from '@cloudflare/next-on-pages'
 import { rsvpFormSchema, type RSVPResponse, type TurnstileVerifyResponse, type RSVPRecord } from '@/app/types/rsvp'
+import { devLog, devError, devLogSQL } from '@/app/utils/logger'
 
 export const runtime = 'edge'
 
@@ -11,10 +12,19 @@ export async function POST(request: Request) {
     // Parse request body
     const body = await request.json() as { turnstileToken: string } & Record<string, any>
     const { turnstileToken, ...formData } = body
+    
+    devLog('RSVP Request Received', {
+      formData,
+      headers: {
+        'content-type': request.headers.get('content-type'),
+        'user-agent': request.headers.get('user-agent'),
+      }
+    })
 
     // Validate form data
     const validationResult = rsvpFormSchema.safeParse(formData)
     if (!validationResult.success) {
+      devError('Form Validation Failed', validationResult.error.errors)
       return Response.json({
         success: false,
         message: 'Invalid form data',
@@ -22,6 +32,8 @@ export async function POST(request: Request) {
         details: validationResult.error.errors
       }, { status: 400 })
     }
+    
+    devLog('Form Data Validated', validationResult.data)
 
     // Verify Turnstile token
     const turnstileVerifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
@@ -56,37 +68,64 @@ export async function POST(request: Request) {
       attending: validationResult.data.attending,
       plus_one_name: validationResult.data.plusOneName || null,
       song_requests: validationResult.data.songRequests || null,
+      booked_room: validationResult.data.bookedRoom || false,
       ip_address: clientIP
     }
+    
+    devLog('Prepared Database Data', rsvpData)
 
     // Insert into database
     try {
-      const result = await env.DB.prepare(`
+      const insertQuery = `
         INSERT INTO rsvps (
           guest_name, email, phone, attending, 
-          plus_one_name, song_requests, ip_address
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+          plus_one_name, song_requests, booked_room, ip_address
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(email) DO UPDATE SET
           guest_name = excluded.guest_name,
           phone = excluded.phone,
           attending = excluded.attending,
           plus_one_name = excluded.plus_one_name,
           song_requests = excluded.song_requests,
+          booked_room = excluded.booked_room,
           updated_at = CURRENT_TIMESTAMP
         RETURNING *
-      `).bind(
+      `
+      
+      const queryParams = [
         rsvpData.guest_name,
         rsvpData.email,
         rsvpData.phone,
         rsvpData.attending ? 1 : 0, // SQLite uses 1/0 for boolean
         rsvpData.plus_one_name,
         rsvpData.song_requests,
+        rsvpData.booked_room ? 1 : 0, // SQLite uses 1/0 for boolean
         rsvpData.ip_address
-      ).first()
+      ]
+      
+      devLogSQL(insertQuery, queryParams)
+      
+      const result = await env.DB.prepare(insertQuery).bind(...queryParams).first()
 
       if (!result) {
         throw new Error('Failed to save RSVP')
       }
+      
+      devLog('Database Insert Result', result)
+      
+      // Verify the insertion with a SELECT query
+      const verificationQuery = 'SELECT * FROM rsvps WHERE email = ?'
+      devLogSQL(verificationQuery, [rsvpData.email])
+      
+      const verification = await env.DB.prepare(verificationQuery)
+        .bind(rsvpData.email)
+        .first()
+        
+      devLog('Database Verification', {
+        insertResult: result,
+        verificationResult: verification,
+        dataMatches: verification?.email === rsvpData.email
+      })
 
       // Return success response
       const message = rsvpData.attending 
@@ -101,9 +140,11 @@ export async function POST(request: Request) {
 
     } catch (dbError) {
       console.error('Database error:', dbError)
+      devError('Database Operation Failed', dbError)
       
       // Check if it's a duplicate email error
       if (dbError instanceof Error && dbError.message.includes('UNIQUE')) {
+        devLog('Duplicate Email - Updating Existing RSVP', { email: rsvpData.email })
         return Response.json({
           success: false,
           message: 'An RSVP with this email already exists. Your response has been updated.',

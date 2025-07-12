@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Turnstile } from '@marsidev/react-turnstile'
@@ -18,6 +18,27 @@ export default function RSVPForm() {
   >('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const formRef = useRef<HTMLFormElement>(null)
+  
+  // Development warning for wrong server
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+      // Check if running on Wrangler Pages (port 8788) instead of Next.js dev (port 3000)
+      const isWranglerServer = window.location.port === '8788'
+      if (!isWranglerServer && window.location.hostname === 'localhost') {
+        console.warn(
+          '⚠️ [RSVP Form Warning]\n' +
+          'The RSVP form requires Cloudflare D1 database access.\n\n' +
+          '❌ Current server: npm run dev (Next.js)\n' +
+          '✅ Required server: npm run pages:preview (Wrangler)\n\n' +
+          'To test the RSVP form:\n' +
+          '1. Stop the current server (Ctrl+C)\n' +
+          '2. Run: npm run pages:preview\n' +
+          '3. Open: http://localhost:8788\n\n' +
+          'The form will not work without Cloudflare bindings!'
+        )
+      }
+    }
+  }, [])
 
   const {
     register,
@@ -30,6 +51,7 @@ export default function RSVPForm() {
     resolver: zodResolver(rsvpFormSchema),
     defaultValues: {
       attending: true,
+      bookedRoom: false,
     },
   })
 
@@ -38,6 +60,11 @@ export default function RSVPForm() {
   const onSubmit = async (data: RSVPFormData) => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    
+    // Development logging
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[DEV] Submitting RSVP form:', data)
+    }
 
     try {
       // Get Turnstile token from form
@@ -49,18 +76,36 @@ export default function RSVPForm() {
       }
 
       // Submit to API
+      const requestBody = {
+        ...data,
+        turnstileToken,
+      }
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[DEV] API Request Body:', requestBody)
+      }
+      
       const response = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...data,
-          turnstileToken,
-        }),
+        body: JSON.stringify(requestBody),
+      }).catch((error) => {
+        console.error('[DEV] Network error:', error)
+        throw new Error('Network error: Unable to reach the server. Are you running with wrangler pages dev?')
       })
 
       const result: RSVPResponse = await response.json()
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[DEV] API Response:', {
+          status: response.status,
+          success: result.success,
+          message: result.message,
+          data: result.data
+        })
+      }
 
       if (result.success) {
         setSubmitStatus('success')
@@ -74,6 +119,10 @@ export default function RSVPForm() {
       setStatusMessage(
         error instanceof Error ? error.message : 'Something went wrong',
       )
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.error('[DEV] Form submission error:', error)
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -241,6 +290,35 @@ export default function RSVPForm() {
                     placeholder='What songs would you like to hear at the reception?'
                   />
                 </div>
+
+                {/* Room Booking Status */}
+                <div>
+                  <label className='mb-2 block text-sm font-medium text-gray-700'>
+                    Have you booked your room? *
+                  </label>
+                  <div className='flex gap-4'>
+                    <label className='flex items-center'>
+                      <input
+                        {...register('bookedRoom')}
+                        type='radio'
+                        value='true'
+                        onChange={() => setValue('bookedRoom', true)}
+                        className='relative mr-2 bg-white'
+                      />
+                      <span>Yes, I've booked</span>
+                    </label>
+                    <label className='flex items-center'>
+                      <input
+                        {...register('bookedRoom')}
+                        type='radio'
+                        value='false'
+                        onChange={() => setValue('bookedRoom', false)}
+                        className='relative mr-2 bg-white'
+                      />
+                      <span>Not yet</span>
+                    </label>
+                  </div>
+                </div>
               </>
             )}
 
@@ -254,6 +332,21 @@ export default function RSVPForm() {
                 options={{
                   theme: 'light',
                   size: 'normal',
+                }}
+                onSuccess={(token) => {
+                  if (process.env.NODE_ENV === 'development') {
+                    console.log('[DEV] Turnstile token generated:', token.substring(0, 20) + '...')
+                  }
+                }}
+                onError={(error) => {
+                  console.error('[DEV] Turnstile error:', error)
+                  setStatusMessage('Security verification failed. Please refresh and try again.')
+                  setSubmitStatus('error')
+                }}
+                onExpire={() => {
+                  if (process.env.NODE_ENV === 'development') {
+                    console.log('[DEV] Turnstile token expired')
+                  }
                 }}
               />
             </div>

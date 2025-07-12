@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS rsvps (
   -- RSVP Details
   attending BOOLEAN NOT NULL,
   plus_one_name TEXT,
+  booked_room BOOLEAN DEFAULT 0,
   
   -- Preferences
   song_requests TEXT,
