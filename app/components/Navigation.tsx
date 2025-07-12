@@ -6,6 +6,8 @@ import CompactButton from './CompactButton'
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const promoCode = 'CLWJAN26XRC'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,16 @@ export default function Navigation() {
     const rsvpElement = document.getElementById('rsvp')
     if (rsvpElement) {
       rsvpElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleCopyPromoCode = async () => {
+    try {
+      await navigator.clipboard.writeText(promoCode)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy promo code:', err)
     }
   }
 
@@ -103,12 +115,65 @@ export default function Navigation() {
           </div>
         </div>
 
+        {/* Promo Code Box */}
+        <div className='ml-6'>
+          <div className='relative'>
+            {/* Shadow layer */}
+            <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-lg' />
+            
+            {/* Main promo code container */}
+            <button
+              onClick={handleCopyPromoCode}
+              className={`border-primary relative flex items-center gap-2 rounded-lg border-2 bg-white transition-all duration-300 hover:scale-[0.98] ${
+                isScrolled ? 'px-3 py-2' : 'px-4 py-3'
+              }`}
+              title='Click to copy promo code'
+            >
+              <div className='flex flex-col items-start'>
+                <span className={`text-primary font-display font-semibold transition-all duration-300 ${
+                  isScrolled ? 'text-[10px]' : 'text-xs'
+                }`}>
+                  PROMO CODE
+                </span>
+                <span className={`font-mono font-bold text-[#FEA88A] transition-all duration-300 ${
+                  isScrolled ? 'text-xs' : 'text-sm'
+                }`}>
+                  {promoCode}
+                </span>
+              </div>
+              
+              {/* Copy icon */}
+              <svg
+                className={`text-primary transition-all duration-300 ${
+                  isScrolled ? 'h-3 w-3' : 'h-4 w-4'
+                }`}
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                {copied ? (
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
+                ) : (
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z' />
+                )}
+              </svg>
+              
+              {/* Tooltip */}
+              {copied && (
+                <span className='bg-primary text-surface absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-xs font-medium'>
+                  Copied!
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+
         {/* CTA Buttons */}
-        <div className='ml-8 flex gap-3'>
+        <div className='ml-3 flex gap-3'>
           <CompactButton
             text='Book Now'
             backgroundColor='var(--color-accent)'
-            href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
+            href='https://booking.excellenceresorts.com/en/bookcore/availability/rooms/excellencerivera?cp=CLWJAN26XRC'
             target='_blank'
             rel='noopener noreferrer'
             className={isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'}
@@ -181,12 +246,63 @@ export default function Navigation() {
             </div>
           </div>
 
+          {/* Mobile Promo Code Box */}
+          <div className='relative'>
+            {/* Shadow layer */}
+            <div className='bg-primary absolute inset-0 translate-x-[1.5%] translate-y-[4%] transform rounded-lg' />
+            
+            {/* Main promo code container */}
+            <button
+              onClick={handleCopyPromoCode}
+              className={`border-primary relative flex items-center gap-1 rounded-lg border-2 bg-white transition-all duration-300 hover:scale-[0.98] ${
+                isScrolled ? 'px-2 py-1' : 'px-3 py-1.5'
+              }`}
+              title='Click to copy promo code'
+            >
+              <div className='flex flex-col items-start'>
+                <span className={`text-primary font-display font-semibold transition-all duration-300 ${
+                  isScrolled ? 'text-[8px]' : 'text-[9px]'
+                }`}>
+                  PROMO
+                </span>
+                <span className={`font-mono font-bold text-[#FEA88A] transition-all duration-300 ${
+                  isScrolled ? 'text-[9px]' : 'text-[10px]'
+                }`}>
+                  {promoCode}
+                </span>
+              </div>
+              
+              {/* Copy icon */}
+              <svg
+                className={`text-primary transition-all duration-300 ${
+                  isScrolled ? 'h-2.5 w-2.5' : 'h-3 w-3'
+                }`}
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                {copied ? (
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
+                ) : (
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z' />
+                )}
+              </svg>
+              
+              {/* Tooltip */}
+              {copied && (
+                <span className='bg-primary text-surface absolute -top-6 left-1/2 -translate-x-1/2 rounded px-2 py-0.5 text-[10px] font-medium'>
+                  Copied!
+                </span>
+              )}
+            </button>
+          </div>
+
           {/* Mobile CTA Buttons */}
           <div className='flex gap-2'>
             <CompactButton
               text='Book'
               backgroundColor='var(--color-accent)'
-              href='https://www.excellenceresorts.com/riviera-maya-cancun/excellence-riviera-cancun/'
+              href='https://booking.excellenceresorts.com/en/bookcore/availability/rooms/excellencerivera?cp=CLWJAN26XRC'
               target='_blank'
               rel='noopener noreferrer'
               className={
