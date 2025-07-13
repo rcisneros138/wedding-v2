@@ -32,7 +32,7 @@ const reciaSerifDisplay = localfont({
 })
 
 export const metadata: Metadata = {
-  title: 'Amanda & Ray - January 24, 2026 | Playa del Carmen',
+  title: 'Amanda & Ray - January 24, 2026 | Riviera Cancun',
   description: 'Join us in Mexico on January 24, 2026 to celebrate our wedding',
   viewport: 'width=device-width, initial-scale=1',
   icons: {
@@ -50,7 +50,6 @@ export default function RootLayout({
       lang='en'
       className={`${playfairDisplay.variable} ${pacifico.variable} ${reciaSerifDisplay.variable}`}
     >
-
       <body className={`${inter.className} antialiased`}>
         {children}
         <BreakpointIndicator />
