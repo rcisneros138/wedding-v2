@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import CompactButton from './CompactButton'
+import BookingModal from './BookingModal'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   const promoCode = 'CLWJAN26XRC'
+  const bookingUrl = 'https://booking.excellenceresorts.com/en/bookcore/availability/rooms/excellencerivera?cp=CLWJAN26XRC'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -173,9 +176,7 @@ export default function Navigation() {
           <CompactButton
             text='Book Now'
             backgroundColor='var(--color-accent)'
-            href='https://booking.excellenceresorts.com/en/bookcore/availability/rooms/excellencerivera?cp=CLWJAN26XRC'
-            target='_blank'
-            rel='noopener noreferrer'
+            onClick={() => setIsBookingModalOpen(true)}
             className={isScrolled ? 'px-4 py-1 text-xs' : 'px-6 py-1.5 text-sm'}
           />
           <CompactButton
@@ -302,9 +303,7 @@ export default function Navigation() {
             <CompactButton
               text='Book'
               backgroundColor='var(--color-accent)'
-              href='https://booking.excellenceresorts.com/en/bookcore/availability/rooms/excellencerivera?cp=CLWJAN26XRC'
-              target='_blank'
-              rel='noopener noreferrer'
+              onClick={() => setIsBookingModalOpen(true)}
               className={
                 isScrolled ? 'px-3 py-1 text-[10px]' : 'px-4 py-1.5 text-xs'
               }
@@ -383,6 +382,13 @@ export default function Navigation() {
           </div>
         )}
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        bookingUrl={bookingUrl}
+      />
     </nav>
   )
 }

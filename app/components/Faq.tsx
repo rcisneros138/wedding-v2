@@ -4,9 +4,11 @@ import React, { useState } from 'react'
 import { ChevronRight } from 'lucide-react'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
+import BookingModal from './BookingModal'
 
 const Faq = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null)
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
 
   const handleContactUs = () => {
     window.location.href = 'mailto:amandaandray2026@gmail.com?subject=Wedding Question'
