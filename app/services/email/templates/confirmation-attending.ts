@@ -182,7 +182,49 @@ export const confirmationAttendingTemplate = (data: EmailData): string => {
         Keep an eye on your inbox for important updates about travel, accommodations, and wedding weekend activities. We'll be sharing more details as we get closer to the big day!
       </div>
       
-      <div style="text-align: center;">
+      <div class="details-box" style="background-color: #FEA88A; background-color: rgba(254, 168, 138, 0.2); border: 2px solid #FEA88A;">
+        <h2 style="color: #8C3112; text-align: center; margin-bottom: 20px;">⚠️ Important Booking Instructions</h2>
+        <p style="text-align: center; color: #8C3112; font-weight: bold; margin-bottom: 20px;">
+          Please follow these steps carefully to ensure you book the correct hotel with our group discount
+        </p>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="display: flex; align-items: start; margin-bottom: 15px;">
+            <div style="background-color: #8C3112; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0;">1</div>
+            <div>
+              <p style="margin: 0 0 5px 0; color: #8C3112; font-weight: bold;">Select the CORRECT hotel:</p>
+              <p style="margin: 0; color: #FEA88A; font-size: 18px; font-weight: bold;">EXCELLENCE RIVIERA CANCUN</p>
+              <p style="margin: 0; color: #70270E; font-style: italic; font-size: 14px;">(NOT Excellence Playa Mujeres)</p>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: start; margin-bottom: 15px;">
+            <div style="background-color: #8C3112; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0;">2</div>
+            <div>
+              <p style="margin: 0 0 5px 0; color: #8C3112; font-weight: bold;">Verify the promo code is applied:</p>
+              <div style="display: inline-block; background-color: #D9DDCD; border: 2px solid #8C3112; padding: 8px 15px; border-radius: 5px; margin: 5px 0;">
+                <code style="font-family: monospace; color: #FEA88A; font-size: 18px; font-weight: bold;">CLWJAN26XRC</code>
+              </div>
+              <p style="margin: 5px 0 0 0; color: #70270E; font-size: 14px;">This code gives you our special group rate!</p>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: start;">
+            <div style="background-color: #8C3112; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0;">3</div>
+            <div>
+              <p style="margin: 0 0 5px 0; color: #8C3112; font-weight: bold;">Check your dates:</p>
+              <p style="margin: 0 0 5px 0; color: #8C3112;">The wedding day is January 24, 2026 (we will be there from the 22nd to the 26th)</p>
+              <p style="margin: 0; color: #70270E; font-size: 14px;">The wedding is on January 24, 2026, but you're more than welcome to arrive as early or stay as long as you'd like. Whether you're planning a long weekend, a full vacation, or something in between, we'd love for you to enjoy the area at your own pace. Come early, linger late — whatever works best for you!</p>
+            </div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 25px;">
+          <a href="https://booking.excellenceresorts.com/en/bookcore/availability/rooms/excellencerivera?cp=CLWJAN26XRC" class="cta-button" style="background-color: #FEA88A; box-shadow: 4px 4px 0 #8C3112;">Book Your Stay</a>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 20px;">
         <a href="https://rayandamanda.wedding" class="cta-button">Visit Our Wedding Website</a>
       </div>
       
