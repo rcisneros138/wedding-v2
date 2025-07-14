@@ -350,3 +350,93 @@ html {
     margin-bottom: 0;
   }
 }
+
+/* SVG Path Drawing Animation */
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Animation utility classes for wavy lines */
+.animate-draw-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-line 1.5s ease-in-out forwards;
+}
+
+.animate-draw-line-delayed {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-line 1.5s ease-in-out 0.2s forwards;
+}
+
+/* Hero Title Animation */
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-hero-title {
+  animation: fade-in-scale 1.2s ease-out forwards;
+}
+
+/* Loteria Card Slide-in Animations */
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Base animation classes */
+.animate-slide-left {
+  opacity: 0;
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+  opacity: 0;
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+/* Staggered delay classes for loteria cards */
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animation-delay-900 {
+  animation-delay: 0.9s;
+}
+
+.animation-delay-1100 {
+  animation-delay: 1.1s;
+}

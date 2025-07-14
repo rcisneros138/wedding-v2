@@ -1,7 +1,7 @@
 # Wedding Website Project
 
 ## Overview
-This is a wedding website for Ashlyn & Royal's wedding on January 24, 2026 in Mexico. The design is based on a Figma file with a vintage, textured aesthetic using warm colors and decorative elements.
+This is a wedding website for Amanda & Ray's wedding on January 24, 2026 in Mexico. The design is based on a Figma file with a vintage, textured aesthetic using warm colors and decorative elements.
 
 ## Development Principles
 - Always use React components when possible within best practices
@@ -16,6 +16,7 @@ This is a wedding website for Ashlyn & Royal's wedding on January 24, 2026 in Me
 ## Memory Notes
 - Do not change or remove the import 'tailwindcss' on line 1 in global.css. If it is necessary, prompt me first
 - Remember to use context7 when referencing anything related to tailwind. The version of tailwind in this application is v4 and does not use the tailwind.config* anylonger.
+- Check port 3000 before spinning up a new dev server
 
 ## Design System
 
@@ -219,3 +220,4 @@ The RSVP system uses Cloudflare D1 (SQLite database) for storage and Cloudflare 
 - Responsive design matching wedding theme
 - Success/error states with user feedback
 - Handles both attending and not attending responses
+```

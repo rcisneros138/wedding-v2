@@ -1,3 +1,5 @@
+'use client'
+
 interface WavyLineProps {
   color?: string
   className?: string
@@ -5,6 +7,7 @@ interface WavyLineProps {
   height?: number
   shadowOffsetX?: number
   shadowOffsetY?: number
+  animate?: boolean
 }
 
 export default function WavyLine({ 
@@ -13,7 +16,8 @@ export default function WavyLine({
   width = 177,
   height = 16,
   shadowOffsetX = 3,
-  shadowOffsetY = 3
+  shadowOffsetY = 3,
+  animate = true
 }: WavyLineProps) {
   return (
     <svg 
@@ -32,6 +36,8 @@ export default function WavyLine({
         strokeWidth="5" 
         strokeLinecap="round"
         transform={`translate(${shadowOffsetX}, ${shadowOffsetY})`}
+        pathLength="100"
+        className={animate ? "animate-draw-line" : ""}
       />
       {/* Main colored wavy line on top */}
       <path 
@@ -39,6 +45,8 @@ export default function WavyLine({
         stroke={color} 
         strokeWidth="5" 
         strokeLinecap="round"
+        pathLength="100"
+        className={animate ? "animate-draw-line-delayed" : ""}
       />
     </svg>
   )
