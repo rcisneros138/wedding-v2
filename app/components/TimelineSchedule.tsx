@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useInView } from '../hooks/useInView'
 
 interface TimelineEvent {
   time: string
@@ -55,6 +56,82 @@ const timelineEvents: TimelineEvent[] = [
     offsetY: 1,
   },
 ]
+
+// Timeline Event Component with Intersection Observer
+function TimelineEventCard({ event, index }: { event: TimelineEvent; index: number }) {
+  const { ref, isInView } = useInView({ threshold: 0.2 })
+
+  return (
+    <div
+      ref={ref}
+      className='absolute flex w-full items-center'
+      style={{ top: `${event.position}%` }}
+    >
+      {/* Event Content */}
+      <div
+        className={`flex w-full items-center ${
+          event.alignment === 'left' ? 'flex-row' : 'flex-row-reverse'
+        }`}
+      >
+        {/* Text Container */}
+        <div
+          className={`w-5/12 ${
+            event.alignment === 'left'
+              ? 'pr-8 text-right'
+              : 'pl-8 text-left'
+          }`}
+        >
+          {/* Time */}
+          <p className='font-pacifico text-shadow-offset-xs text-purple mb-1 text-base'>
+            {event.time}
+          </p>
+          {/* Event Title */}
+          <p className='font-pacifico text-shadow-offset-sm text-accent text-xl md:text-2xl'>
+            {event.title}
+          </p>
+        </div>
+
+        {/* Center Circle */}
+        <div className='relative flex w-2/12 items-center justify-center'>
+          {/* Shadow circle */}
+          <div className='bg-shadow absolute h-4 w-4 translate-x-[2px] translate-y-[2px] rounded-full' />
+          {/* Main circle */}
+          <div className='bg-primary relative z-10 h-4 w-4 rounded-full' />
+        </div>
+
+        {/* Loteria card on opposite side */}
+        <div className='flex w-5/12 items-center justify-center'>
+          <div 
+            className={`relative transition-transform duration-300 hover:scale-[1.01] ${
+              isInView ? (event.alignment === 'left' ? 'animate-slide-left' : 'animate-slide-right') : ''
+            } ${
+              isInView ? (
+                index === 0 ? 'animation-delay-500' :
+                index === 1 ? 'animation-delay-700' :
+                index === 2 ? 'animation-delay-900' :
+                'animation-delay-1100'
+              ) : ''
+            }`}
+            style={{
+              opacity: isInView ? undefined : 0
+            }}
+          >
+            <Image
+              src={`/images/loterias/${event.loteriaCard}`}
+              alt={`Loteria card for ${event.title}`}
+              width={80}
+              height={120}
+              className='opacity-90 sepia-[0.2] drop-shadow-md'
+              style={{
+                transform: `rotate(${event.rotation}deg) translateX(${event.offsetX}px) translateY(${event.offsetY}px)`,
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function TimelineSchedule() {
   return (
@@ -122,60 +199,7 @@ export default function TimelineSchedule() {
 
         {/* Timeline Events */}
         {timelineEvents.map((event, index) => (
-          <div
-            key={index}
-            className='absolute flex w-full items-center'
-            style={{ top: `${event.position}%` }}
-          >
-            {/* Event Content */}
-            <div
-              className={`flex w-full items-center ${
-                event.alignment === 'left' ? 'flex-row' : 'flex-row-reverse'
-              }`}
-            >
-              {/* Text Container */}
-              <div
-                className={`w-5/12 ${
-                  event.alignment === 'left'
-                    ? 'pr-8 text-right'
-                    : 'pl-8 text-left'
-                }`}
-              >
-                {/* Time */}
-                <p className='font-pacifico text-shadow-offset-xs text-purple mb-1 text-base'>
-                  {event.time}
-                </p>
-                {/* Event Title */}
-                <p className='font-pacifico text-shadow-offset-sm text-accent text-xl md:text-2xl'>
-                  {event.title}
-                </p>
-              </div>
-
-              {/* Center Circle */}
-              <div className='relative flex w-2/12 items-center justify-center'>
-                {/* Shadow circle */}
-                <div className='bg-shadow absolute h-4 w-4 translate-x-[2px] translate-y-[2px] rounded-full' />
-                {/* Main circle */}
-                <div className='bg-primary relative z-10 h-4 w-4 rounded-full' />
-              </div>
-
-              {/* Loteria card on opposite side */}
-              <div className='flex w-5/12 items-center justify-center'>
-                <div className='relative transition-transform duration-300 hover:scale-[1.01]'>
-                  <Image
-                    src={`/images/loterias/${event.loteriaCard}`}
-                    alt={`Loteria card for ${event.title}`}
-                    width={80}
-                    height={120}
-                    className='opacity-90 sepia-[0.2] drop-shadow-md'
-                    style={{
-                      transform: `rotate(${event.rotation}deg) translateX(${event.offsetX}px) translateY(${event.offsetY}px)`,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+          <TimelineEventCard key={index} event={event} index={index} />
         ))}
       </div>
     </div>

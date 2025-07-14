@@ -1,8 +1,13 @@
+'use client'
+
 import Image from 'next/image'
 import RSVPForm from '@/app/components/RSVPForm'
 import WavyLine from '@/app/components/WavyLine'
+import { useInView } from '../hooks/useInView'
 
 export default function RSVPSection() {
+  const { ref: wavyLineRef, isInView: wavyLineInView } = useInView({ threshold: 0.2 })
+  
   return (
     <>
       {/* Main RSVP Section - flows from info section with maroon background */}
@@ -25,8 +30,8 @@ export default function RSVPSection() {
                 RSVP
               </h2>
 
-              <div className='mb-6 flex justify-center'>
-                <WavyLine color='var(--color-accent)' className='w-48' />
+              <div ref={wavyLineRef} className='mb-6 flex justify-center'>
+                <WavyLine color='var(--color-accent)' className='w-48' animate={wavyLineInView} />
               </div>
 
               <p className='text-accent/80 text-lg'>

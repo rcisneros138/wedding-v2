@@ -77,7 +77,7 @@ export default function Hero() {
                       </div>
                     </div>
                     {/* Main Title */}
-                    <div className='relative'>
+                    <div className='relative animate-hero-title'>
                       <Image
                         src='/images/figma-assets/hero-title.svg'
                         alt="We're Getting Married"

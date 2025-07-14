@@ -5,10 +5,12 @@ import { ChevronRight } from 'lucide-react'
 import ShadowButton from './ShadowButton'
 import WavyLine from './WavyLine'
 import BookingModal from './BookingModal'
+import { useInView } from '../hooks/useInView'
 
 const Faq = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null)
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
+  const { ref: wavyLineRef, isInView: wavyLineInView } = useInView({ threshold: 0.2 })
 
   const handleContactUs = () => {
     window.location.href = 'mailto:amandaandray2026@gmail.com?subject=Wedding Question'
@@ -195,8 +197,8 @@ const Faq = () => {
         <h2 className='font-pacifico text-primary mb-4 text-4xl sm:text-5xl md:text-6xl'>
           Frequently Asked Questions
         </h2>
-        <div className='mb-6 flex justify-center'>
-          <WavyLine color='var(--color-accent)' className='w-48' />
+        <div ref={wavyLineRef} className='mb-6 flex justify-center'>
+          <WavyLine color='var(--color-accent)' className='w-48' animate={wavyLineInView} />
         </div>
         <p className='font-display text-primary/80 text-lg'>
           Everything you need to know about our big day
