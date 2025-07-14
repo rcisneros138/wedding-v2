@@ -15,6 +15,8 @@
     "db:view:remote": "wrangler d1 execute wedding-rsvp --remote --command='SELECT * FROM rsvps ORDER BY created_at DESC'",
     "db:count:local": "wrangler d1 execute wedding-rsvp --local --command='SELECT COUNT(*) as total_rsvps, SUM(CASE WHEN attending = 1 THEN 1 ELSE 0 END) as attending, SUM(CASE WHEN attending = 0 THEN 1 ELSE 0 END) as not_attending FROM rsvps'",
     "db:export:local": "wrangler d1 execute wedding-rsvp --local --command='SELECT * FROM rsvps' --json > rsvps-export.json",
+    "db:backup:remote": "./scripts/backup-prod-db.sh",
+    "db:migrate:email:remote": "wrangler d1 execute wedding-rsvp --remote --file=./schemas/email-tracking-schema.sql",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:preview": "npm run pages:build && wrangler pages dev",
     "pages:deploy": "npm run pages:build && wrangler pages deploy"

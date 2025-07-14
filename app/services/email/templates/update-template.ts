@@ -96,7 +96,7 @@ export const updateEmailTemplate = (content: string): string => {
       <div class="decorative-line"></div>
       
       <div style="text-align: center;">
-        <a href="https://amanda-ray-wedding.com" class="cta-button">Visit Wedding Website</a>
+        <a href="https://rayandamanda.wedding" class="cta-button">Visit Wedding Website</a>
       </div>
     </div>
     

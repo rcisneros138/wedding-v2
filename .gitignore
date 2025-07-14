@@ -45,3 +45,6 @@ wrangler-debug.log
 *.sqlite-wal
 rsvps-export.json
 functions/
+
+# Database backups
+backups/

@@ -55,7 +55,7 @@ graph TD
 // email-service.ts structure
 export class EmailService {
   private resend: Resend
-  private fromEmail: string = 'noreply@amanda-ray-wedding.com'
+  private fromEmail: string = 'noreply@rayandamanda.wedding'
   private fromName: string = 'Amanda & Ray'
 
   constructor(apiKey: string) {
