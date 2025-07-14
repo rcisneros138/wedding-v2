@@ -235,7 +235,7 @@ export async function POST(request: Request) {
           emailError = emailErr instanceof Error ? emailErr.message : 'Email service error'
         }
       } else {
-        devLog('RESEND_API_KEY not configured, skipping email')
+        devLog('RESEND_API_KEY not configured', 'Skipping email notification')
       }
 
       // Return success response

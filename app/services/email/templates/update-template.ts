@@ -5,7 +5,7 @@ export const updateEmailTemplate = (content: string): string => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Update - Ashlyn & Royal</title>
+  <title>Wedding Update - Amanda & Ray</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
     
@@ -96,13 +96,13 @@ export const updateEmailTemplate = (content: string): string => {
       <div class="decorative-line"></div>
       
       <div style="text-align: center;">
-        <a href="https://ashlyn-royal-wedding.com" class="cta-button">Visit Wedding Website</a>
+        <a href="https://amanda-ray-wedding.com" class="cta-button">Visit Wedding Website</a>
       </div>
     </div>
     
     <div class="footer">
       <p>With love,</p>
-      <p style="font-family: 'Pacifico', cursive; font-size: 24px; margin: 10px 0;">Ashlyn & Royal</p>
+      <p style="font-family: 'Pacifico', cursive; font-size: 24px; margin: 10px 0;">Amanda & Ray</p>
       <p>January 24, 2026 • Playa del Carmen, Mexico</p>
     </div>
   </div>

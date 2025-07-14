@@ -9,7 +9,7 @@ export const confirmationNotAttendingTemplate = (data: EmailData): string => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSVP Confirmation - Ashlyn & Royal's Wedding</title>
+  <title>RSVP Confirmation - Amanda & Ray's Wedding</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
     
@@ -137,8 +137,8 @@ export const confirmationNotAttendingTemplate = (data: EmailData): string => {
     
     <div class="footer">
       <p>With love and gratitude,</p>
-      <p style="font-family: 'Pacifico', cursive; font-size: 24px; margin: 10px 0;">Ashlyn & Royal</p>
-      <p>${weddingDate} • Playa del Carmen, Mexico</p>
+      <p style="font-family: 'Pacifico', cursive; font-size: 24px; margin: 10px 0;">Amanda & Ray</p>
+      <p>${weddingDate} • Riviera Cancun, Mexico</p>
     </div>
   </div>
 </body>

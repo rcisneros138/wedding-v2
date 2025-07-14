@@ -7,6 +7,12 @@ export const runtime = 'edge'
 // This endpoint would be protected with authentication in production
 // For now, it's a basic implementation to demonstrate bulk email capability
 
+interface UpdateEmailRequest {
+  subject: string
+  content: string
+  testMode?: boolean
+}
+
 export async function POST(request: Request) {
   try {
     const { env } = getRequestContext()
@@ -14,7 +20,7 @@ export async function POST(request: Request) {
     // In production, add authentication check here
     // For example: verify admin token, check session, etc.
     
-    const body = await request.json()
+    const body = await request.json() as UpdateEmailRequest
     const { subject, content, testMode = false } = body
     
     if (!subject || !content) {

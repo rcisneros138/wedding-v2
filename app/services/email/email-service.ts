@@ -26,8 +26,8 @@ export class EmailService {
 
   constructor(apiKey: string) {
     this.resend = new Resend(apiKey)
-    this.fromEmail = 'noreply@ashlyn-royal-wedding.com' // Update with your verified domain
-    this.fromName = 'Ashlyn & Royal'
+    this.fromEmail = 'info@rayandamanda.wedding' // Update with your verified domain
+    this.fromName = 'Amanda & Ray'
   }
 
   async sendRSVPConfirmation(data: EmailData): Promise<EmailResult> {
@@ -37,13 +37,13 @@ export class EmailService {
         : confirmationNotAttendingTemplate(data)
 
       const subject = data.attending
-        ? '🎉 We\'re excited to celebrate with you!'
+        ? "🎉 We're excited to celebrate with you!"
         : 'Thank you for letting us know'
 
       devLog('Sending email', {
         to: data.email,
         subject,
-        attending: data.attending
+        attending: data.attending,
       })
 
       const result = await this.resend.emails.send({
@@ -53,45 +53,49 @@ export class EmailService {
         html: template,
         tags: [
           { name: 'type', value: 'rsvp-confirmation' },
-          { name: 'attending', value: data.attending.toString() }
-        ]
+          { name: 'attending', value: data.attending.toString() },
+        ],
       })
 
       if (result.error) {
         devError('Email send error', result.error)
         return {
           success: false,
-          error: result.error.message
+          error: result.error.message,
         }
       }
 
       devLog('Email sent successfully', {
         messageId: result.data?.id,
-        to: data.email
+        to: data.email,
       })
 
       return {
         success: true,
-        messageId: result.data?.id
+        messageId: result.data?.id,
       }
     } catch (error) {
       devError('Email service error', error)
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       }
     }
   }
 
   // Future method for bulk updates
-  async sendUpdateEmail(emails: string[], subject: string, content: string): Promise<EmailResult[]> {
+  async sendUpdateEmail(
+    emails: string[],
+    subject: string,
+    content: string,
+  ): Promise<EmailResult[]> {
     // Implementation for bulk email sending
     // This would be used for sending updates to all guests
     const results: EmailResult[] = []
-    
+
     // Generate HTML template
     const htmlContent = updateEmailTemplate(content)
-    
+
     // Batch process to respect rate limits
     for (const email of emails) {
       try {
@@ -100,23 +104,21 @@ export class EmailService {
           to: email,
           subject,
           html: htmlContent,
-          tags: [
-            { name: 'type', value: 'wedding-update' }
-          ]
+          tags: [{ name: 'type', value: 'wedding-update' }],
         })
 
         results.push({
           success: !result.error,
           messageId: result.data?.id,
-          error: result.error?.message
+          error: result.error?.message,
         })
 
         // Add small delay to respect rate limits
-        await new Promise(resolve => setTimeout(resolve, 100))
+        await new Promise((resolve) => setTimeout(resolve, 100))
       } catch (error) {
         results.push({
           success: false,
-          error: error instanceof Error ? error.message : 'Unknown error'
+          error: error instanceof Error ? error.message : 'Unknown error',
         })
       }
     }
