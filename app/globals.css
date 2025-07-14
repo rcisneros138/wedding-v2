@@ -38,7 +38,7 @@ html {
   --shadow-offset-shadow-sm: 3px 3px 0px 0px var(--color-shadow);
   --shadow-offset-black: 8px 8px 0px 0px rgba(0, 0, 0, 1);
   --shadow-offset-black-sm: 6px 6px 0px 0px rgba(0, 0, 0, 1);
-  --shadow-info-section: 8px 8px 0px 0px rgba(16, 28, 38, 1);
+  --shadow-info-section: 8px -1px 0px 0px rgba(16, 28, 38, 1);
 
   /* Drop Shadows */
   --drop-shadow-offset: 5px 5px 0px var(--color-shadow);
@@ -64,7 +64,7 @@ html {
   --shadow-button-hover: 6px 6px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm: 4px 4px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-sm-hover: 3px 3px 0px 0px rgba(0, 0, 0, 1);
-  
+
   /* Button Shadow Variables - Responsive */
   --shadow-button-responsive: 3px 3px 0px 0px rgba(0, 0, 0, 1);
   --shadow-button-responsive-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
