@@ -3,6 +3,7 @@ import { devLog, devError } from '@/app/utils/logger'
 import { confirmationAttendingTemplate } from './templates/confirmation-attending'
 import { confirmationNotAttendingTemplate } from './templates/confirmation-not-attending'
 import { updateEmailTemplate } from './templates/update-template'
+import { adminNotificationTemplate } from './templates/admin-notification'
 
 export interface EmailData {
   guestName: string
@@ -119,6 +120,78 @@ export class EmailService {
         results.push({
           success: false,
           error: error instanceof Error ? error.message : 'Unknown error',
+        })
+      }
+    }
+
+    return results
+  }
+
+  async sendAdminNotification(
+    adminEmails: string[],
+    rsvpData: EmailData & {
+      phone?: string
+      submittedAt: string
+      ipAddress?: string
+    }
+  ): Promise<EmailResult[]> {
+    const results: EmailResult[] = []
+    
+    const subject = `New RSVP: ${rsvpData.guestName} - ${rsvpData.attending ? 'Attending ✅' : 'Not Attending ❌'}`
+    
+    const htmlContent = adminNotificationTemplate({
+      guestName: rsvpData.guestName,
+      email: rsvpData.email,
+      phone: rsvpData.phone,
+      attending: rsvpData.attending,
+      plusOneName: rsvpData.plusOneName || undefined,
+      songRequests: rsvpData.songRequests || undefined,
+      bookedRoom: rsvpData.bookedRoom,
+      submittedAt: rsvpData.submittedAt,
+      ipAddress: rsvpData.ipAddress
+    })
+
+    // Send to each admin email
+    for (const adminEmail of adminEmails) {
+      try {
+        devLog('Sending admin notification', {
+          to: adminEmail,
+          guestName: rsvpData.guestName,
+          attending: rsvpData.attending
+        })
+
+        const result = await this.resend.emails.send({
+          from: `${this.fromName} Wedding RSVP <${this.fromEmail}>`,
+          to: adminEmail,
+          subject,
+          html: htmlContent,
+          tags: [
+            { name: 'type', value: 'admin-notification' },
+            { name: 'attending', value: rsvpData.attending.toString() }
+          ]
+        })
+
+        if (result.error) {
+          devError('Admin email send error', result.error)
+          results.push({
+            success: false,
+            error: result.error.message
+          })
+        } else {
+          devLog('Admin email sent successfully', {
+            messageId: result.data?.id,
+            to: adminEmail
+          })
+          results.push({
+            success: true,
+            messageId: result.data?.id
+          })
+        }
+      } catch (error) {
+        devError('Admin email service error', error)
+        results.push({
+          success: false,
+          error: error instanceof Error ? error.message : 'Unknown error'
         })
       }
     }

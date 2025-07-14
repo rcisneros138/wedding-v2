@@ -7,6 +7,7 @@ declare global {
     TURNSTILE_SECRET_KEY: string
     NEXT_PUBLIC_TURNSTILE_SITE_KEY: string
     RESEND_API_KEY?: string
+    ADMIN_EMAIL_ADDRESSES?: string
   }
   
   // D1Database type for Cloudflare Workers

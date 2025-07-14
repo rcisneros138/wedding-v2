@@ -238,6 +238,72 @@ export async function POST(request: Request) {
         devLog('RESEND_API_KEY not configured', 'Skipping email notification')
       }
 
+      // Send admin notification
+      if (env.RESEND_API_KEY && env.ADMIN_EMAIL_ADDRESSES) {
+        try {
+          const adminEmails = env.ADMIN_EMAIL_ADDRESSES.split(',').map(email => email.trim())
+          const emailService = new EmailService(env.RESEND_API_KEY)
+          
+          const submittedAt = new Date().toLocaleString('en-US', {
+            timeZone: 'America/New_York',
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          })
+          
+          const adminResults = await emailService.sendAdminNotification(
+            adminEmails,
+            {
+              guestName: rsvpData.guest_name,
+              email: rsvpData.email,
+              phone: rsvpData.phone || undefined,
+              attending: rsvpData.attending,
+              plusOneName: rsvpData.plus_one_name || undefined,
+              songRequests: rsvpData.song_requests || undefined,
+              bookedRoom: rsvpData.booked_room,
+              submittedAt,
+              ipAddress: rsvpData.ip_address
+            }
+          )
+          
+          const successfulAdminEmails = adminResults.filter(r => r.success).length
+          devLog('Admin notifications sent', {
+            totalAdmins: adminEmails.length,
+            successful: successfulAdminEmails,
+            failed: adminEmails.length - successfulAdminEmails
+          })
+          
+          // Log admin emails
+          for (let i = 0; i < adminResults.length; i++) {
+            const adminResult = adminResults[i]
+            const adminEmail = adminEmails[i]
+            
+            if (adminResult.success) {
+              const logAdminEmailQuery = `
+                INSERT INTO email_logs (
+                  rsvp_id, email_type, recipient_email, subject, 
+                  status, message_id
+                ) VALUES (
+                  (SELECT id FROM rsvps WHERE email = ?),
+                  'admin-notification',
+                  ?,
+                  ?,
+                  'sent',
+                  ?
+                )
+              `
+              const subject = `New RSVP: ${rsvpData.guest_name} - ${rsvpData.attending ? 'Attending ✅' : 'Not Attending ❌'}`
+              
+              await env.DB.prepare(logAdminEmailQuery)
+                .bind(rsvpData.email, adminEmail, subject, adminResult.messageId)
+                .run()
+            }
+          }
+        } catch (adminErr) {
+          devError('Admin notification error', adminErr)
+          // Don't fail the RSVP if admin notification fails
+        }
+      }
+
       // Return success response
       const message = rsvpData.attending 
         ? `Thank you ${rsvpData.guest_name}! We're excited to celebrate with you.`

@@ -165,6 +165,14 @@ All design assets have been extracted from Figma and stored in `/public/images/f
     - RSVPForm.tsx       # RSVP form with Turnstile
     - ShadowButton.tsx
     - WavyLine.tsx
+  /services
+    /email
+      - email-service.ts # Email service for sending notifications
+      /templates
+        - confirmation-attending.ts    # Guest confirmation (attending)
+        - confirmation-not-attending.ts # Guest confirmation (not attending)
+        - update-template.ts           # Template for bulk updates
+        - admin-notification.ts        # Admin notification template
   /types
     - rsvp.ts           # RSVP type definitions
   - page.tsx
@@ -188,7 +196,7 @@ All design assets have been extracted from Figma and stored in `/public/images/f
 ## RSVP System
 
 ### Overview
-The RSVP system uses Cloudflare D1 (SQLite database) for storage and Cloudflare Turnstile for spam protection. All API routes use Edge Runtime for compatibility with Cloudflare Pages.
+The RSVP system uses Cloudflare D1 (SQLite database) for storage and Cloudflare Turnstile for spam protection. All API routes use Edge Runtime for compatibility with Cloudflare Pages. The system also includes automatic admin notifications when guests submit their RSVP.
 
 ### Setup Instructions
 1. **Create Cloudflare Turnstile Site**:
@@ -206,6 +214,8 @@ The RSVP system uses Cloudflare D1 (SQLite database) for storage and Cloudflare 
 3. **Environment Variables**:
    - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` - Public Turnstile site key
    - `TURNSTILE_SECRET_KEY` - Secret key (add via wrangler secret)
+   - `RESEND_API_KEY` - API key for Resend email service (add via wrangler secret for production)
+   - `ADMIN_EMAIL_ADDRESSES` - Comma-separated list of admin emails to receive RSVP notifications
 
 ### Database Schema
 - Stores guest information, attendance status, dietary restrictions
@@ -220,4 +230,13 @@ The RSVP system uses Cloudflare D1 (SQLite database) for storage and Cloudflare 
 - Responsive design matching wedding theme
 - Success/error states with user feedback
 - Handles both attending and not attending responses
+
+### Email Notifications
+- **Guest Confirmations**: Automatic confirmation emails sent to guests upon RSVP submission
+  - Different templates for attending vs not attending
+  - Includes booking instructions for attending guests
+- **Admin Notifications**: Instant notifications sent to wedding couple when someone RSVPs
+  - Shows guest details, attendance status, plus one info
+  - Highlights if guest hasn't booked their room yet
+  - Includes submission timestamp and IP address for security
 ```
